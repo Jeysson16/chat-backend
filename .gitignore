@@ -1,0 +1,24 @@
+## Node
+node_modules/
+.env*
+*.log
+
+## .NET
+ChatModularAPI/bin/
+ChatModularAPI/obj/
+ChatModularAPI/.vs/
+ChatModularAPI/logs/
+ChatModularAPI/appsettings.Local.json
+ChatModularAPI/appsettings.Development.json
+**/nul
+
+## Supabase
+supabase/.temp/
+
+## Vercel/Fly/IDE
+.vercel/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

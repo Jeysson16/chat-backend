@@ -1,0 +1,189 @@
+using ChatModularMicroservice.Entities.DTOs;
+using ChatModularMicroservice.Repository;
+using ChatModularMicroservice.Entities.Models;
+using ChatModularMicroservice.Entities;
+using Utils = ChatModularMicroservice.Shared.Utils;
+ 
+namespace ChatModularMicroservice.Infrastructure.Repositories;
+ 
+/// <summary>
+/// Adaptador que implementa la interfaz del dominio y delega a la implementación de infraestructura
+/// </summary>
+public class ContactoRepositoryAdapter : IContactoRepository
+{
+    private readonly IContactoRepository _infrastructureRepository;
+    private readonly Guid _empresaId = Guid.Parse("550e8400-e29b-41d4-a716-446655440000"); // ID empresa por defecto
+    private readonly Guid _aplicacionId = Guid.Parse("550e8400-e29b-41d4-a716-446655440001"); // ID aplicación por defecto
+ 
+    public ContactoRepositoryAdapter(ChatModularMicroservice.Repository.IContactoRepository infrastructureRepository)
+    {
+        _infrastructureRepository = infrastructureRepository;
+    }
+ 
+    public async Task<List<ChatUsuarioDto>> BuscarUsuariosAsync(string terminoBusqueda, string usuarioId, string empresaId, string aplicacionId, string tipoListado)
+    {
+        return await _infrastructureRepository.BuscarUsuariosAsync(terminoBusqueda, usuarioId, empresaId, aplicacionId, tipoListado);
+    }
+ 
+    public async Task<List<SolicitudContactoDto>> ListarSolicitudesPendientesAsync(string usuarioId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.ListarSolicitudesPendientesAsync(usuarioId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<List<ContactoDto>> ListarContactosAsync(string usuarioId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.ListarContactosAsync(usuarioId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> EnviarSolicitudContactoAsync(string usuarioSolicitanteId, string usuarioDestinoId, string empresaId, string aplicacionId, string? mensaje = null)
+    {
+        return await _infrastructureRepository.EnviarSolicitudContactoAsync(usuarioSolicitanteId, usuarioDestinoId, empresaId, aplicacionId, mensaje);
+    }
+ 
+    public async Task<ContactoDto?> AceptarSolicitudContactoAsync(string contactoId, string usuarioId)
+    {
+        return await _infrastructureRepository.AceptarSolicitudContactoAsync(contactoId, usuarioId);
+    }
+ 
+    public async Task<bool> ResponderSolicitudContactoAsync(string solicitudId, string usuarioId, bool aceptada, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.ResponderSolicitudContactoAsync(solicitudId, usuarioId, aceptada, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> BloquearContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.BloquearContactoAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> DesbloquearContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.DesbloquearContactoAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> EliminarContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.EliminarContactoAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> VerificarPermisoChatDirectoAsync(string usuario1Id, string usuario2Id, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.VerificarPermisoChatDirectoAsync(usuario1Id, usuario2Id, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> VerificarSonContactosAsync(string usuario1Id, string usuario2Id, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.VerificarSonContactosAsync(usuario1Id, usuario2Id, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> VerificarContactoBloqueadoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.VerificarContactoBloqueadoAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> ExisteSolicitudPendienteAsync(string usuarioSolicitanteId, string usuarioDestinoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.ExisteSolicitudPendienteAsync(usuarioSolicitanteId, usuarioDestinoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> AreContactsAsync(Guid userId1, Guid userId2)
+    {
+        return await _infrastructureRepository.AreContactsAsync(userId1, userId2);
+    }
+ 
+    public async Task<bool> HasPendingRequestAsync(Guid userId1, Guid userId2)
+    {
+        return await _infrastructureRepository.HasPendingRequestAsync(userId1, userId2);
+    }
+ 
+    public async Task<bool> RechazarSolicitudContactoAsync(string contactoId, string usuarioId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.RechazarSolicitudContactoAsync(contactoId, usuarioId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<List<ContactoDto>> ListarContactosPorUsuarioAsync(string usuarioId, string empresaId, string aplicacionId, string? estado = null)
+    {
+        return await _infrastructureRepository.ListarContactosPorUsuarioAsync(usuarioId, empresaId, aplicacionId, estado);
+    }
+ 
+    public async Task<List<ContactoDto>> BuscarContactosLocalAsync(string terminoBusqueda, string empresaId, string usuarioId)
+    {
+        return await _infrastructureRepository.BuscarContactosLocalAsync(terminoBusqueda, empresaId, usuarioId);
+    }
+ 
+    public async Task<bool> SincronizarContactoAsync(ContactoDto contacto, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.SincronizarContactoAsync(contacto, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> VerificarContactoExistenteAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.VerificarContactoExistenteAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> ValidarContactoLocalAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.ValidarContactoLocalAsync(usuarioId, contactoId, empresaId, aplicacionId);
+    }
+ 
+    // === MÉTODOS ESTÁNDAR DEL PATRÓN ===
+    public async Task<Contacto> GetItem(ContactoFilter filter, ContactoFilterItemType filterType)
+    {
+        return await _infrastructureRepository.GetItem(filter, filterType);
+    }
+ 
+    public async Task<IEnumerable<Contacto>> GetLstItem(ContactoFilter filter, ContactoFilterListType filterType, Utils.Pagination pagination)
+    {
+        return await _infrastructureRepository.GetLstItem(filter, filterType, pagination);
+    }
+ 
+    public async Task<bool> DeleteContactoAsync(string contactoId)
+    {
+        return await _infrastructureRepository.DeleteContactoAsync(contactoId);
+    }
+ 
+    public async Task<List<object>> SearchUsuariosAsync(string searchTerm, string empresaId, string aplicacionId)
+    {
+        return await _infrastructureRepository.SearchUsuariosAsync(searchTerm, empresaId, aplicacionId);
+    }
+ 
+    public async Task<bool> ContactoExistsAsync(string contactoId)
+    {
+        return await _infrastructureRepository.ContactoExistsAsync(contactoId);
+    }
+ 
+    public async Task<bool> AddContactoAsync(Contacto contacto)
+    {
+        return await _infrastructureRepository.AddContactoAsync(contacto);
+    }
+ 
+    public async Task<bool> RemoveContactoAsync(string contactoId)
+    {
+        return await _infrastructureRepository.RemoveContactoAsync(contactoId);
+    }
+ 
+    public async Task<bool> CreateContactoAsync(Contacto contacto)
+    {
+        return await _infrastructureRepository.CreateContactoAsync(contacto);
+    }
+ 
+    public async Task<bool> UpdateContactoAsync(Contacto contacto)
+    {
+        return await _infrastructureRepository.UpdateContactoAsync(contacto);
+    }
+ 
+    // === MÉTODOS GENÉRICOS HEREDADOS ===
+    public Task<int> Insert(Contacto item)
+    {
+        return _infrastructureRepository.Insert(item);
+    }
+ 
+    public Task<bool> Update(Contacto item)
+    {
+        return _infrastructureRepository.Update(item);
+    }
+ 
+    public Task<bool> DeleteEntero(int id)
+    {
+        return _infrastructureRepository.DeleteEntero(id);
+    }
+}

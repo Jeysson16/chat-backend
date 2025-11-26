@@ -1,0 +1,6 @@
+MSBUILD : error MSB1008: Sólo puede especificarse un proyecto.
+    Línea de comandos completa: 'C:\Program Files\dotnet\sdk\9.0.305\MSBuild.dll -maxcpucount -verbosity:m -tlp:default=auto -nologo -restore -consoleloggerparameters:Summary -verbosity:m D:/Chat/ChatBackend/ChatModularAPI/03.Layer Api/ChatModularMicroservice.Api/ChatModularMicroservice.Api.csproj Api/root-build.txt -distributedlogger:Microsoft.DotNet.Tools.MSBuild.MSBuildLogger,C:\Program Files\dotnet\sdk\9.0.305\dotnet.dll*Microsoft.DotNet.Tools.MSBuild.MSBuildForwardingLogger,C:\Program Files\dotnet\sdk\9.0.305\dotnet.dll'
+  Modificadores anexados por archivos de respuesta: 
+Modificador: Api/ChatModularMicroservice.Api/ChatModularMicroservice.Api.csproj
+
+Para modificar la sintaxis, escriba "MSBuild -help"

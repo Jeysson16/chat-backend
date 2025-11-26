@@ -1,0 +1,8 @@
+{
+  "ChatModularMicroservice.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\03.Layer Api\\ChatModularMicroservice.Api",
+  "ChatModularMicroservice.Domain, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\02.Layer Domain\\ChatModularMicroservice.Domain",
+  "ChatModularMicroservice.Entities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\02.Layer Domain\\ChatModularMicroservice.Entities",
+  "ChatModularMicroservice.Infrastructure, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\01.Layer Infrastructure\\ChatModularMicroservice.Infrastructure",
+  "ChatModularMicroservice.Repository, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\01.Layer Infrastructure\\ChatModularMicroservice.Repository",
+  "ChatModularMicroservice.Shared, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Chat\\ChatBackend\\ChatModularAPI\\04.Util\\ChatModularMicroservice.Shared"
+}

@@ -1,0 +1,75 @@
+-- Create the complete Usuarios table with proper structure and permissions
+
+-- Create table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public."Usuarios" (
+    "nUsuariosId" TEXT PRIMARY KEY,
+    "cUsuariosNombre" TEXT NOT NULL,
+    "cUsuariosEmail" TEXT NOT NULL,
+    "cUsuariosAvatar" TEXT,
+    "bUsuariosEstaEnLinea" BOOLEAN DEFAULT false,
+    "dUsuariosUltimaConexion" TIMESTAMP WITH TIME ZONE,
+    "dUsuariosFechaCreacion" TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    "cUsuariosPerCodigo" TEXT,
+    "cUsuariosPerJurCodigo" TEXT,
+    "cUsuariosUsername" TEXT,
+    "cUsuariosPassword" TEXT,
+    "bUsuariosActivo" BOOLEAN DEFAULT true,
+    "bUsuarioVerificado" BOOLEAN DEFAULT false,
+    "cUsuarioTokenVerificacion" TEXT,
+    "dUsuarioCambioPassword" TIMESTAMP WITH TIME ZONE,
+    "cUsuarioConfigPrivacidad" TEXT,
+    "cUsuarioConfigNotificaciones" TEXT
+);
+
+-- Enable Row Level Security
+ALTER TABLE public."Usuarios" ENABLE ROW LEVEL SECURITY;
+
+-- Create policies for authenticated users (full access)
+CREATE POLICY "Usuarios select policy" ON public."Usuarios" 
+    FOR SELECT TO authenticated 
+    USING (true);
+
+CREATE POLICY "Usuarios insert policy" ON public."Usuarios" 
+    FOR INSERT TO authenticated 
+    WITH CHECK (true);
+
+CREATE POLICY "Usuarios update policy" ON public."Usuarios" 
+    FOR UPDATE TO authenticated 
+    USING (true);
+
+CREATE POLICY "Usuarios delete policy" ON public."Usuarios" 
+    FOR DELETE TO authenticated 
+    USING (true);
+
+-- Grant permissions to roles
+GRANT SELECT, INSERT, UPDATE, DELETE ON public."Usuarios" TO authenticated;
+GRANT SELECT ON public."Usuarios" TO anon;
+
+-- Create index on commonly queried fields for better performance
+CREATE INDEX IF NOT EXISTS idx_usuarios_email ON public."Usuarios" ("cUsuariosEmail");
+CREATE INDEX IF NOT EXISTS idx_usuarios_username ON public."Usuarios" ("cUsuariosUsername");
+CREATE INDEX IF NOT EXISTS idx_usuarios_online ON public."Usuarios" ("bUsuariosEstaEnLinea");
+
+-- Insert or update the default JSANCHEZ user
+INSERT INTO public."Usuarios" (
+    "nUsuariosId", 
+    "cUsuariosNombre", 
+    "cUsuariosEmail", 
+    "cUsuariosUsername",
+    "bUsuariosActivo",
+    "bUsuarioVerificado",
+    "dUsuariosFechaCreacion"
+) VALUES (
+    'JSANCHEZ',
+    'Juan Sanchez',
+    'jsanchez@example.com',
+    'jsanchez',
+    true,
+    true,
+    now()
+) ON CONFLICT ("nUsuariosId") DO UPDATE SET
+    "cUsuariosNombre" = EXCLUDED."cUsuariosNombre",
+    "cUsuariosEmail" = EXCLUDED."cUsuariosEmail",
+    "cUsuariosUsername" = EXCLUDED."cUsuariosUsername",
+    "bUsuariosActivo" = EXCLUDED."bUsuariosActivo",
+    "bUsuarioVerificado" = EXCLUDED."bUsuarioVerificado";

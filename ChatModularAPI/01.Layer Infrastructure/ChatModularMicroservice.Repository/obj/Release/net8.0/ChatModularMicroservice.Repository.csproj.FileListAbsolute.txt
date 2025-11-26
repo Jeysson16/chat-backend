@@ -1,0 +1,15 @@
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Repository.deps.json
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Repository.dll
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Repository.pdb
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Entities.dll
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Shared.dll
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Entities.pdb
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\bin\Release\net8.0\ChatModularMicroservice.Shared.pdb
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModularMicroservice.Repository.csproj.AssemblyReference.cache
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModularMicroservice.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModularMicroservice.Repository.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModu.82F5DBA3.Up2Date
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModularMicroservice.Repository.dll
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\refint\ChatModularMicroservice.Repository.dll
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ChatModularMicroservice.Repository.pdb
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Repository\obj\Release\net8.0\ref\ChatModularMicroservice.Repository.dll

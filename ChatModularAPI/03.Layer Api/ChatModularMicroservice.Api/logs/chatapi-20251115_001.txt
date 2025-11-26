@@ -1,0 +1,264 @@
+[2025-11-15 23:23:56.137 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:23:56.180 -05:00 INF] Servidor escuchando en: http://localhost:5406 {}
+[2025-11-15 23:23:56.235 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5406: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-15 23:23:56.250 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5406: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 168
+[2025-11-15 23:24:18.123 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:24:18.161 -05:00 INF] Servidor escuchando en: http://localhost:5406 {}
+[2025-11-15 23:30:29.488 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:30:29.527 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-15 23:30:29.595 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-15 23:30:29.616 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 168
+[2025-11-15 23:31:14.111 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:31:14.147 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-15 23:31:14.212 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-15 23:31:14.228 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 168
+[2025-11-15 23:31:42.742 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:31:42.785 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-15 23:31:42.857 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-15 23:31:42.871 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 168
+[2025-11-15 23:32:11.912 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-15 23:32:11.958 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5405;http://localhost:5406 {}
+[2025-11-15 23:32:36.148 -05:00 INF] Verificando ruta: /chathub/negotiate {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGD:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGD"}
+[2025-11-15 23:32:36.153 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGD:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGD"}
+[2025-11-15 23:32:36.155 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGD:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGD"}
+[2025-11-15 23:32:36.157 -05:00 INF] Ruta pública detectada: /chathub/negotiate {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGD:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGD"}
+[2025-11-15 23:32:36.298 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:36.301 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:36.304 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:36.306 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:36.410 -05:00 INF] SignalR connection attempt - AppCode: null, HasAuthHeader: false {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"2Mk9qY7gWL6KkWjS3JZw9g","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:36.414 -05:00 WRN] Missing required headers for SignalR connection. AppCode: null, AuthHeader: null {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"2Mk9qY7gWL6KkWjS3JZw9g","RequestId":"0HNH4P4LEPDGE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH4P4LEPDGE"}
+[2025-11-15 23:32:43.302 -05:00 INF] Verificando ruta: /chathub/negotiate {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGF:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGF"}
+[2025-11-15 23:32:43.305 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGF:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGF"}
+[2025-11-15 23:32:43.307 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGF:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGF"}
+[2025-11-15 23:32:43.308 -05:00 INF] Ruta pública detectada: /chathub/negotiate {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGF:00000001","RequestPath":"/chathub/negotiate","ConnectionId":"0HNH4P4LEPDGF"}
+[2025-11-15 23:34:07.653 -05:00 INF] HTTP Request - Method: POST, Path: /api/auth/login, Body: {"email":"jesanchez@ucvvirtual.edu.pe","password":"***","appCode":"SICOM_CHAT_2024","appSecret":"SICOM_CHAT_SECRET_2024"} {"SourceContext":"ChatModularMicroservice.Api.Middleware.RequestBodyMiddleware","RequestId":"0HNH4P4LEPDGG:00000001","RequestPath":"/api/auth/login","ConnectionId":"0HNH4P4LEPDGG"}
+[2025-11-15 23:34:07.658 -05:00 INF] Verificando ruta: /api/auth/login {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGG:00000001","RequestPath":"/api/auth/login","ConnectionId":"0HNH4P4LEPDGG"}
+[2025-11-15 23:34:07.661 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGG:00000001","RequestPath":"/api/auth/login","ConnectionId":"0HNH4P4LEPDGG"}
+[2025-11-15 23:34:07.663 -05:00 INF] ¿Es ruta pública? false {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGG:00000001","RequestPath":"/api/auth/login","ConnectionId":"0HNH4P4LEPDGG"}
+[2025-11-15 23:34:07.665 -05:00 INF] Ruta privada detectada: /api/auth/login {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGG:00000001","RequestPath":"/api/auth/login","ConnectionId":"0HNH4P4LEPDGG"}
+[2025-11-15 23:34:32.800 -05:00 INF] HTTP Request - Method: POST, Path: /api/v1/auth/login, Body: {"email":"jesanchez@ucvvirtual.edu.pe","password":"***","appCode":"SICOM_CHAT_2024","appSecret":"SICOM_CHAT_SECRET_2024"} {"SourceContext":"ChatModularMicroservice.Api.Middleware.RequestBodyMiddleware","RequestId":"0HNH4P4LEPDGH:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNH4P4LEPDGH"}
+[2025-11-15 23:34:32.803 -05:00 INF] Verificando ruta: /api/v1/auth/login {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGH:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNH4P4LEPDGH"}
+[2025-11-15 23:34:32.805 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGH:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNH4P4LEPDGH"}
+[2025-11-15 23:34:32.807 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGH:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNH4P4LEPDGH"}
+[2025-11-15 23:34:32.809 -05:00 INF] Ruta pública detectada: /api/v1/auth/login {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH4P4LEPDGH:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNH4P4LEPDGH"}

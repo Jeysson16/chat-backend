@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <!-- Evitar incluir archivos generados y de subproyectos en la compilación del proyecto raíz -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/obj/**;**/bin/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.11" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    <PackageReference Include="Npgsql" Version="8.0.6" />
+    <PackageReference Include="Supabase" Version="1.0.0" />
+
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="01.Layer Infrastructure\ChatModularMicroservice.Repository\ChatModularMicroservice.Repository.csproj" />
+    <ProjectReference Include="02.Layer Domain\ChatModularMicroservice.Domain\ChatModularMicroservice.Domain.csproj" />
+    <ProjectReference Include="02.Layer Domain\ChatModularMicroservice.Entities\ChatModularMicroservice.Entities.csproj" />
+    <ProjectReference Include="04.Util\ChatModularMicroservice.Shared\ChatModularMicroservice.Shared.csproj" />
+    <ProjectReference Include="03.Layer Api\ChatModularMicroservice.Api\ChatModularMicroservice.Api.csproj" />
+  </ItemGroup>
+
+  <!-- Controlar explícitamente qué archivos .cs se compilan en este proyecto -->
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="04.Util/JwtConfig.cs" />
+    <Compile Include="04.Util/LoggerConfig.cs" />
+    <Compile Include="04.Util/SupabaseConfig.cs" />
+    <Compile Include="04.Util/TrackerConfig.cs" />
+    <!-- Asegurar que no se incluyan archivos de atributos autogenerados -->
+    <Compile Remove="**/*.AssemblyAttributes.cs" />
+  </ItemGroup>
+
+</Project>

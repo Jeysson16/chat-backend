@@ -1,0 +1,17 @@
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Domain.deps.json
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Domain.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Domain.pdb
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Entities.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Repository.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Shared.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Entities.pdb
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Repository.pdb
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\bin\Release\net8.0\ChatModularMicroservice.Shared.pdb
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.csproj.AssemblyReference.cache
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.GeneratedMSBuildEditorConfig.editorconfig
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.csproj.CoreCompileInputs.cache
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModu.FB375057.Up2Date
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\refint\ChatModularMicroservice.Domain.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.pdb
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ref\ChatModularMicroservice.Domain.dll

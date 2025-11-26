@@ -1,0 +1,10 @@
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\bin\Testing\net8.0\ChatModularMicroservice.Entities.deps.json
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\bin\Testing\net8.0\ChatModularMicroservice.Entities.dll
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\bin\Testing\net8.0\ChatModularMicroservice.Entities.pdb
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ChatModularMicroservice.Entities.csproj.AssemblyReference.cache
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ChatModularMicroservice.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ChatModularMicroservice.Entities.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ChatModularMicroservice.Entities.dll
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\refint\ChatModularMicroservice.Entities.dll
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ChatModularMicroservice.Entities.pdb
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Testing\net8.0\ref\ChatModularMicroservice.Entities.dll

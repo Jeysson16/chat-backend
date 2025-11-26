@@ -1,0 +1,482 @@
+using ChatModularMicroservice.Entities.DTOs;
+using ChatModularMicroservice.Entities.Models;
+using ChatModularMicroservice.Entities;
+using ChatModularMicroservice.Repository;
+using Utils = ChatModularMicroservice.Shared.Utils;
+using ChatModularMicroservice.Shared.Configs;
+using Dapper;
+using System.Data;
+
+namespace ChatModularMicroservice.Infrastructure
+{
+    /// <summary>
+    /// Repositorio para la gestión de contactos
+    /// </summary>
+    public class ContactoRepository : BaseRepository, IContactoRepository
+    {
+        #region Constructor
+        public ContactoRepository(IConnectionFactory cn) : base(cn)
+        {
+        }
+        #endregion
+
+        #region Public Methods
+
+        public async Task<int> Insert(Contacto item)
+        {
+            int affectedRows = 0;
+            var query = "USP_Contacto_Insert";
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@nContactosId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@cUsuarioSolicitanteId", item.cUsuarioSolicitanteId, DbType.Int32);
+            parameters.Add("@cUsuarioDestinoId", item.cUsuarioDestinoId, DbType.Int32);
+            parameters.Add("@cEstado", item.cEstado, DbType.String);
+            parameters.Add("@dFechaSolicitud", item.dFechaSolicitud, DbType.DateTime);
+            parameters.Add("@dFechaRespuesta", item.dFechaRespuesta, DbType.DateTime);
+            parameters.Add("@nEmpresaId", item.nEmpresaId, DbType.Int32);
+            parameters.Add("@nAplicacionId", item.nAplicacionId, DbType.Int32);
+
+            affectedRows = await SqlMapper.ExecuteAsync(_connectionFactory.GetConnection(), query, parameters, commandType: CommandType.StoredProcedure);
+            int generatedId = parameters.Get<int>("@nContactosId");
+
+            if (affectedRows <= 0 || generatedId <= 0)
+            {
+                throw new InvalidOperationException("No se pudo insertar el contacto o no se obtuvo un ID válido");
+            }
+
+            return generatedId;
+        }
+
+        public async Task<bool> Update(Contacto item) =>
+            await this.UpdateOrDelete("USP_Contacto_Update", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@nContactosId", item.nContactosId},
+                {"@cUsuarioSolicitanteId", item.cUsuarioSolicitanteId},
+                {"@cUsuarioDestinoId", item.cUsuarioDestinoId},
+                {"@cEstado", item.cEstado},
+                {"@dFechaSolicitud", item.dFechaSolicitud},
+                {"@dFechaRespuesta", item.dFechaRespuesta},
+                {"@nEmpresaId", item.nEmpresaId},
+                {"@nAplicacionId", item.nAplicacionId}
+            }));
+
+        public async Task<bool> DeleteEntero(int nContactosId) =>
+            await this.UpdateOrDelete("USP_Contacto_Delete", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@nContactosId", nContactosId}
+            }));
+
+        public async Task<Contacto> GetItem(ContactoFilter filter, ContactoFilterItemType filterType)
+        {
+            Contacto itemfound = null;
+            switch (filterType)
+            {
+                case ContactoFilterItemType.ById:
+                    itemfound = await this.GetById(filter);
+                    break;
+                case ContactoFilterItemType.ByUsuarios:
+                    itemfound = await this.GetByUsuarios(filter);
+                    break;
+                case ContactoFilterItemType.ByEstado:
+                    itemfound = await this.GetByEstado(filter);
+                    break;
+            }
+            return itemfound;
+        }
+
+        public async Task<IEnumerable<Contacto>> GetLstItem(ContactoFilter filter, ContactoFilterListType filterType, Utils.Pagination pagination)
+        {
+            IEnumerable<Contacto> lstItemFound = new List<Contacto>();
+            switch (filterType)
+            {
+                case ContactoFilterListType.ByPagination:
+                    lstItemFound = await this.GetByPagination(filter, pagination);
+                    break;
+                case ContactoFilterListType.ByUsuarioSolicitante:
+                    lstItemFound = await this.GetByUsuarioSolicitante(filter);
+                    break;
+                case ContactoFilterListType.ByEmpresaYAplicacion:
+                    lstItemFound = await this.GetByEmpresaYAplicacion(filter);
+                    break;
+                case ContactoFilterListType.ByEstado:
+                    lstItemFound = await this.GetByEstadoList(filter);
+                    break;
+                case ContactoFilterListType.ByTerminoBusqueda:
+                    lstItemFound = await this.GetByTerminoBusqueda(filter);
+                    break;
+            }
+            return lstItemFound;
+        }
+
+        // Métodos específicos del dominio de contactos (mantenidos para compatibilidad)
+        public async Task<List<ChatUsuarioDto>> BuscarUsuariosAsync(string terminoBusqueda, string usuarioId, string empresaId, string aplicacionId, string tipoListado)
+        {
+            string query = "USP_Contactos_BuscarUsuarios";
+            var param = new DynamicParameters();
+            param.Add("@pTerminoBusqueda", terminoBusqueda ?? string.Empty);
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            param.Add("@pTipoListado", tipoListado);
+            return (await this.LoadData<ChatUsuarioDto>(query, param)).ToList();
+        }
+
+        public async Task<bool> EnviarSolicitudContactoAsync(string usuarioSolicitanteId, string usuarioDestinoId, string empresaId, string aplicacionId, string? mensaje = null)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_EnviarSolicitud", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pUsuarioSolicitanteId", usuarioSolicitanteId},
+                {"@pUsuarioDestinoId", usuarioDestinoId},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId},
+                {"@pMensaje", mensaje ?? string.Empty}
+            }));
+        }
+
+        public async Task<List<SolicitudContactoDto>> ListarSolicitudesPendientesAsync(string usuarioId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_ListarSolicitudesPendientes";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            return (await this.LoadData<SolicitudContactoDto>(query, param)).ToList();
+        }
+
+        public async Task<List<ContactoDto>> ListarContactosAsync(string usuarioId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_ListarContactos";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            return (await this.LoadData<ContactoDto>(query, param)).ToList();
+        }
+
+        public async Task<ContactoDto?> AceptarSolicitudContactoAsync(string contactoId, string usuarioId)
+        {
+            string query = "USP_Contactos_AceptarSolicitud";
+            var param = new DynamicParameters();
+            param.Add("@pContactoId", contactoId);
+            param.Add("@pUsuarioId", usuarioId);
+            return (await this.LoadData<ContactoDto>(query, param)).FirstOrDefault();
+        }
+
+        public async Task<bool> ResponderSolicitudContactoAsync(string solicitudId, string usuarioId, bool aceptada, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_ResponderSolicitud", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pSolicitudId", solicitudId},
+                {"@pUsuarioId", usuarioId},
+                {"@pAceptada", aceptada},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<bool> BloquearContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_BloquearContacto", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pUsuarioId", usuarioId},
+                {"@pContactoId", contactoId},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<bool> DesbloquearContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_DesbloquearContacto", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pUsuarioId", usuarioId},
+                {"@pContactoId", contactoId},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<bool> EliminarContactoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_EliminarContacto", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pUsuarioId", usuarioId},
+                {"@pContactoId", contactoId},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<bool> VerificarPermisoChatDirectoAsync(string usuario1Id, string usuario2Id, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_VerificarPermisoChatDirecto";
+            var param = new DynamicParameters();
+            param.Add("@pUsuario1Id", usuario1Id);
+            param.Add("@pUsuario2Id", usuario2Id);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.permiso ?? false;
+        }
+
+        public async Task<bool> VerificarSonContactosAsync(string usuario1Id, string usuario2Id, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_VerificarSonContactos";
+            var param = new DynamicParameters();
+            param.Add("@pUsuario1Id", usuario1Id);
+            param.Add("@pUsuario2Id", usuario2Id);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.sonContactos ?? false;
+        }
+
+        public async Task<bool> VerificarContactoBloqueadoAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_VerificarContactoBloqueado";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pContactoId", contactoId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.bloqueado ?? false;
+        }
+
+        public async Task<bool> ExisteSolicitudPendienteAsync(string usuarioSolicitanteId, string usuarioDestinoId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_ExisteSolicitudPendiente";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioSolicitanteId", usuarioSolicitanteId);
+            param.Add("@pUsuarioDestinoId", usuarioDestinoId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.existe ?? false;
+        }
+
+        public async Task<bool> AreContactsAsync(Guid usuario1Id, Guid usuario2Id)
+        {
+            string query = "USP_Contactos_AreContacts";
+            var param = new DynamicParameters();
+            param.Add("@pUsuario1Id", usuario1Id);
+            param.Add("@pUsuario2Id", usuario2Id);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.areContacts ?? false;
+        }
+
+        public async Task<bool> HasPendingRequestAsync(Guid usuarioSolicitanteId, Guid usuarioDestinoId)
+        {
+            string query = "USP_Contactos_HasPendingRequest";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioSolicitanteId", usuarioSolicitanteId);
+            param.Add("@pUsuarioDestinoId", usuarioDestinoId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.hasPending ?? false;
+        }
+
+        public async Task<bool> RechazarSolicitudContactoAsync(string contactoId, string usuarioId, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_RechazarSolicitud", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pContactoId", contactoId},
+                {"@pUsuarioId", usuarioId},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<List<ContactoDto>> ListarContactosPorUsuarioAsync(string usuarioId, string empresaId, string aplicacionId, string? estado = null)
+        {
+            // Usar SP existente con filtros por usuario/empresa/aplicación
+            string query = "USP_Contactos_ListarContactos";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            param.Add("@pEstado", estado);
+            return (await this.LoadData<ContactoDto>(query, param)).ToList();
+        }
+
+        public async Task<List<ContactoDto>> BuscarContactosLocalAsync(string terminoBusqueda, string empresaId, string usuarioId)
+        {
+            string query = "USP_Contactos_BuscarContactosLocal";
+            var param = new DynamicParameters();
+            param.Add("@pTerminoBusqueda", terminoBusqueda);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pUsuarioId", usuarioId);
+            return (await this.LoadData<ContactoDto>(query, param)).ToList();
+        }
+
+        public async Task<bool> SincronizarContactoAsync(ContactoDto contacto, string empresaId, string aplicacionId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_SincronizarContacto", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pContactoId", contacto.cContactosId},
+                {"@pUsuarioId", contacto.cUsuariosId},
+                {"@pContactoUsuarioId", contacto.cContactoUsuariosId},
+                {"@pEstado", contacto.cContactosEstado},
+                {"@pEmpresaId", empresaId},
+                {"@pAplicacionId", aplicacionId}
+            }));
+        }
+
+        public async Task<bool> VerificarContactoExistenteAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_VerificarContactoExistente";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pContactoId", contactoId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.existe ?? false;
+        }
+
+        public async Task<bool> ValidarContactoLocalAsync(string usuarioId, string contactoId, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_ValidarContactoLocal";
+            var param = new DynamicParameters();
+            param.Add("@pUsuarioId", usuarioId);
+            param.Add("@pContactoId", contactoId);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.valido ?? false;
+        }
+
+        // === Implementaciones adicionales para cumplir la interfaz ===
+        public async Task<bool> DeleteContactoAsync(string contactoId)
+        {
+            return await this.UpdateOrDelete("USP_Contactos_DeleteContacto", new DynamicParameters(new Dictionary<string, object>
+            {
+                {"@pContactoId", contactoId}
+            }));
+        }
+
+        public async Task<List<object>> SearchUsuariosAsync(string searchTerm, string empresaId, string aplicacionId)
+        {
+            string query = "USP_Contactos_SearchUsuarios";
+            var param = new DynamicParameters();
+            param.Add("@pSearchTerm", searchTerm ?? string.Empty);
+            param.Add("@pEmpresaId", empresaId);
+            param.Add("@pAplicacionId", aplicacionId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.Select(r => (object)r).ToList();
+        }
+
+        public async Task<bool> ContactoExistsAsync(string contactoId)
+        {
+            string query = "USP_Contactos_ContactoExists";
+            var param = new DynamicParameters();
+            param.Add("@pContactoId", contactoId);
+            var result = await this.LoadData<dynamic>(query, param);
+            return result.FirstOrDefault()?.exists ?? false;
+        }
+
+        public async Task<bool> AddContactoAsync(Contacto contacto)
+        {
+            var id = await Insert(contacto);
+            return id > 0;
+        }
+
+        public async Task<bool> RemoveContactoAsync(string contactoId)
+        {
+            return await DeleteContactoAsync(contactoId);
+        }
+
+        public async Task<bool> CreateContactoAsync(Contacto contacto)
+        {
+            return await AddContactoAsync(contacto);
+        }
+
+        public async Task<bool> UpdateContactoAsync(Contacto contacto)
+        {
+            return await Update(contacto);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private async Task<Contacto?> GetById(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetById";
+            var param = new DynamicParameters();
+            param.Add("@nContactosId", filter.nContactosId);
+            return (await this.LoadData<Contacto>(query, param)).FirstOrDefault();
+        }
+
+        private async Task<Contacto?> GetByUsuarios(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByUsuarios";
+            var param = new DynamicParameters();
+            param.Add("@cUsuarioSolicitanteId", filter.cUsuarioSolicitanteId);
+            param.Add("@cUsuarioDestinoId", filter.cUsuarioDestinoId);
+            return (await this.LoadData<Contacto>(query, param)).FirstOrDefault();
+        }
+
+        private async Task<Contacto?> GetByEstado(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByEstado";
+            var param = new DynamicParameters();
+            param.Add("@cEstado", filter.cEstado);
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return (await this.LoadData<Contacto>(query, param)).FirstOrDefault();
+        }
+
+        private async Task<IEnumerable<Contacto>> GetByPagination(ContactoFilter filter, Utils.Pagination pagination)
+        {
+            string query = "USP_Contacto_GetByPagination";
+            var param = new DynamicParameters();
+            param.Add("@PageNumber", pagination.PageNumber);
+            param.Add("@PageSize", pagination.PageSize);
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return await this.LoadData<Contacto>(query, param);
+        }
+
+        private async Task<IEnumerable<Contacto>> GetByUsuarioSolicitante(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByUsuarioSolicitante";
+            var param = new DynamicParameters();
+            param.Add("@cUsuarioSolicitanteId", filter.cUsuarioSolicitanteId);
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return await this.LoadData<Contacto>(query, param);
+        }
+
+        private async Task<IEnumerable<Contacto>> GetByEmpresaYAplicacion(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByEmpresaYAplicacion";
+            var param = new DynamicParameters();
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return await this.LoadData<Contacto>(query, param);
+        }
+
+        private async Task<IEnumerable<Contacto>> GetByEstadoList(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByEstadoList";
+            var param = new DynamicParameters();
+            param.Add("@cEstado", filter.cEstado);
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return await this.LoadData<Contacto>(query, param);
+        }
+
+        private async Task<IEnumerable<Contacto>> GetByTerminoBusqueda(ContactoFilter filter)
+        {
+            string query = "USP_Contacto_GetByTerminoBusqueda";
+            var param = new DynamicParameters();
+            param.Add("@TerminoBusqueda", filter.TerminoBusqueda);
+            param.Add("@nEmpresaId", filter.nEmpresaId);
+            param.Add("@nAplicacionId", filter.nAplicacionId);
+            return await this.LoadData<Contacto>(query, param);
+        }
+
+        #endregion
+    }
+}

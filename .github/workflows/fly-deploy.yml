@@ -1,0 +1,30 @@
+name: Deploy Backend to Fly.io
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly
+        working-directory: ChatModularAPI
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          ASPNETCORE_URLS: http://0.0.0.0:8080
+          Supabase__Url: ${{ secrets.SUPABASE_URL }}
+          Supabase__Key: ${{ secrets.SUPABASE_ANON_KEY }}
+          Supabase__ServiceRoleKey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          Jwt__Key: ${{ secrets.JWT_KEY }}
+          Jwt__SecretKey: ${{ secrets.JWT_SECRET }}
+          Jwt__Issuer: ChatModularAPI
+          Jwt__Audience: ChatModularAPI
+        run: |
+          flyctl deploy --config ../fly.toml --remote-only --strategy immediate

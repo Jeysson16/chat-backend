@@ -1,0 +1,875 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bb882d83-94af-49fb-a8b1-c3c7e94cba1c" name="Jeysson@DESKTOP-AA1DD8I 2025-11-09 08:27:21" runUser="DESKTOP-AA1DD8I\Jeysson" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-11-09T08:27:21.4291609-05:00" queuing="2025-11-09T08:27:21.4291613-05:00" start="2025-11-09T08:27:20.4128342-05:00" finish="2025-11-09T08:27:21.4489761-05:00" />
+  <TestSettings name="default" id="be831fb7-5179-425d-a31e-5d3559b92d1e">
+    <Deployment runDeploymentRoot="Jeysson_DESKTOP-AA1DD8I_2025-11-09_08_27_21" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="cc6e9748-3e9a-44fb-a3fc-16f008907c1f" testId="e932d481-8eda-f59c-cf74-3be8440ab985" testName="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Auth_Status_Returns_Ok" computerName="DESKTOP-AA1DD8I" duration="00:00:00.0159928" startTime="2025-11-09T08:27:21.2708403-05:00" endTime="2025-11-09T08:27:21.2708405-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc6e9748-3e9a-44fb-a3fc-16f008907c1f">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.</Message>
+          <StackTrace>   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+   at Program.&lt;Main&gt;$(String[] args) in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 65&#xD;
+   at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Auth_Status_Returns_Ok() in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs:line 86&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="30a0cf65-72c2-45ed-9729-9f187c8b430f" testId="f3022119-e7d6-6ee5-02f4-938c6a8c7369" testName="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_BadRequest_For_Invalid_Model" computerName="DESKTOP-AA1DD8I" duration="00:00:00.0165793" startTime="2025-11-09T08:27:21.2355805-05:00" endTime="2025-11-09T08:27:21.2355807-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30a0cf65-72c2-45ed-9729-9f187c8b430f">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.</Message>
+          <StackTrace>   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+   at Program.&lt;Main&gt;$(String[] args) in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 65&#xD;
+   at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_BadRequest_For_Invalid_Model() in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs:line 65&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d07ae4e8-2dfb-4d1b-8ae4-7e439a36cca9" testId="7a905aad-61ea-1ad3-40c0-221f6f97b5fc" testName="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_With_RememberMe_True_Works_Correctly" computerName="DESKTOP-AA1DD8I" duration="00:00:00.0150792" startTime="2025-11-09T08:27:21.2509079-05:00" endTime="2025-11-09T08:27:21.2509080-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d07ae4e8-2dfb-4d1b-8ae4-7e439a36cca9">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.</Message>
+          <StackTrace>   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+   at Program.&lt;Main&gt;$(String[] args) in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 65&#xD;
+   at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_With_RememberMe_True_Works_Correctly() in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs:line 102&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a4bb70e9-0acb-482e-87ba-a75c9b1f6273" testId="18186be0-0534-8160-f592-f4eaea1fae45" testName="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Ok_For_Demo_User" computerName="DESKTOP-AA1DD8I" duration="00:00:00.0151451" startTime="2025-11-09T08:27:21.2828325-05:00" endTime="2025-11-09T08:27:21.2828328-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4bb70e9-0acb-482e-87ba-a75c9b1f6273">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.</Message>
+          <StackTrace>   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+   at Program.&lt;Main&gt;$(String[] args) in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 65&#xD;
+   at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Ok_For_Demo_User() in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs:line 44&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6e619af8-1218-40c1-b0a0-2771cb1257ac" testId="6eecd2b8-c774-4b36-248b-cce8714cfb0d" testName="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Unauthorized_For_Invalid_Credentials" computerName="DESKTOP-AA1DD8I" duration="00:00:00.2193743" startTime="2025-11-09T08:27:21.2232951-05:00" endTime="2025-11-09T08:27:21.2233359-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6e619af8-1218-40c1-b0a0-2771cb1257ac">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+-------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.</Message>
+          <StackTrace>   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+   at Program.&lt;Main&gt;$(String[] args) in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 65&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Unauthorized_For_Invalid_Credentials() in d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs:line 23&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_With_RememberMe_True_Works_Correctly" storage="d:\chat\chatbackend\chatmodularapi\03.layer api\chatmodularmicroservice.api.integrationtests\bin\release\net9.0\chatmodularmicroservice.api.integrationtests.dll" id="7a905aad-61ea-1ad3-40c0-221f6f97b5fc">
+      <Execution id="d07ae4e8-2dfb-4d1b-8ae4-7e439a36cca9" />
+      <TestMethod codeBase="d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\bin\Release\net9.0\ChatModularMicroservice.Api.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests" name="Login_With_RememberMe_True_Works_Correctly" />
+    </UnitTest>
+    <UnitTest name="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_BadRequest_For_Invalid_Model" storage="d:\chat\chatbackend\chatmodularapi\03.layer api\chatmodularmicroservice.api.integrationtests\bin\release\net9.0\chatmodularmicroservice.api.integrationtests.dll" id="f3022119-e7d6-6ee5-02f4-938c6a8c7369">
+      <Execution id="30a0cf65-72c2-45ed-9729-9f187c8b430f" />
+      <TestMethod codeBase="d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\bin\Release\net9.0\ChatModularMicroservice.Api.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests" name="Login_Returns_BadRequest_For_Invalid_Model" />
+    </UnitTest>
+    <UnitTest name="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Unauthorized_For_Invalid_Credentials" storage="d:\chat\chatbackend\chatmodularapi\03.layer api\chatmodularmicroservice.api.integrationtests\bin\release\net9.0\chatmodularmicroservice.api.integrationtests.dll" id="6eecd2b8-c774-4b36-248b-cce8714cfb0d">
+      <Execution id="6e619af8-1218-40c1-b0a0-2771cb1257ac" />
+      <TestMethod codeBase="d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\bin\Release\net9.0\ChatModularMicroservice.Api.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests" name="Login_Returns_Unauthorized_For_Invalid_Credentials" />
+    </UnitTest>
+    <UnitTest name="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Ok_For_Demo_User" storage="d:\chat\chatbackend\chatmodularapi\03.layer api\chatmodularmicroservice.api.integrationtests\bin\release\net9.0\chatmodularmicroservice.api.integrationtests.dll" id="18186be0-0534-8160-f592-f4eaea1fae45">
+      <Execution id="a4bb70e9-0acb-482e-87ba-a75c9b1f6273" />
+      <TestMethod codeBase="d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\bin\Release\net9.0\ChatModularMicroservice.Api.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests" name="Login_Returns_Ok_For_Demo_User" />
+    </UnitTest>
+    <UnitTest name="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Auth_Status_Returns_Ok" storage="d:\chat\chatbackend\chatmodularapi\03.layer api\chatmodularmicroservice.api.integrationtests\bin\release\net9.0\chatmodularmicroservice.api.integrationtests.dll" id="e932d481-8eda-f59c-cf74-3be8440ab985">
+      <Execution id="cc6e9748-3e9a-44fb-a3fc-16f008907c1f" />
+      <TestMethod codeBase="d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\bin\Release\net9.0\ChatModularMicroservice.Api.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests" name="Auth_Status_Returns_Ok" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e932d481-8eda-f59c-cf74-3be8440ab985" executionId="cc6e9748-3e9a-44fb-a3fc-16f008907c1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f3022119-e7d6-6ee5-02f4-938c6a8c7369" executionId="30a0cf65-72c2-45ed-9729-9f187c8b430f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a905aad-61ea-1ad3-40c0-221f6f97b5fc" executionId="d07ae4e8-2dfb-4d1b-8ae4-7e439a36cca9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18186be0-0534-8160-f592-f4eaea1fae45" executionId="a4bb70e9-0acb-482e-87ba-a75c9b1f6273" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6eecd2b8-c774-4b36-248b-cce8714cfb0d" executionId="6e619af8-1218-40c1-b0a0-2771cb1257ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="5" executed="5" passed="0" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 9.0.9)&#xD;
+[xUnit.net 00:00:00.08]   Discovering: ChatModularMicroservice.Api.IntegrationTests&#xD;
+[xUnit.net 00:00:00.12]   Discovered:  ChatModularMicroservice.Api.IntegrationTests&#xD;
+[xUnit.net 00:00:00.12]   Starting:    ChatModularMicroservice.Api.IntegrationTests&#xD;
+[xUnit.net 00:00:00.39]       System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+[xUnit.net 00:00:00.39]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.39]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.39]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.39]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.39]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.39]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.39]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.40]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.40]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.40]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.40]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.40]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs(65,0): at Program.&lt;Main&gt;$(String[] args)&#xD;
+[xUnit.net 00:00:00.40]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.40]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.40]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.40]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs(23,0): at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Unauthorized_For_Invalid_Credentials()&#xD;
+[xUnit.net 00:00:00.40]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.40]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.40]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]       System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+[xUnit.net 00:00:00.41]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.41]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.41]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.41]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.41]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.41]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.41]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.41]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.41]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.41]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.41]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.41]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs(65,0): at Program.&lt;Main&gt;$(String[] args)&#xD;
+[xUnit.net 00:00:00.41]            at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.41]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.41]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.41]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs(65,0): at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_BadRequest_For_Invalid_Model()&#xD;
+[xUnit.net 00:00:00.41]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.41]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.41]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]       System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+[xUnit.net 00:00:00.43]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.43]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.43]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.43]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.43]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.43]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.43]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.43]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.43]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.43]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.43]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs(65,0): at Program.&lt;Main&gt;$(String[] args)&#xD;
+[xUnit.net 00:00:00.43]            at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.43]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.43]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs(102,0): at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_With_RememberMe_True_Works_Correctly()&#xD;
+[xUnit.net 00:00:00.43]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.43]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.43]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.44]       System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+[xUnit.net 00:00:00.44]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.45]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.45]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.45]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.45]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.45]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.45]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.45]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.45]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.45]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.45]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.45]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs(65,0): at Program.&lt;Main&gt;$(String[] args)&#xD;
+[xUnit.net 00:00:00.45]            at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.45]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.45]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.45]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs(86,0): at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Auth_Status_Returns_Ok()&#xD;
+[xUnit.net 00:00:00.45]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.45]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.45]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]       System.AggregateException : Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.) (Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.)&#xD;
+[xUnit.net 00:00:00.46]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.CategoriaActivoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.CategoriaActivoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.46]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.ICategoriaActivoRepository' while attempting to activate 'ChatModularMicroservice.Domain.CategoriaActivoDomain'.&#xD;
+[xUnit.net 00:00:00.46]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.ConfiguracionDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.ConfiguracionDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.46]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IConfiguracionRepository' while attempting to activate 'ChatModularMicroservice.Domain.ConfiguracionDomain'.&#xD;
+[xUnit.net 00:00:00.46]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.PersonaDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.PersonaDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.46]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IPersonaRepository' while attempting to activate 'ChatModularMicroservice.Domain.PersonaDomain'.&#xD;
+[xUnit.net 00:00:00.46]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookContactoDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookContactoDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.46]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookContactoRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookContactoDomain'.&#xD;
+[xUnit.net 00:00:00.46]       ---- System.InvalidOperationException : Error while validating the service descriptor 'ServiceType: ChatModularMicroservice.Domain.WebhookDomain Lifetime: Scoped ImplementationType: ChatModularMicroservice.Domain.WebhookDomain': Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.46]       -------- System.InvalidOperationException : Unable to resolve service for type 'ChatModularMicroservice.Repository.IWebhookRepository' while attempting to activate 'ChatModularMicroservice.Domain.WebhookDomain'.&#xD;
+[xUnit.net 00:00:00.46]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.&lt;&gt;c__DisplayClass12_0.&lt;.ctor&gt;b__0()&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()&#xD;
+[xUnit.net 00:00:00.46]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs(65,0): at Program.&lt;Main&gt;$(String[] args)&#xD;
+[xUnit.net 00:00:00.46]            at InvokeStub_Program.&lt;Main&gt;$(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.46]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.46]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.CreateHost()&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.Hosting.HostFactoryResolver.&lt;&gt;c__DisplayClass10_0.&lt;ResolveHostFactory&gt;b__0(String[] args)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.DeferredHostBuilder.Build()&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateHost(IHostBuilder builder)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.ConfigureHostBuilder(IHostBuilder hostBuilder)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.46]         d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api.IntegrationTests\UnitTest1.cs(44,0): at ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Ok_For_Demo_User()&#xD;
+[xUnit.net 00:00:00.46]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace #1 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace #2 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace #3 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace #4 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace #5 (System.InvalidOperationException) -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)&#xD;
+[xUnit.net 00:00:00.46]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)&#xD;
+[xUnit.net 00:00:00.46]            at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)&#xD;
+[xUnit.net 00:00:00.47]   Finished:    ChatModularMicroservice.Api.IntegrationTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-AA1DD8I" outcome="Error" timestamp="2025-11-09T08:27:21.2178817-05:00">
+        <Text>[xUnit.net 00:00:00.39]     ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Unauthorized_For_Invalid_Credentials [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-AA1DD8I" outcome="Error" timestamp="2025-11-09T08:27:21.2331720-05:00">
+        <Text>[xUnit.net 00:00:00.41]     ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_BadRequest_For_Invalid_Model [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-AA1DD8I" outcome="Error" timestamp="2025-11-09T08:27:21.2487839-05:00">
+        <Text>[xUnit.net 00:00:00.43]     ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_With_RememberMe_True_Works_Correctly [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-AA1DD8I" outcome="Error" timestamp="2025-11-09T08:27:21.2650522-05:00">
+        <Text>[xUnit.net 00:00:00.44]     ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Auth_Status_Returns_Ok [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-AA1DD8I" outcome="Error" timestamp="2025-11-09T08:27:21.2806824-05:00">
+        <Text>[xUnit.net 00:00:00.46]     ChatModularMicroservice.Api.IntegrationTests.AuthIntegrationTests.Login_Returns_Ok_For_Demo_User [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

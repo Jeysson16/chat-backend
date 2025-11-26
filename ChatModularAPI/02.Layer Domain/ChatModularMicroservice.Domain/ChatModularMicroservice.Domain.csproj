@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Supabase" Version="0.13.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChatModularMicroservice.Entities\ChatModularMicroservice.Entities.csproj" />
+    <ProjectReference Include="..\..\01.Layer Infrastructure\ChatModularMicroservice.Repository\ChatModularMicroservice.Repository.csproj" />
+    <ProjectReference Include="..\..\04.Util\ChatModularMicroservice.Shared\ChatModularMicroservice.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+app = "chat-backend-a9fscg"
+primary_region = "iad"
+
+[build]
+  dockerfile = "ChatModularAPI/Dockerfile"
+
+[env]
+  ASPNETCORE_URLS = "http://0.0.0.0:8080"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+  processes = ["app"]
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443

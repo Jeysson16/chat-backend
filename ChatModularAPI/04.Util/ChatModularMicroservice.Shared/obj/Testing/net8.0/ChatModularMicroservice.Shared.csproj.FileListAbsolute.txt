@@ -1,0 +1,10 @@
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\bin\Testing\net8.0\ChatModularMicroservice.Shared.deps.json
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\bin\Testing\net8.0\ChatModularMicroservice.Shared.dll
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\bin\Testing\net8.0\ChatModularMicroservice.Shared.pdb
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ChatModularMicroservice.Shared.csproj.AssemblyReference.cache
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ChatModularMicroservice.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ChatModularMicroservice.Shared.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ChatModularMicroservice.Shared.dll
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\refint\ChatModularMicroservice.Shared.dll
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ChatModularMicroservice.Shared.pdb
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Testing\net8.0\ref\ChatModularMicroservice.Shared.dll

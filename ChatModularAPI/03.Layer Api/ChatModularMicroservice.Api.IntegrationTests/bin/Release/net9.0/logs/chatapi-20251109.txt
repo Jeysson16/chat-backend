@@ -1,0 +1,6 @@
+[2025-11-09 08:28:07.316 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-09 08:28:07.363 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-09 08:30:28.159 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-09 08:30:28.186 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-09 08:51:56.314 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-09 08:51:56.341 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}

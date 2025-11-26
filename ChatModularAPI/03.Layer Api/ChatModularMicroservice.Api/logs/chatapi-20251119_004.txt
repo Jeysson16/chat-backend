@@ -1,0 +1,562 @@
+[2025-11-19 13:57:21.324 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 13:57:21.367 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 13:57:21.437 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-19 13:57:21.455 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 190
+[2025-11-19 14:14:41.820 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:14:41.853 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 14:14:41.919 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-19 14:14:41.934 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 190
+[2025-11-19 14:19:17.446 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:19:17.480 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 14:19:17.541 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-19 14:19:17.557 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 190
+[2025-11-19 14:30:18.667 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:30:18.700 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 14:30:18.754 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-19 14:30:18.767 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5405: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 190
+[2025-11-19 14:48:09.003 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:48:09.041 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 14:48:09.157 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.166 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.168 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.171 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.266 -05:00 INF] SignalR connection attempt - AppCode: SICOM_CHAT_2024, HasAuthHeader: true {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WfKXOlvPnXnEFxr3SG-3gQ","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.284 -05:00 INF] Token validated with claims: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier:1000000003, http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress:josantillan@gmail.com, http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name:José Santillan, http://schemas.microsoft.com/ws/2008/06/identity/claims/role:USER, username:José Santillan, per_codigo:ce25a748-1783-4edb-bf26-f366a73098a1, per_jur_codigo:DEFAULT, user_id:1000000003, app_code:SICOM_CHAT_2024, nbf:1763574133, exp:1763833333, iat:1763574133, iss:ChatModularAPI, aud:ChatModularAPI {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WfKXOlvPnXnEFxr3SG-3gQ","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.287 -05:00 INF] Extracted user info - UserId: 1000000003, UserName: José Santillan {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WfKXOlvPnXnEFxr3SG-3gQ","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809A"}
+[2025-11-19 14:48:09.290 -05:00 INF] User José Santillan connected to app SICOM_CHAT_2024 with connection WfKXOlvPnXnEFxr3SG-3gQ {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WfKXOlvPnXnEFxr3SG-3gQ","RequestId":"0HNH7KI8D809A:00000001","RequestPath":"/chathub"}
+[2025-11-19 14:48:09.360 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.364 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.367 -05:00 INF] ¿Es ruta pública? true {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.369 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.378 -05:00 INF] SignalR connection attempt - AppCode: SICOM_CHAT_2024, HasAuthHeader: true {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"rJoM9iEdXBEDUdNl7Yc2NQ","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.382 -05:00 INF] Token validated with claims: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier:1000000001, http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress:jesanchezr@ucvvirtual.edu.pe, http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name:Jeysson Sánchez Rodríguez, http://schemas.microsoft.com/ws/2008/06/identity/claims/role:USER, username:JSANCHEZ, per_codigo:627b8d95-e04b-44c4-8fa6-ccdf14ae1992, per_jur_codigo:DEFAULT, user_id:1000000001, app_code:SICOM_CHAT_2024, nbf:1763554968, exp:1763814168, iat:1763554968, iss:ChatModularAPI, aud:ChatModularAPI {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"rJoM9iEdXBEDUdNl7Yc2NQ","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.385 -05:00 INF] Extracted user info - UserId: 1000000001, UserName: Jeysson Sánchez Rodríguez {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"rJoM9iEdXBEDUdNl7Yc2NQ","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KI8D809B"}
+[2025-11-19 14:48:09.389 -05:00 INF] User Jeysson Sánchez Rodríguez connected to app SICOM_CHAT_2024 with connection rJoM9iEdXBEDUdNl7Yc2NQ {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"rJoM9iEdXBEDUdNl7Yc2NQ","RequestId":"0HNH7KI8D809B:00000001","RequestPath":"/chathub"}
+[2025-11-19 14:51:35.180 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:51:35.220 -05:00 INF] Servidor escuchando en: http://127.0.0.1:5281;http://localhost:5281 {}
+[2025-11-19 14:51:35.309 -05:00 ERR] Hosting failed to start {"EventId":{"Id":11,"Name":"HostedServiceStartupFaulted"},"SourceContext":"Microsoft.Extensions.Hosting.Internal.Host"}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+[2025-11-19 14:51:35.331 -05:00 FTL] La aplicación falló al iniciar {}
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5281: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+ ---> System.Net.Sockets.SocketException (10048): Solo se permite un uso de cada dirección de socket (protocolo/dirección de red/puerto)
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Program.cs:line 177
+[2025-11-19 14:53:00.618 -05:00 INF] Iniciando aplicación ChatModular API {}
+[2025-11-19 14:53:00.657 -05:00 INF] Servidor escuchando en: http://localhost:5405;http://localhost:5406 {}
+[2025-11-19 14:53:28.346 -05:00 INF] Verificando ruta: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9Q:00000001","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9Q"}
+[2025-11-19 14:53:28.356 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9Q:00000001","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9Q"}
+[2025-11-19 14:53:28.359 -05:00 INF] Ruta pública detectada: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9Q:00000001","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9Q"}
+[2025-11-19 14:53:46.699 -05:00 INF] Verificando ruta: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9R:00000001","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9R"}
+[2025-11-19 14:53:46.707 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9R:00000001","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9R"}
+[2025-11-19 14:53:46.710 -05:00 INF] Ruta pública detectada: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9R:00000001","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9R"}
+[2025-11-19 14:56:14.207 -05:00 INF] Verificando ruta: /api/chat/conversations {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000001","RequestPath":"/api/chat/conversations","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.209 -05:00 INF] Verificando ruta: /api/v1/aplicaciones/SICOM_CHAT_2024/configuration {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000003","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.213 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9U:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9U"}
+[2025-11-19 14:56:14.235 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000001","RequestPath":"/api/chat/conversations","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.238 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000003","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.240 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9U:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9U"}
+[2025-11-19 14:56:14.243 -05:00 INF] Ruta pública detectada: /api/chat/conversations {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000001","RequestPath":"/api/chat/conversations","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.245 -05:00 INF] Ruta pública detectada: /api/v1/aplicaciones/SICOM_CHAT_2024/configuration {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000003","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.247 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9U:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9U"}
+[2025-11-19 14:56:14.282 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000003","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IApplicationService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.AplicacionesController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method45(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:14.293 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"T1YIuzY-yUsjxYZ2VnEWfg","RequestId":"0HNH7KL7H5F9U:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9U"}
+[2025-11-19 14:56:14.333 -05:00 INF] Verificando ruta: /api/v1/aplicaciones/SICOM_CHAT_2024/configuration {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000004","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.336 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000004","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.338 -05:00 INF] Ruta pública detectada: /api/v1/aplicaciones/SICOM_CHAT_2024/configuration {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000004","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.341 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000004","RequestPath":"/api/v1/aplicaciones/SICOM_CHAT_2024/configuration","ConnectionId":"0HNH7KL7H5F9S"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IApplicationService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.AplicacionesController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method45(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:14.361 -05:00 INF] Verificando ruta: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000006","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.362 -05:00 INF] Verificando ruta: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000003","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.365 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000006","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.368 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000003","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.371 -05:00 INF] Ruta pública detectada: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000006","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.373 -05:00 INF] Ruta pública detectada: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000003","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.383 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000003","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IContactoService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.ContactoController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method61(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:14.383 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000006","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IContactoService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.ContactoController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method62(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:14.397 -05:00 INF] Verificando ruta: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000004","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.403 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000004","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.406 -05:00 INF] Ruta pública detectada: /api/v1/contactos/stats {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000004","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+[2025-11-19 14:56:14.409 -05:00 INF] Verificando ruta: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000007","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.410 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9T:00000004","RequestPath":"/api/v1/contactos/stats","ConnectionId":"0HNH7KL7H5F9T"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IContactoService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.ContactoController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method61(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:14.412 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000007","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.420 -05:00 INF] Ruta pública detectada: /api/v1/contactos/my-contacts {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000007","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+[2025-11-19 14:56:14.424 -05:00 ERR] Error en validación de autenticación {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9S:00000007","RequestPath":"/api/v1/contactos/my-contacts","ConnectionId":"0HNH7KL7H5F9S"}
+System.InvalidOperationException: Unable to resolve service for type 'ChatModularMicroservice.Domain.IContactoService' while attempting to activate 'ChatModularMicroservice.Api.Controllers.ContactoController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method62(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware.InvokeAsync(HttpContext context) in D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\Middleware\AuthValidationMiddleware.cs:line 56
+[2025-11-19 14:56:16.316 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9V:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9V"}
+[2025-11-19 14:56:16.320 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9V:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9V"}
+[2025-11-19 14:56:16.324 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5F9V:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9V"}
+[2025-11-19 14:56:16.333 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"jYoKMC8gm6ZwsNyklYdwHg","RequestId":"0HNH7KL7H5F9V:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5F9V"}
+[2025-11-19 14:56:18.346 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA0:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA0"}
+[2025-11-19 14:56:18.350 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA0:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA0"}
+[2025-11-19 14:56:18.353 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA0:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA0"}
+[2025-11-19 14:56:18.360 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"DCiIXa5vNSoUy_X8I4pSzA","RequestId":"0HNH7KL7H5FA0:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA0"}
+[2025-11-19 14:56:20.380 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA1:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA1"}
+[2025-11-19 14:56:20.382 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA1:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA1"}
+[2025-11-19 14:56:20.385 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA1:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA1"}
+[2025-11-19 14:56:20.389 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"SQ6qMU25A8g7fgGAQsMpXw","RequestId":"0HNH7KL7H5FA1:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA1"}
+[2025-11-19 14:56:22.405 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA2:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA2"}
+[2025-11-19 14:56:22.409 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA2:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA2"}
+[2025-11-19 14:56:22.412 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA2:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA2"}
+[2025-11-19 14:56:22.417 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"PRvRWa2HzTCqo-iXWyoi6g","RequestId":"0HNH7KL7H5FA2:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA2"}
+[2025-11-19 14:56:24.438 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA3:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA3"}
+[2025-11-19 14:56:24.440 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA3:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA3"}
+[2025-11-19 14:56:24.442 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA3:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA3"}
+[2025-11-19 14:56:24.447 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WA1pl8d5KQregJU4_ur0bw","RequestId":"0HNH7KL7H5FA3:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA3"}
+[2025-11-19 14:56:26.472 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA4:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA4"}
+[2025-11-19 14:56:26.478 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA4:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA4"}
+[2025-11-19 14:56:26.482 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA4:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA4"}
+[2025-11-19 14:56:26.488 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"Xkg_v_AYvoGJ40Vk1LouNg","RequestId":"0HNH7KL7H5FA4:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA4"}
+[2025-11-19 14:56:28.504 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA5:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA5"}
+[2025-11-19 14:56:28.506 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA5:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA5"}
+[2025-11-19 14:56:28.508 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA5:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA5"}
+[2025-11-19 14:56:28.512 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"jn2A__zIG-Ocx20YQVShig","RequestId":"0HNH7KL7H5FA5:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA5"}
+[2025-11-19 14:56:30.526 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA6:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA6"}
+[2025-11-19 14:56:30.531 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA6:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA6"}
+[2025-11-19 14:56:30.535 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA6:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA6"}
+[2025-11-19 14:56:30.541 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"0UaDbV-m8V4VurufJCot3w","RequestId":"0HNH7KL7H5FA6:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA6"}
+[2025-11-19 14:56:32.558 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA7:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA7"}
+[2025-11-19 14:56:32.566 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA7:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA7"}
+[2025-11-19 14:56:32.568 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA7:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA7"}
+[2025-11-19 14:56:32.575 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"gEgtiIaJlxG5fDXq2I_dZg","RequestId":"0HNH7KL7H5FA7:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA7"}
+[2025-11-19 14:56:34.594 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA8:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA8"}
+[2025-11-19 14:56:34.596 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA8:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA8"}
+[2025-11-19 14:56:34.599 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA8:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA8"}
+[2025-11-19 14:56:34.603 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"F-wM0SGuhITTf0NJS-LFyg","RequestId":"0HNH7KL7H5FA8:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA8"}
+[2025-11-19 14:56:36.620 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA9:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA9"}
+[2025-11-19 14:56:36.623 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA9:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA9"}
+[2025-11-19 14:56:36.625 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FA9:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA9"}
+[2025-11-19 14:56:36.629 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"2yuoi4nyMbbRlr8P0g3RGA","RequestId":"0HNH7KL7H5FA9:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FA9"}
+[2025-11-19 14:56:38.653 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAA:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAA"}
+[2025-11-19 14:56:38.656 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAA:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAA"}
+[2025-11-19 14:56:38.660 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAA:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAA"}
+[2025-11-19 14:56:38.664 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"iTBorbVfzsba_yMSuDLuqA","RequestId":"0HNH7KL7H5FAA:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAA"}
+[2025-11-19 14:56:40.677 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAB:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAB"}
+[2025-11-19 14:56:40.679 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAB:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAB"}
+[2025-11-19 14:56:40.681 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAB:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAB"}
+[2025-11-19 14:56:40.686 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"ir1BvPwi5EAiAdrkIY_GCA","RequestId":"0HNH7KL7H5FAB:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAB"}
+[2025-11-19 14:56:42.707 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAC:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAC"}
+[2025-11-19 14:56:42.710 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAC:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAC"}
+[2025-11-19 14:56:42.712 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAC:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAC"}
+[2025-11-19 14:56:42.725 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"t7F_w9tCywFzBqz_BIP8ew","RequestId":"0HNH7KL7H5FAC:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAC"}
+[2025-11-19 14:56:44.756 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAD:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAD"}
+[2025-11-19 14:56:44.759 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAD:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAD"}
+[2025-11-19 14:56:44.762 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAD:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAD"}
+[2025-11-19 14:56:44.767 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"WfuOJH8SepZMYAmPlvLrFg","RequestId":"0HNH7KL7H5FAD:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAD"}
+[2025-11-19 14:56:46.780 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAE"}
+[2025-11-19 14:56:46.783 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAE"}
+[2025-11-19 14:56:46.786 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAE"}
+[2025-11-19 14:56:46.791 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"ZHtPPueIRw5GIO84Z-5c-A","RequestId":"0HNH7KL7H5FAE:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAE"}
+[2025-11-19 14:56:48.804 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAF:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAF"}
+[2025-11-19 14:56:48.807 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAF:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAF"}
+[2025-11-19 14:56:48.810 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAF:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAF"}
+[2025-11-19 14:56:48.813 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"Mnc-qOkx7OWda2O0ysV3uw","RequestId":"0HNH7KL7H5FAF:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAF"}
+[2025-11-19 14:56:50.827 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAG:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAG"}
+[2025-11-19 14:56:50.831 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAG:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAG"}
+[2025-11-19 14:56:50.834 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAG:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAG"}
+[2025-11-19 14:56:50.840 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"3CQ_mMRndm18IKqyEKjHpA","RequestId":"0HNH7KL7H5FAG:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAG"}
+[2025-11-19 14:56:52.857 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAH:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAH"}
+[2025-11-19 14:56:52.860 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAH:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAH"}
+[2025-11-19 14:56:52.863 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAH:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAH"}
+[2025-11-19 14:56:52.867 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"lyPC1-PKJpsTVK3-BY5gxw","RequestId":"0HNH7KL7H5FAH:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAH"}
+[2025-11-19 14:56:54.889 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAI:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAI"}
+[2025-11-19 14:56:54.891 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAI:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAI"}
+[2025-11-19 14:56:54.893 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAI:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAI"}
+[2025-11-19 14:56:54.898 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"X-HVh_L1CDuonni37k6ePw","RequestId":"0HNH7KL7H5FAI:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAI"}
+[2025-11-19 14:56:56.929 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAJ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAJ"}
+[2025-11-19 14:56:56.936 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAJ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAJ"}
+[2025-11-19 14:56:56.940 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAJ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAJ"}
+[2025-11-19 14:56:56.957 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"n_EPKUUFQxiXvYlCm5jItA","RequestId":"0HNH7KL7H5FAJ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAJ"}
+[2025-11-19 14:56:58.981 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAK:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAK"}
+[2025-11-19 14:56:58.985 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAK:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAK"}
+[2025-11-19 14:56:58.987 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAK:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAK"}
+[2025-11-19 14:56:58.992 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"xEgmWdYGpvTP2G2FFBcFIw","RequestId":"0HNH7KL7H5FAK:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAK"}
+[2025-11-19 14:57:01.007 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAL:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAL"}
+[2025-11-19 14:57:01.011 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAL:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAL"}
+[2025-11-19 14:57:01.015 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAL:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAL"}
+[2025-11-19 14:57:01.019 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"BSfHs9-fGIK32JN1OeEF6g","RequestId":"0HNH7KL7H5FAL:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAL"}
+[2025-11-19 14:57:03.042 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAM:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAM"}
+[2025-11-19 14:57:03.046 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAM:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAM"}
+[2025-11-19 14:57:03.049 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAM:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAM"}
+[2025-11-19 14:57:03.056 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"pXHGyDC_qe6t86e933bGZQ","RequestId":"0HNH7KL7H5FAM:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAM"}
+[2025-11-19 14:57:05.071 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAN:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAN"}
+[2025-11-19 14:57:05.074 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAN:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAN"}
+[2025-11-19 14:57:05.077 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAN:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAN"}
+[2025-11-19 14:57:05.080 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"kT5aEoJWeFcBNG4afXmlcw","RequestId":"0HNH7KL7H5FAN:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAN"}
+[2025-11-19 14:57:07.108 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAO:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAO"}
+[2025-11-19 14:57:07.116 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAO:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAO"}
+[2025-11-19 14:57:07.119 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAO:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAO"}
+[2025-11-19 14:57:07.124 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"OXkZagTTGw2jLOC7BjcJGA","RequestId":"0HNH7KL7H5FAO:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAO"}
+[2025-11-19 14:57:09.147 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAP:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAP"}
+[2025-11-19 14:57:09.155 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAP:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAP"}
+[2025-11-19 14:57:09.157 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAP:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAP"}
+[2025-11-19 14:57:09.163 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"6iODc_gmbxdk5XrKgc5xrg","RequestId":"0HNH7KL7H5FAP:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAP"}
+[2025-11-19 14:57:11.191 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAQ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAQ"}
+[2025-11-19 14:57:11.195 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAQ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAQ"}
+[2025-11-19 14:57:11.198 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAQ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAQ"}
+[2025-11-19 14:57:11.204 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"bq_jQO5KsTzSe-hJQgcPfw","RequestId":"0HNH7KL7H5FAQ:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAQ"}
+[2025-11-19 14:57:13.223 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAR:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAR"}
+[2025-11-19 14:57:13.228 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAR:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAR"}
+[2025-11-19 14:57:13.230 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAR:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAR"}
+[2025-11-19 14:57:13.236 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"d6qhAp96LAyM3TmcDZSDJg","RequestId":"0HNH7KL7H5FAR:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAR"}
+[2025-11-19 14:57:15.261 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAS:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAS"}
+[2025-11-19 14:57:15.267 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAS:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAS"}
+[2025-11-19 14:57:15.270 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAS:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAS"}
+[2025-11-19 14:57:15.275 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"cr91Vg1h7LSgO28P2J0l3A","RequestId":"0HNH7KL7H5FAS:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAS"}
+[2025-11-19 14:57:17.300 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAT:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAT"}
+[2025-11-19 14:57:17.308 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAT:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAT"}
+[2025-11-19 14:57:17.311 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAT:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAT"}
+[2025-11-19 14:57:17.316 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"CKZHsD1DNZcBR_badPn8xA","RequestId":"0HNH7KL7H5FAT:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAT"}
+[2025-11-19 14:57:19.337 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAU:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAU"}
+[2025-11-19 14:57:19.341 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAU:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAU"}
+[2025-11-19 14:57:19.343 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAU:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAU"}
+[2025-11-19 14:57:19.349 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"k9zn0xy7hIsBoIBIDcm-3w","RequestId":"0HNH7KL7H5FAU:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAU"}
+[2025-11-19 14:57:21.373 -05:00 INF] Verificando ruta: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAV:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAV"}
+[2025-11-19 14:57:21.378 -05:00 INF] Rutas públicas configuradas: /, /api/v1/auth/login, /api/v1/auth/register, /api/v1/auth/status, /api/v1/auth/generar-tokens-aplicacion, /api/v1/auth/validar-access-token, /api/v1/auth/renovar-tokens, /api/v1/auth/revocar-tokens, /api/v1/auth/tokens-aplicacion, /api/v1/aplicaciones, /swagger, /swagger/index.html, /swagger/v1/swagger.json, /api/docs, /chatHub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAV:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAV"}
+[2025-11-19 14:57:21.385 -05:00 INF] Ruta pública detectada: /chathub {"SourceContext":"ChatModularMicroservice.Api.Middleware.AuthValidationMiddleware","RequestId":"0HNH7KL7H5FAV:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAV"}
+[2025-11-19 14:57:21.390 -05:00 WRN] Missing required headers for SignalR connection {"SourceContext":"ChatModularMicroservice.Api.Hubs.ChatHub","TransportConnectionId":"LX6MPhRKc9QuHQB9co1huQ","RequestId":"0HNH7KL7H5FAV:00000001","RequestPath":"/chathub","ConnectionId":"0HNH7KL7H5FAV"}
