@@ -53,6 +53,7 @@ BEGIN
 
     -- Insertar en la tabla AppRegistros
     INSERT INTO "AppRegistros" (
+        "nAppRegistrosAplicacionId",
         "cAppRegistrosCodigoApp",
         "cAppRegistrosNombreApp",
         "cAppRegistrosTokenAcceso",
@@ -62,6 +63,7 @@ BEGIN
         "dAppRegistrosFechaExpiracion",
         "jAppRegistrosConfiguracionesAdicionales"
     ) VALUES (
+        nAplicacionesId,
         cAplicacionesCodigo,
         cAplicacionesNombre,
         cAppRegistrosTokenAcceso,

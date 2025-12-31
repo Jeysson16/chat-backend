@@ -257,14 +257,15 @@ namespace ChatModularMicroservice.Infrastructure
                 _logger.LogInformation("Buscando usuarios directamente en tabla Usuarios con término {TerminoBusqueda} para empresa {EmpresaId} y aplicación {AplicacionId}", 
                     terminoBusqueda, empresaId, aplicacionId);
 
-                // Buscar usuarios que coincidan con el término de búsqueda
-                var terminoLower = terminoBusqueda.ToLower();
-                
+                // Buscar usuarios que coincidan con el término de búsqueda (case-insensitive)
                 var query = _supabaseClient
                     .From<ChatModularMicroservice.Domain.UsuarioSupabase>()
-                    .Where(x => x.cUsuariosNombre.ToLower().Contains(terminoLower) ||
-                               x.cUsuariosEmail.ToLower().Contains(terminoLower) ||
-                               x.cUsuariosUsername.ToLower().Contains(terminoLower));
+                    .Or(new List<Supabase.Postgrest.Interfaces.IPostgrestQueryFilter>
+                    {
+                        new Supabase.Postgrest.QueryFilter("cUsuariosNombre", Supabase.Postgrest.Constants.Operator.ILike, $"%{terminoBusqueda}%"),
+                        new Supabase.Postgrest.QueryFilter("cUsuariosEmail", Supabase.Postgrest.Constants.Operator.ILike, $"%{terminoBusqueda}%"),
+                        new Supabase.Postgrest.QueryFilter("cUsuariosUsername", Supabase.Postgrest.Constants.Operator.ILike, $"%{terminoBusqueda}%")
+                    });
 
                 var qResult = await query.Get();
                 var usuarios = qResult.Models ?? new List<ChatModularMicroservice.Domain.UsuarioSupabase>();

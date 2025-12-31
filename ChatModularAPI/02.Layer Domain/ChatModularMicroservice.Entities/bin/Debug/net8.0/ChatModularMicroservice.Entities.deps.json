@@ -139,9 +139,6 @@
         }
       },
       "Microsoft.TestPlatform.ObjectModel/17.9.0": {
-        "dependencies": {
-          "System.Reflection.Metadata": "1.6.0"
-        },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {
             "assemblyVersion": "15.0.0.0",
@@ -523,14 +520,11 @@
           }
         }
       },
-      "System.Reflection.Metadata/1.6.0": {},
-      "System.Threading.Channels/8.0.0": {},
       "Websocket.Client/5.1.1": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
           "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
-          "System.Reactive": "6.0.0",
-          "System.Threading.Channels": "8.0.0"
+          "System.Reactive": "6.0.0"
         },
         "runtime": {
           "lib/net8.0/Websocket.Client.dll": {
@@ -728,20 +722,6 @@
       "sha512": "sha512-31kfaW4ZupZzPsI5PVe77VhnvFF55qgma7KZr/E0iFTs6fmdhhG8j0mgEx620iLTey1EynOkEfnyTjtNEpJzGw==",
       "path": "system.reactive/6.0.0",
       "hashPath": "system.reactive.6.0.0.nupkg.sha512"
-    },
-    "System.Reflection.Metadata/1.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ==",
-      "path": "system.reflection.metadata/1.6.0",
-      "hashPath": "system.reflection.metadata.1.6.0.nupkg.sha512"
-    },
-    "System.Threading.Channels/8.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CMaFr7v+57RW7uZfZkPExsPB6ljwzhjACWW1gfU35Y56rk72B/Wu+sTqxVmGSk4SFUlPc3cjeKND0zktziyjBA==",
-      "path": "system.threading.channels/8.0.0",
-      "hashPath": "system.threading.channels.8.0.0.nupkg.sha512"
     },
     "Websocket.Client/5.1.1": {
       "type": "package",

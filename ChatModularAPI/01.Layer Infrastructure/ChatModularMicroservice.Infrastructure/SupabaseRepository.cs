@@ -86,7 +86,7 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
         }
 
         /// <summary>
-        /// Ejecuta un stored procedure que retorna múltiples registros
+        /// Ejecuta un RPC de Supabase que retorna múltiples registros
         /// </summary>
         protected async Task<Utils.ItemResponseDT> ExecuteStoredProcedureListAsync<T>(
             string procedureName, 
@@ -95,7 +95,7 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
         {
             try
             {
-                _logger.LogInformation("Ejecutando stored procedure (lista): {ProcedureName}", procedureName);
+                _logger.LogInformation("Ejecutando RPC (lista): {ProcedureName}", procedureName);
 
                 var rpc = _supabaseClient.Rpc(procedureName, parameters);
                 var result = await rpc;
@@ -103,7 +103,7 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
                 if (result?.Content != null)
                 {
                     var jsonContent = result.Content;
-                    _logger.LogDebug("Resultado del stored procedure: {Content}", jsonContent);
+                    _logger.LogDebug("Resultado del RPC: {Content}", jsonContent);
 
                     // Deserializar como lista
                     var dataList = JsonSerializer.Deserialize<List<T>>(jsonContent, new JsonSerializerOptions
@@ -124,19 +124,19 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
                 {
                     clientName = clientName,
                     isSuccess = false,
-                    lstError = new List<string> { "No se recibió respuesta del stored procedure" },
+                    lstError = new List<string> { "No se recibió respuesta del RPC" },
                     ticket = Guid.NewGuid().ToString()
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error ejecutando stored procedure {ProcedureName}: {Error}", procedureName, ex.Message);
+                _logger.LogError(ex, "Error ejecutando RPC {ProcedureName}: {Error}", procedureName, ex.Message);
                 
                 return new Utils.ItemResponseDT
                 {
                     clientName = clientName,
                     isSuccess = false,
-                    lstError = new List<string> { $"Error ejecutando {procedureName}: {ex.Message}" },
+                    lstError = new List<string> { $"Error ejecutando RPC {procedureName}: {ex.Message}" },
                     ticket = Guid.NewGuid().ToString()
                 };
             }

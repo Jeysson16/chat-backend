@@ -26,5 +26,10 @@ namespace ChatModularMicroservice.Api.Webhooks
         /// Valida que la signatura recibida coincida con la esperada
         /// </summary>
         Task<bool> ValidarSignaturaAsync(string payload, string signatura, string secreto);
+
+        /// <summary>
+        /// Obtiene la URL base configurada para la aplicación (si existe)
+        /// </summary>
+        Task<string?> ObtenerUrlAplicacionAsync(string codigoAplicacion);
     }
 }

@@ -50,7 +50,7 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
                 return null;
             }
 
-            return MapDtoToUnificadaDto(configuracion);
+            return MapDtoToUnificadaDto(configuracion, aplicacionId);
         }
         catch (Exception ex)
         {
@@ -75,7 +75,9 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
                 return null;
             }
 
-            return MapDtoToUnificadaDto(configuracion);
+            var aplicacion = await _applicationRepository.GetApplicationByCodeAsync(codigoAplicacion);
+            var aplicacionId = aplicacion?.Id ?? 0;
+            return MapDtoToUnificadaDto(configuracion, aplicacionId);
         }
         catch (Exception ex)
         {
@@ -112,7 +114,7 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
             var configuracionCreada = await _repository.UpsertAsync(aplicacion.Code, configuracionDto);
 
             _logger.LogInformation("Configuración creada exitosamente para aplicación: {AplicacionId}", createDto.NAplicacionesId);
-            return MapDtoToUnificadaDto(configuracionCreada);
+            return MapDtoToUnificadaDto(configuracionCreada, createDto.NAplicacionesId);
         }
         catch (Exception ex)
         {
@@ -149,7 +151,7 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
             var resultado = await _repository.UpsertAsync(aplicacion.Code, configuracionActualizada);
 
             _logger.LogInformation("Configuración actualizada exitosamente para aplicación: {AplicacionId}", aplicacionId);
-            return MapDtoToUnificadaDto(resultado);
+            return MapDtoToUnificadaDto(resultado, aplicacionId);
         }
         catch (Exception ex)
         {
@@ -368,7 +370,7 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
             var configuracionCreada = await _repository.UpsertAsync(aplicacion.Code, configuracionDefecto);
             
             _logger.LogInformation("Configuración restaurada por defecto para aplicación: {AplicacionId}", aplicacionId);
-            return MapDtoToUnificadaDto(configuracionCreada);
+            return MapDtoToUnificadaDto(configuracionCreada, aplicacionId);
         }
         catch (Exception ex)
         {
@@ -422,12 +424,12 @@ public class ConfiguracionAplicacionUnificadaService : IConfiguracionAplicacionU
     /// <summary>
     /// Mapea de ConfiguracionAplicacionDto a ConfiguracionAplicacionUnificadaDto
     /// </summary>
-    private ConfiguracionAplicacionUnificadaDto MapDtoToUnificadaDto(ConfiguracionAplicacionDto dto)
+    private ConfiguracionAplicacionUnificadaDto MapDtoToUnificadaDto(ConfiguracionAplicacionDto dto, int aplicacionId)
     {
         return new ConfiguracionAplicacionUnificadaDto
         {
-            nConfiguracionAplicacionId = 0, // Se asignará automáticamente por la base de datos
-            nAplicacionesId = 0, // Se debe obtener por separado si es necesario
+            nConfiguracionAplicacionId = dto.Id,
+            nAplicacionesId = aplicacionId,
             
             // Configuraciones de adjuntos
             nAdjuntosMaxTamanoArchivo = dto.NMaxTamanoArchivo,

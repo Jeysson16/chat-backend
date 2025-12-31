@@ -115,27 +115,21 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<List<ConfiguracionEmpresaDto>> GetAllAsync()
     {
-        try
+        var res = await _supabaseClient.From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>().Get();
+        var models = res.Models ?? new List<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>();
+        return models.Select(m => new ConfiguracionEmpresaDto
         {
-            _logger.LogInformation("Obteniendo todas las configuraciones de empresa");
-
-            var parameters = new Dictionary<string, object>();
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_GetAll", parameters);
-            
-            if (result.isSuccess && result.lstItem != null)
-            {
-                _logger.LogInformation("Se encontraron {Count} configuraciones de empresa", result.lstItem.Count);
-                return result.lstItem.Cast<ConfiguracionEmpresaDto>().ToList();
-            }
-            
-            _logger.LogWarning("No se encontraron configuraciones de empresa");
-            return new List<ConfiguracionEmpresaDto>();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al obtener todas las configuraciones de empresa");
-            throw;
-        }
+            nConfiguracionEmpresaId = m.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = m.nConfiguracionEmpresaEmpresaId,
+            nAplicacionesId = 0,
+            cConfiguracionEmpresaClave = m.cConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = m.cConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = "text",
+            cConfiguracionEmpresaDescripcion = string.Empty,
+            dConfiguracionEmpresaFechaCreacion = m.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = m.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = true
+        }).ToList();
     }
 
     /// <summary>
@@ -143,31 +137,24 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<ConfiguracionEmpresaDto?> GetByIdAsync(int id)
     {
-        try
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, id)
+            .Get();
+        var m = res.Models?.FirstOrDefault();
+        return m == null ? null : new ConfiguracionEmpresaDto
         {
-            _logger.LogInformation("Obteniendo configuración de empresa por ID: {ConfiguracionId}", id);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pConfiguracionId", id }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_GetById", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                _logger.LogInformation("Configuración de empresa encontrada: {ConfiguracionId}", id);
-                return (ConfiguracionEmpresaDto)result.lstItem.First();
-            }
-            
-            _logger.LogWarning("Configuración de empresa no encontrada: {ConfiguracionId}", id);
-            return null;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al obtener configuración de empresa por ID: {ConfiguracionId}", id);
-            throw;
-        }
+            nConfiguracionEmpresaId = m.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = m.nConfiguracionEmpresaEmpresaId,
+            nAplicacionesId = 0,
+            cConfiguracionEmpresaClave = m.cConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = m.cConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = "text",
+            cConfiguracionEmpresaDescripcion = string.Empty,
+            dConfiguracionEmpresaFechaCreacion = m.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = m.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = true
+        };
     }
 
     /// <summary>
@@ -175,31 +162,24 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAsync(int empresaId)
     {
-        try
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Get();
+        var models = res.Models ?? new List<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>();
+        return models.Select(m => new ConfiguracionEmpresaDto
         {
-            _logger.LogInformation("Obteniendo configuraciones por empresa: {EmpresaId}", empresaId);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pEmpresaId", empresaId }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_GetByEmpresa", parameters);
-            
-            if (result.isSuccess && result.lstItem != null)
-            {
-                _logger.LogInformation("Se encontraron {Count} configuraciones para la empresa: {EmpresaId}", result.lstItem.Count, empresaId);
-                return result.lstItem.Cast<ConfiguracionEmpresaDto>().ToList();
-            }
-            
-            _logger.LogWarning("No se encontraron configuraciones para la empresa: {EmpresaId}", empresaId);
-            return new List<ConfiguracionEmpresaDto>();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al obtener configuraciones por empresa: {EmpresaId}", empresaId);
-            throw;
-        }
+            nConfiguracionEmpresaId = m.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = m.nConfiguracionEmpresaEmpresaId,
+            nAplicacionesId = 0,
+            cConfiguracionEmpresaClave = m.cConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = m.cConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = "text",
+            cConfiguracionEmpresaDescripcion = string.Empty,
+            dConfiguracionEmpresaFechaCreacion = m.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = m.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = true
+        }).ToList();
     }
 
     /// <summary>
@@ -239,32 +219,62 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAndAplicacionAsync(int empresaId, int aplicacionId)
     {
-        try
-        {
-            _logger.LogInformation("Obteniendo configuraciones por empresa {EmpresaId} y aplicación {AplicacionId}", empresaId, aplicacionId);
+        // Unificar: devolver configuración efectiva (aplicación + overrides de empresa)
+        _logger.LogInformation("Obteniendo configuración efectiva para empresa {EmpresaId} y aplicación {AplicacionId}", empresaId, aplicacionId);
 
-            var parameters = new Dictionary<string, object>
-            {
-                { "pEmpresaId", empresaId },
-                { "pAplicacionId", aplicacionId }
-            };
+        // Leer configuración base de la aplicación
+        var appRes = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionAplicacionSupabase>()
+            .Filter("nAplicacionesId", Supabase.Postgrest.Constants.Operator.Equals, aplicacionId)
+            .Limit(1)
+            .Get();
+        var appCfg = appRes.Models?.FirstOrDefault();
 
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_GetByEmpresaAndAplicacion", parameters);
-            
-            if (result.isSuccess && result.lstItem != null)
-            {
-                _logger.LogInformation("Se encontraron {Count} configuraciones para empresa {EmpresaId} y aplicación {AplicacionId}", result.lstItem.Count, empresaId, aplicacionId);
-                return result.lstItem.Cast<ConfiguracionEmpresaDto>().ToList();
-            }
-            
-            _logger.LogWarning("No se encontraron configuraciones para empresa {EmpresaId} y aplicación {AplicacionId}", empresaId, aplicacionId);
-            return new List<ConfiguracionEmpresaDto>();
-        }
-        catch (Exception ex)
+        // Leer overrides de empresa
+        var empRes = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Get();
+        var empCfg = empRes.Models ?? new List<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>();
+        var empDict = empCfg.ToDictionary(k => k.cConfiguracionEmpresaClave, v => v);
+
+        var resultado = new List<ConfiguracionEmpresaDto>();
+        void Add(string clave, object? valorApp)
         {
-            _logger.LogError(ex, "Error al obtener configuraciones por empresa {EmpresaId} y aplicación {AplicacionId}", empresaId, aplicacionId);
-            throw;
+            var tieneOverride = empDict.TryGetValue(clave, out var ov);
+            var val = tieneOverride ? ov!.cConfiguracionEmpresaValor : valorApp?.ToString() ?? string.Empty;
+            resultado.Add(new ConfiguracionEmpresaDto
+            {
+                nConfiguracionEmpresaId = tieneOverride ? (ov!.nConfiguracionEmpresaId ?? 0) : 0,
+                nEmpresasId = empresaId,
+                nAplicacionesId = aplicacionId,
+                cConfiguracionEmpresaClave = clave,
+                cConfiguracionEmpresaValor = val,
+                cConfiguracionEmpresaTipo = "text",
+                cConfiguracionEmpresaDescripcion = string.Empty,
+                dConfiguracionEmpresaFechaCreacion = tieneOverride ? (ov!.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow) : System.DateTime.UtcNow,
+                dConfiguracionEmpresaFechaActualizacion = tieneOverride ? (ov!.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow) : System.DateTime.UtcNow,
+                bConfiguracionEmpresaEsActiva = true
+            });
         }
+
+        if (appCfg != null)
+        {
+            Add("nMaxTamanoArchivo", appCfg.nMaxTamanoArchivo);
+            Add("cTiposArchivosPermitidos", appCfg.cTiposArchivosPermitidos);
+            Add("bPermitirAdjuntos", appCfg.bPermitirAdjuntos);
+            Add("nMaxCantidadAdjuntos", appCfg.nMaxCantidadAdjuntos);
+            Add("bPermitirVisualizacionAdjuntos", appCfg.bPermitirVisualizacionAdjuntos);
+            Add("nMaxLongitudMensaje", appCfg.nMaxLongitudMensaje);
+            Add("bPermitirEmojis", appCfg.bPermitirEmojis);
+            Add("bPermitirMensajesVoz", appCfg.bPermitirMensajesVoz);
+            Add("bPermitirNotificaciones", appCfg.bPermitirNotificaciones);
+            Add("bRequiereAutenticacion", appCfg.bRequiereAutenticacion);
+            Add("bPermitirMensajesAnonimos", appCfg.bPermitirMensajesAnonimos);
+            Add("nTiempoExpiracionSesion", appCfg.nTiempoExpiracionSesion);
+        }
+
+        return resultado;
     }
 
     /// <summary>
@@ -427,38 +437,35 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<ConfiguracionEmpresaDto> CreateAsync(CreateConfiguracionEmpresaDto createDto)
     {
-        try
+        var model = new ChatModularMicroservice.Domain.ConfiguracionEmpresaInsertSupabase
         {
-            _logger.LogInformation("Creando nueva configuración de empresa para empresa {EmpresaId}, aplicación {AplicacionId}, clave {Clave}", 
-                createDto.NEmpresasId, createDto.NAplicacionesId, createDto.CConfiguracionEmpresaClave);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pEmpresaId", createDto.NEmpresasId },
-                { "pAplicacionId", createDto.NAplicacionesId },
-                { "pClave", createDto.CConfiguracionEmpresaClave },
-                { "pValor", createDto.CConfiguracionEmpresaValor },
-                { "pTipo", createDto.CConfiguracionEmpresaTipo },
-                { "pDescripcion", createDto.CConfiguracionEmpresaDescripcion ?? string.Empty },
-                { "pEsActiva", createDto.BConfiguracionEmpresaEsActiva }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_Create", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                var configuracion = (ConfiguracionEmpresaDto)result.lstItem.First();
-                _logger.LogInformation("Configuración de empresa creada exitosamente: {ConfiguracionId}", configuracion.nConfiguracionEmpresaId);
-                return configuracion;
-            }
-            
-            throw new InvalidOperationException("Error al crear la configuración de empresa");
-        }
-        catch (Exception ex)
+            nConfiguracionEmpresaEmpresaId = createDto.NEmpresasId,
+            cConfiguracionEmpresaClave = createDto.CConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = createDto.CConfiguracionEmpresaValor,
+            dConfiguracionEmpresaFechaCreacion = System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = System.DateTime.UtcNow
+        };
+        await _supabaseClient.From<ChatModularMicroservice.Domain.ConfiguracionEmpresaInsertSupabase>().Insert(model);
+        var fetch = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, createDto.NEmpresasId)
+            .Filter("cConfiguracionEmpresaClave", Supabase.Postgrest.Constants.Operator.Equals, createDto.CConfiguracionEmpresaClave)
+            .Limit(1)
+            .Get();
+        var m = fetch.Models?.FirstOrDefault();
+        return new ConfiguracionEmpresaDto
         {
-            _logger.LogError(ex, "Error al crear configuración de empresa");
-            throw;
-        }
+            nConfiguracionEmpresaId = m?.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = m?.nConfiguracionEmpresaEmpresaId ?? createDto.NEmpresasId,
+            nAplicacionesId = createDto.NAplicacionesId,
+            cConfiguracionEmpresaClave = m?.cConfiguracionEmpresaClave ?? createDto.CConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = m?.cConfiguracionEmpresaValor ?? createDto.CConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = createDto.CConfiguracionEmpresaTipo,
+            cConfiguracionEmpresaDescripcion = createDto.CConfiguracionEmpresaDescripcion ?? string.Empty,
+            dConfiguracionEmpresaFechaCreacion = m?.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = m?.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = createDto.BConfiguracionEmpresaEsActiva
+        };
     }
 
     /// <summary>
@@ -466,35 +473,29 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<ConfiguracionEmpresaDto> UpdateAsync(int id, UpdateConfiguracionEmpresaDto updateDto)
     {
-        try
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, id)
+            .Get();
+        var m = res.Models?.FirstOrDefault();
+        if (m == null) throw new InvalidOperationException("Configuración no encontrada");
+        m.cConfiguracionEmpresaValor = updateDto.CConfiguracionEmpresaValor ?? m.cConfiguracionEmpresaValor;
+        m.dConfiguracionEmpresaFechaActualizacion = System.DateTime.UtcNow;
+        var upd = await _supabaseClient.From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>().Update(m);
+        var u = upd.Models?.FirstOrDefault() ?? m;
+        return new ConfiguracionEmpresaDto
         {
-            _logger.LogInformation("Actualizando configuración de empresa: {ConfiguracionId}", id);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pConfiguracionId", id },
-                { "pValor", updateDto.CConfiguracionEmpresaValor ?? string.Empty },
-                { "pTipo", updateDto.CConfiguracionEmpresaTipo ?? string.Empty },
-                { "pDescripcion", updateDto.CConfiguracionEmpresaDescripcion ?? string.Empty },
-                { "pEsActiva", updateDto.BConfiguracionEmpresaEsActiva ?? true }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_Update", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                var configuracion = (ConfiguracionEmpresaDto)result.lstItem.First();
-                _logger.LogInformation("Configuración de empresa actualizada exitosamente: {ConfiguracionId}", id);
-                return configuracion;
-            }
-            
-            throw new InvalidOperationException("Error al actualizar la configuración de empresa");
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al actualizar configuración de empresa: {ConfiguracionId}", id);
-            throw;
-        }
+            nConfiguracionEmpresaId = u.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = u.nConfiguracionEmpresaEmpresaId,
+            nAplicacionesId = 0,
+            cConfiguracionEmpresaClave = u.cConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = u.cConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = updateDto.CConfiguracionEmpresaTipo ?? "text",
+            cConfiguracionEmpresaDescripcion = updateDto.CConfiguracionEmpresaDescripcion ?? string.Empty,
+            dConfiguracionEmpresaFechaCreacion = u.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = u.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = updateDto.BConfiguracionEmpresaEsActiva ?? true
+        };
     }
 
     /// <summary>
@@ -502,32 +503,11 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<bool> DeleteAsync(int id)
     {
-        try
-        {
-            _logger.LogInformation("Eliminando configuración de empresa: {ConfiguracionId}", id);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pConfiguracionId", id }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<dynamic>("USP_ConfiguracionEmpresa_Delete", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                dynamic resultData = result.lstItem.First();
-                bool success = Convert.ToBoolean(resultData.success);
-                _logger.LogInformation("Configuración de empresa eliminada: {Success}", success);
-                return success;
-            }
-            
-            return false;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al eliminar configuración de empresa: {ConfiguracionId}", id);
-            throw;
-        }
+        await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, id)
+            .Delete();
+        return true;
     }
 
     /// <summary>
@@ -535,34 +515,12 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<bool> ExistsByClaveAsync(string clave, int empresaId, int aplicacionId)
     {
-        try
-        {
-            _logger.LogInformation("Verificando existencia de configuración por clave {Clave}, empresa {EmpresaId} y aplicación {AplicacionId}", clave, empresaId, aplicacionId);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pClave", clave },
-                { "pEmpresaId", empresaId },
-                { "pAplicacionId", aplicacionId }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<dynamic>("USP_ConfiguracionEmpresa_ExistsByClave", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                dynamic resultData = result.lstItem.First();
-                bool exists = Convert.ToBoolean(resultData.exists);
-                _logger.LogInformation("Configuración existe por clave {Clave}, empresa {EmpresaId} y aplicación {AplicacionId}: {Exists}", clave, empresaId, aplicacionId, exists);
-                return exists;
-            }
-            
-            return false;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al verificar existencia de configuración por clave {Clave}, empresa {EmpresaId} y aplicación {AplicacionId}", clave, empresaId, aplicacionId);
-            throw;
-        }
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Filter("cConfiguracionEmpresaClave", Supabase.Postgrest.Constants.Operator.Equals, clave)
+            .Get();
+        return (res.Models?.Any() ?? false);
     }
 
     /// <summary>
@@ -570,32 +528,11 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<bool> ExistsAsync(int id)
     {
-        try
-        {
-            _logger.LogInformation("Verificando existencia de configuración por ID: {ConfiguracionId}", id);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pConfiguracionId", id }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<dynamic>("USP_ConfiguracionEmpresa_Exists", parameters);
-            
-            if (result.isSuccess && result.lstItem != null && result.lstItem.Any())
-            {
-                dynamic resultData = result.lstItem.First();
-                bool exists = Convert.ToBoolean(resultData.exists);
-                _logger.LogInformation("Configuración existe por ID {ConfiguracionId}: {Exists}", id, exists);
-                return exists;
-            }
-            
-            return false;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al verificar existencia de configuración por ID: {ConfiguracionId}", id);
-            throw;
-        }
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, id)
+            .Get();
+        return (res.Models?.Any() ?? false);
     }
 
     /// <summary>
@@ -603,32 +540,75 @@ public class ConfiguracionEmpresaRepository : SupabaseRepository, IConfiguracion
     /// </summary>
     public async Task<List<ConfiguracionEmpresaDto>> CopiarConfiguracionesDeAplicacionAsync(int empresaId, int aplicacionId)
     {
-        try
+        _logger.LogInformation("Copiando configuraciones de aplicación {AplicacionId} a empresa {EmpresaId}", aplicacionId, empresaId);
+
+        // Leer configuración de aplicación
+        var res = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionAplicacionSupabase>()
+            .Filter("nAplicacionesId", Supabase.Postgrest.Constants.Operator.Equals, aplicacionId)
+            .Limit(1)
+            .Get();
+        var appCfg = res.Models?.FirstOrDefault();
+        if (appCfg == null)
         {
-            _logger.LogInformation("Copiando configuraciones de aplicación {AplicacionId} a empresa {EmpresaId}", aplicacionId, empresaId);
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "pEmpresaId", empresaId },
-                { "pAplicacionId", aplicacionId }
-            };
-
-            var result = await ExecuteStoredProcedureListAsync<ConfiguracionEmpresaDto>("USP_ConfiguracionEmpresa_CopiarDeAplicacion", parameters);
-            
-            if (result.isSuccess && result.lstItem != null)
-            {
-                _logger.LogInformation("Se copiaron {Count} configuraciones de aplicación a empresa", result.lstItem.Count);
-                return result.lstItem.Cast<ConfiguracionEmpresaDto>().ToList();
-            }
-            
-            _logger.LogWarning("No se copiaron configuraciones de aplicación a empresa");
+            _logger.LogWarning("No hay configuración de aplicación para {AplicacionId}", aplicacionId);
             return new List<ConfiguracionEmpresaDto>();
         }
-        catch (Exception ex)
+
+        // Mapear columnas conocidas a clave/valor para empresa (modelo de inserción sin PK)
+        var kv = new List<ChatModularMicroservice.Domain.ConfiguracionEmpresaInsertSupabase>();
+        void AddKV(string clave, object? valor)
         {
-            _logger.LogError(ex, "Error al copiar configuraciones de aplicación {AplicacionId} a empresa {EmpresaId}", aplicacionId, empresaId);
-            throw;
+            if (valor == null) return;
+            kv.Add(new ChatModularMicroservice.Domain.ConfiguracionEmpresaInsertSupabase
+            {
+                nConfiguracionEmpresaEmpresaId = empresaId,
+                cConfiguracionEmpresaClave = clave,
+                cConfiguracionEmpresaValor = valor.ToString(),
+                dConfiguracionEmpresaFechaCreacion = System.DateTime.UtcNow,
+                dConfiguracionEmpresaFechaActualizacion = System.DateTime.UtcNow
+            });
         }
+
+        AddKV("nMaxTamanoArchivo", appCfg.nMaxTamanoArchivo);
+        AddKV("cTiposArchivosPermitidos", appCfg.cTiposArchivosPermitidos);
+        AddKV("bPermitirAdjuntos", appCfg.bPermitirAdjuntos);
+        AddKV("nMaxCantidadAdjuntos", appCfg.nMaxCantidadAdjuntos);
+        AddKV("bPermitirVisualizacionAdjuntos", appCfg.bPermitirVisualizacionAdjuntos);
+        AddKV("nMaxLongitudMensaje", appCfg.nMaxLongitudMensaje);
+        AddKV("bPermitirEmojis", appCfg.bPermitirEmojis);
+        AddKV("bPermitirMensajesVoz", appCfg.bPermitirMensajesVoz);
+        AddKV("bPermitirNotificaciones", appCfg.bPermitirNotificaciones);
+        AddKV("bRequiereAutenticacion", appCfg.bRequiereAutenticacion);
+        AddKV("bPermitirMensajesAnonimos", appCfg.bPermitirMensajesAnonimos);
+        AddKV("nTiempoExpiracionSesion", appCfg.nTiempoExpiracionSesion);
+
+        if (kv.Count == 0)
+        {
+            _logger.LogWarning("No hay valores para copiar desde ConfiguracionAplicacion {AplicacionId}", aplicacionId);
+            return new List<ConfiguracionEmpresaDto>();
+        }
+
+        await _supabaseClient.From<ChatModularMicroservice.Domain.ConfiguracionEmpresaInsertSupabase>().Insert(kv);
+        var fetchInserted = await _supabaseClient
+            .From<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>()
+            .Filter("nConfiguracionEmpresaEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Get();
+        var insertedModels = fetchInserted.Models ?? new List<ChatModularMicroservice.Domain.ConfiguracionEmpresaSupabase>();
+
+        return insertedModels.Select(m => new ConfiguracionEmpresaDto
+        {
+            nConfiguracionEmpresaId = m.nConfiguracionEmpresaId ?? 0,
+            nEmpresasId = m.nConfiguracionEmpresaEmpresaId,
+            nAplicacionesId = aplicacionId,
+            cConfiguracionEmpresaClave = m.cConfiguracionEmpresaClave,
+            cConfiguracionEmpresaValor = m.cConfiguracionEmpresaValor ?? string.Empty,
+            cConfiguracionEmpresaTipo = "text",
+            cConfiguracionEmpresaDescripcion = string.Empty,
+            dConfiguracionEmpresaFechaCreacion = m.dConfiguracionEmpresaFechaCreacion ?? System.DateTime.UtcNow,
+            dConfiguracionEmpresaFechaActualizacion = m.dConfiguracionEmpresaFechaActualizacion ?? System.DateTime.UtcNow,
+            bConfiguracionEmpresaEsActiva = true
+        }).ToList();
     }
 
     /// <summary>

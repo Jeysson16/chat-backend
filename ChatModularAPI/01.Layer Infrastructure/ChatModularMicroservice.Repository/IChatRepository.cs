@@ -27,14 +27,18 @@ public interface IChatRepository : IDeleteIntRepository, IInsertIntRepository<Ch
     Task<IEnumerable<ChatConversacion>> GetLstItem(ChatFilter filter, ChatFilterListType filterType, Utils.Pagination pagination);
 
     // Métodos específicos del dominio de chat
-    Task<List<ChatConversacion>> GetUserConversationsAsync(string appCode, string userId);
+    Task<List<ChatConversacion>> GetUserConversationsAsync(string appCode, string userId, string? perJurCodigo, int page = 1, int pageSize = 50);
     Task<List<ChatMensaje>> GetConversationMessagesAsync(long conversationId, int page = 1, int pageSize = 50);
     Task<IEnumerable<ChatMensaje>> GetConversationMessages(ChatFilter filter, ChatFilterListType filterType, Utils.Pagination pagination);
     Task<ChatMensaje> CreateMessageAsync(long conversationId, Guid userId, string messageText, string messageType = "text");
+    Task<ChatMensaje> CreateMessageAsync(long conversationId, string userId, string messageText, string messageType = "text");
     Task<ChatMensaje> SendMessageAsync(ChatMensaje message);
     Task<ChatConversacion> CreateConversationAsync(string appCode, string? conversationName, string conversationType, List<Guid> participantIds);
+    Task<ChatConversacion> CreateConversationAsync(string appCode, string? conversationName, string conversationType, List<string> participantIds);
     Task<bool> AddUserToConversationAsync(long conversationId, Guid userId);
     Task<bool> RemoveUserFromConversationAsync(long conversationId, Guid userId);
+    Task<bool> AddUserToConversationAsync(long conversationId, string userId);
+    Task<bool> RemoveUserFromConversationAsync(long conversationId, string userId);
     Task<List<ChatUsuario>> GetConversationParticipantsAsync(long conversationId);
     Task<bool> MarkMessagesAsReadAsync(long conversationId, Guid userId);
     Task<ChatConversacion?> GetConversationByIdAsync(long conversationId);

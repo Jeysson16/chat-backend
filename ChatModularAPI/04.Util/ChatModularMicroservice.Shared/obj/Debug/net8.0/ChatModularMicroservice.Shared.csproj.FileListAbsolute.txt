@@ -4,6 +4,7 @@ D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\bin\De
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.csproj.AssemblyReference.cache
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.GeneratedMSBuildEditorConfig.editorconfig
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.sourcelink.json
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.dll
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\refint\ChatModularMicroservice.Shared.dll
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Debug\net8.0\ChatModularMicroservice.Shared.pdb

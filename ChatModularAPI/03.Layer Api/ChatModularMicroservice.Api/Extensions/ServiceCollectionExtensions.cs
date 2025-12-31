@@ -106,6 +106,14 @@ namespace ChatModularMicroservice.Api.Extensions
             // Registrar IConfiguracionAplicacionUnificadaRepository para resolver dependencias de ConfiguracionAplicacionUnificadaService
             services.AddScoped<IConfiguracionAplicacionUnificadaRepository, ConfiguracionAplicacionRepository>();
 
+            // Dashboard stats (Supabase RPC)
+            services.AddScoped<IDashboardRepository, DashboardSupabaseRepository>();
+            services.AddScoped<IDashboardService, DashboardService>();
+
+            // Webhooks
+            services.AddHttpClient();
+            services.AddScoped<ChatModularMicroservice.Api.Webhooks.IWebhookService, ChatModularMicroservice.Api.Webhooks.WebhookService>();
+
             return services;
         }
         public static IServiceCollection InyeccionControllers(this IServiceCollection services)

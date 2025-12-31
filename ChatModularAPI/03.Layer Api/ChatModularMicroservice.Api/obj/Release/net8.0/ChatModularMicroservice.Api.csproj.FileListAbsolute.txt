@@ -177,3 +177,5 @@ D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\
 D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\Release\net8.0\ChatModularMicroservice.Api.pdb
 D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\Release\net8.0\ChatModularMicroservice.Api.genruntimeconfig.cache
 D:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\Release\net8.0\ref\ChatModularMicroservice.Api.dll
+d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\Release\net8.0\ChatModularMicroservice.Api.sourcelink.json
+d:\Chat\ChatBackend\ChatModularAPI\03.Layer Api\ChatModularMicroservice.Api\obj\Release\net8.0\swae.build.ex.cache

@@ -291,9 +291,32 @@ namespace ChatModularMicroservice.Domain
         {
             try
             {
-                // Implementar obtención de tokens activos
-                // Por ahora retornamos una lista vacía como placeholder
-                return await Task.FromResult(new List<TokenActivoDto>());
+                var appRegistro = await _appRegistroRepository.GetByCodeAsync(codigoApp);
+
+                if (appRegistro == null)
+                {
+                    return new List<TokenActivoDto>();
+                }
+
+                var expiracion = appRegistro.dAppRegistroFechaExpiracion;
+                var activo = appRegistro.bAppRegistroEsActivo;
+                var noExpirado = expiracion == null || expiracion > DateTime.UtcNow;
+                var diasRestantes = expiracion == null ? 0 : (int)Math.Ceiling((expiracion.Value - DateTime.UtcNow).TotalDays);
+
+                var dto = new TokenActivoDto
+                {
+                    cTokenId = appRegistro.nAppRegistroId.ToString(),
+                    cCodigoAplicacion = appRegistro.cAppRegistroCodigoApp,
+                    cTokenAcceso = appRegistro.cAppRegistroTokenAcceso,
+                    bEsActivo = activo,
+                    bEsValido = activo && noExpirado,
+                    dFechaExpiracion = expiracion ?? DateTime.MaxValue,
+                    dFechaCreacion = appRegistro.dAppRegistroFechaCreacion,
+                    nDiasRestantes = diasRestantes,
+                    cEstado = activo ? (noExpirado ? "Activo" : "Expirado") : "Inactivo"
+                };
+
+                return new List<TokenActivoDto> { dto };
             }
             catch (Exception ex)
             {

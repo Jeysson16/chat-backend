@@ -10,6 +10,8 @@ using Supabase;
 using Microsoft.Extensions.Logging;
 using UsuarioSupabaseModel = ChatModularMicroservice.Domain.UsuarioSupabase;
 using AthleteProfileSupabaseModel = ChatModularMicroservice.Domain.AthleteProfileSupabase;
+using System.Text.Json;
+using static Supabase.Postgrest.Constants;
 
 namespace ChatModularMicroservice.Infrastructure;
 
@@ -86,126 +88,55 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
 
     public async Task<ChatModularMicroservice.Entities.Models.Usuario?> GetByEmailAsync(string email)
     {
-        // Usar athlete_profiles en lugar de Usuarios (tabla no existe)
         try
         {
-            _logger.LogInformation("GetByEmailAsync: Buscando usuario por email en athlete_profiles: {Email}", email);
-            
+            _logger.LogInformation("GetByEmailAsync: Buscando usuario por email en Usuarios: {Email}", email);
             var response = await _supabaseClient
-                .From<AthleteProfileSupabaseModel>()
-                .Where(x => x.Email == email)
+                .From<UsuarioSupabaseModel>()
+                .Filter("cUsuariosEmail", Supabase.Postgrest.Constants.Operator.Equals, email)
                 .Single();
 
             var model = response;
-            if (model == null) {
+            if (model == null)
+            {
                 _logger.LogInformation("GetByEmailAsync: Usuario no encontrado por email: {Email}", email);
                 return null;
             }
 
-            // Mapear athlete_profiles a Usuario
-            var usuario = new Usuario
-            {
-                cUsuariosId = 0, // No hay ID numérico en athlete_profiles
-                cNombre = model.Name,
-                cApellido = string.Empty,
-                cEmail = model.Email,
-                cTelefono = model.Phone ?? string.Empty,
-                cAvatar = string.Empty, // No hay avatar en athlete_profiles
-                bActivo = true, // Asumir activo por defecto
-                dFechaCreacion = model.CreatedAt,
-                nEmpresaId = 0,
-                nAplicacionId = 0,
-                dUsuariosChatUltimaConexion = model.UpdatedAt,
-                bUsuariosChatEstaActivo = true,
-                bUsuariosChatEstaEnLinea = false, // Por defecto offline
-                dUsuariosChatFechaCreacion = model.CreatedAt,
-                cUsuariosChatId = model.UserId, // Usar user_id como ID del chat
-                cUsuariosChatNombre = model.Name,
-                cUsuariosChatEmail = model.Email,
-                cUsuariosChatPassword = string.Empty, // No hay contraseña en athlete_profiles
-                dUsuarioCambioPassword = null,
-                cUsuarioConfigPrivacidad = string.Empty,
-                cUsuarioConfigNotificaciones = string.Empty,
-                cUsuariosChatAvatar = string.Empty,
-                bUsuarioVerificado = true, // Asumir verificado
-                cUsuariosChatUsername = model.Email, // Usar email como username
-                cUsuariosChatRol = "USER",
-                cUsuarioTokenVerificacion = string.Empty,
-                cUsuariosChatPerJurCodigo = string.Empty,
-                cUsuariosChatPerCodigo = string.Empty,
-                cUsuariosChatAppCodigo = string.Empty,
-                cUsuarioTokenReset = string.Empty
-            };
-            
-            _logger.LogInformation("GetByEmailAsync: Usuario encontrado en athlete_profiles, rol asignado: {Role}", usuario.cUsuariosChatRol);
+            var usuario = MapSupabaseToUsuario(model);
+            _logger.LogInformation("GetByEmailAsync: Usuario encontrado en Usuarios, username: {Username}", usuario.cUsuariosChatUsername);
             return usuario;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error al obtener usuario por email desde athlete_profiles: {Email}", email);
+            _logger.LogError(ex, "Error al obtener usuario por email desde Usuarios: {Email}", email);
             return null;
         }
     }
 
     public async Task<ChatModularMicroservice.Entities.Models.Usuario?> GetByUsernameAsync(string username)
     {
-        // Usar athlete_profiles y tratar username como email (no hay campo username)
         try
         {
-            _logger.LogInformation("GetByUsernameAsync: Buscando usuario por username (como email) en athlete_profiles: {Username}", username);
-            
+            _logger.LogInformation("GetByUsernameAsync: Buscando usuario por username en Usuarios: {Username}", username);
             var response = await _supabaseClient
-                .From<AthleteProfileSupabaseModel>()
-                .Where(x => x.Email == username)
+                .From<UsuarioSupabaseModel>()
+                .Filter("cUsuariosUsername", Supabase.Postgrest.Constants.Operator.Equals, username)
                 .Single();
 
             var model = response;
-            if (model == null) {
+            if (model == null)
+            {
                 _logger.LogInformation("GetByUsernameAsync: Usuario no encontrado por username: {Username}", username);
                 return null;
             }
 
-            // Mapear athlete_profiles a Usuario
-            var usuario = new Usuario
-            {
-                cUsuariosId = 0, // No hay ID numérico en athlete_profiles
-                cNombre = model.Name,
-                cApellido = string.Empty,
-                cEmail = model.Email,
-                cTelefono = model.Phone ?? string.Empty,
-                cAvatar = string.Empty, // No hay avatar en athlete_profiles
-                bActivo = true, // Asumir activo por defecto
-                dFechaCreacion = model.CreatedAt,
-                nEmpresaId = 0,
-                nAplicacionId = 0,
-                dUsuariosChatUltimaConexion = model.UpdatedAt,
-                bUsuariosChatEstaActivo = true,
-                bUsuariosChatEstaEnLinea = false, // Por defecto offline
-                dUsuariosChatFechaCreacion = model.CreatedAt,
-                cUsuariosChatId = model.UserId, // Usar user_id como ID del chat
-                cUsuariosChatNombre = model.Name,
-                cUsuariosChatEmail = model.Email,
-                cUsuariosChatPassword = string.Empty, // No hay contraseña en athlete_profiles
-                dUsuarioCambioPassword = null,
-                cUsuarioConfigPrivacidad = string.Empty,
-                cUsuarioConfigNotificaciones = string.Empty,
-                cUsuariosChatAvatar = string.Empty,
-                bUsuarioVerificado = true, // Asumir verificado
-                cUsuariosChatUsername = model.Email, // Usar email como username
-                cUsuariosChatRol = "USER",
-                cUsuarioTokenVerificacion = string.Empty,
-                cUsuariosChatPerJurCodigo = string.Empty,
-                cUsuariosChatPerCodigo = string.Empty,
-                cUsuariosChatAppCodigo = string.Empty,
-                cUsuarioTokenReset = string.Empty
-            };
-            
-            _logger.LogInformation("GetByUsernameAsync: Usuario encontrado en athlete_profiles, rol asignado: {Role}", usuario.cUsuariosChatRol);
+            var usuario = MapSupabaseToUsuario(model);
             return usuario;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error al obtener usuario por username desde athlete_profiles: {Username}", username);
+            _logger.LogError(ex, "Error al obtener usuario por username desde Usuarios: {Username}", username);
             return null;
         }
     }
@@ -375,8 +306,8 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
                 cAvatar = model.cUsuariosAvatar,
                 bActivo = model.bUsuariosActivo,
                 dFechaCreacion = model.dUsuariosFechaCreacion,
-                nEmpresaId = 0,
-                nAplicacionId = 0,
+                nEmpresaId = model.nUsuariosEmpresaId ?? 0,
+                nAplicacionId = model.nUsuariosAplicacionId ?? 0,
                 dUsuariosChatUltimaConexion = model.dUsuariosUltimaConexion,
                 bUsuariosChatEstaActivo = model.bUsuariosActivo,
                 bUsuariosChatEstaEnLinea = model.bUsuariosEstaEnLinea,
@@ -390,7 +321,7 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
                 cUsuarioConfigNotificaciones = string.Empty,
                 cUsuariosChatAvatar = model.cUsuariosAvatar,
                 bUsuarioVerificado = model.bUsuarioVerificado,
-                cUsuariosChatUsername = string.Empty,
+                cUsuariosChatUsername = model.cUsuariosUsername ?? string.Empty,
                 cUsuariosChatRol = "USER",
                 cUsuarioTokenVerificacion = string.Empty,
                 cUsuariosChatPerJurCodigo = model.cUsuariosPerJurCodigo,
@@ -760,70 +691,40 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
         
         _logger.LogInformation("GetByUserCodeAsync: No es JSANCHEZ, continuando con búsqueda normal");
 
-        // Buscar por email (caso más común para login) usando athlete_profiles
-        var byEmail = await GetByEmailAsync(userCode);
-        if (byEmail != null) {
-            _logger.LogInformation("GetByUserCodeAsync: Encontrado por Email, rol: {Role}", byEmail.cUsuariosChatRol);
-            return byEmail;
-        }
-
-        // Buscar por username (tratado como email) usando athlete_profiles
-        var byUsername = await GetByUsernameAsync(userCode);
-        if (byUsername != null) {
-            _logger.LogInformation("GetByUserCodeAsync: Encontrado por Username, rol: {Role}", byUsername.cUsuariosChatRol);
-            return byUsername;
-        }
-
-        // Fallback: búsqueda por ID (UserId de athlete_profiles)
-        try
+        // Buscar por código de persona (cUsuariosPerCodigo)
+        var byPerCodigo = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("cUsuariosPerCodigo", Supabase.Postgrest.Constants.Operator.Equals, userCode)
+            .Single();
+        if (byPerCodigo != null)
         {
-            var response = await _supabaseClient
-                .From<AthleteProfileSupabaseModel>()
-                .Where(x => x.UserId == userCode)
-                .Single();
-
-            if (response != null)
-            {
-                var usuario = new Usuario
-                {
-                    cUsuariosId = 0,
-                    cNombre = response.Name,
-                    cApellido = string.Empty,
-                    cEmail = response.Email,
-                    cTelefono = response.Phone ?? string.Empty,
-                    cAvatar = string.Empty,
-                    bActivo = true,
-                    dFechaCreacion = response.CreatedAt,
-                    nEmpresaId = 0,
-                    nAplicacionId = 0,
-                    dUsuariosChatUltimaConexion = response.UpdatedAt,
-                    bUsuariosChatEstaActivo = true,
-                    bUsuariosChatEstaEnLinea = false,
-                    dUsuariosChatFechaCreacion = response.CreatedAt,
-                    cUsuariosChatId = response.UserId,
-                    cUsuariosChatNombre = response.Name,
-                    cUsuariosChatEmail = response.Email,
-                    cUsuariosChatPassword = string.Empty,
-                    dUsuarioCambioPassword = null,
-                    cUsuarioConfigPrivacidad = string.Empty,
-                    cUsuarioConfigNotificaciones = string.Empty,
-                    cUsuariosChatAvatar = string.Empty,
-                    bUsuarioVerificado = true,
-                    cUsuariosChatUsername = response.Email,
-                    cUsuariosChatRol = "USER",
-                    cUsuarioTokenVerificacion = string.Empty,
-                    cUsuariosChatPerJurCodigo = string.Empty,
-                    cUsuariosChatPerCodigo = string.Empty,
-                    cUsuariosChatAppCodigo = string.Empty,
-                    cUsuarioTokenReset = string.Empty
-                };
-                _logger.LogInformation("GetByUserCodeAsync: Encontrado por UserId, rol: {Role}", usuario.cUsuariosChatRol);
-                return usuario;
-            }
+            var usuarioPer = MapSupabaseToUsuario(byPerCodigo);
+            _logger.LogInformation("GetByUserCodeAsync: Encontrado por cUsuariosPerCodigo");
+            return usuarioPer;
         }
-        catch (Exception ex)
+
+        // Buscar por username
+        var byUsername = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("cUsuariosUsername", Supabase.Postgrest.Constants.Operator.Equals, userCode)
+            .Single();
+        if (byUsername != null)
         {
-            _logger.LogWarning(ex, "Usuario no encontrado por UserId: {UserCode}", userCode);
+            var usuarioUser = MapSupabaseToUsuario(byUsername);
+            _logger.LogInformation("GetByUserCodeAsync: Encontrado por cUsuariosUsername");
+            return usuarioUser;
+        }
+
+        // Buscar por email
+        var byEmail = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("cUsuariosEmail", Supabase.Postgrest.Constants.Operator.Equals, userCode)
+            .Single();
+        if (byEmail != null)
+        {
+            var usuarioEmail = MapSupabaseToUsuario(byEmail);
+            _logger.LogInformation("GetByUserCodeAsync: Encontrado por cUsuariosEmail");
+            return usuarioEmail;
         }
 
         return null;
@@ -1027,86 +928,270 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
 
     #endregion
 
+    public async Task<int> GetConversacionesHoyAsync()
+    {
+        try
+        {
+            var startOfDayUtc = DateTime.UtcNow.Date;
+            var response = await _supabaseClient
+                .From<ChatModularMicroservice.Domain.MensajeSupabase>()
+                .Filter("dMensajesFechaCreacion", Operator.GreaterThanOrEqual, startOfDayUtc.ToString("o"))
+                .Get();
+
+            var msgs = response.Models ?? new List<ChatModularMicroservice.Domain.MensajeSupabase>();
+            var count = msgs.Select(m => m.nMensajesConversacionId).Distinct().Count();
+            return count;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error obteniendo conversaciones de hoy desde Supabase");
+            return 0;
+        }
+    }
+
+    public async Task<int> GetTotalUsuariosAsync()
+    {
+        try
+        {
+            var res = await _supabaseClient.Rpc("usp_usuarios_total", null);
+            var content = res?.Content ?? "0";
+            if (int.TryParse(content, out var total)) return total;
+            // PostgREST may return JSON like [{"count":123}] depending on wrappers; fallback to counting table
+            var q = await _supabaseClient.From<UsuarioSupabaseModel>().Select("nUsuariosId").Get();
+            return q.Models?.Count ?? 0;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public async Task<int> GetTotalUsuariosActivosAsync()
+    {
+        try
+        {
+            var res = await _supabaseClient.Rpc("usp_usuarios_activos_total", null);
+            var content = res?.Content ?? "0";
+            if (int.TryParse(content, out var total)) return total;
+            var q = await _supabaseClient.From<UsuarioSupabaseModel>().Filter("bUsuariosActivo", Supabase.Postgrest.Constants.Operator.Equals, "true").Get();
+            return q.Models?.Count ?? 0;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public async Task<int> GetTotalUsuariosEnLineaAsync()
+    {
+        try
+        {
+            var res = await _supabaseClient.Rpc("usp_usuarios_online_total", null);
+            var content = res?.Content ?? "0";
+            if (int.TryParse(content, out var total)) return total;
+            var q = await _supabaseClient.From<UsuarioSupabaseModel>().Filter("bUsuariosEstaEnLinea", Supabase.Postgrest.Constants.Operator.Equals, "true").Get();
+            return q.Models?.Count ?? 0;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
     #region Private Methods
 
     private async Task<Usuario?> GetById(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetById: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
+        if (!string.IsNullOrWhiteSpace(filter.cUsuariosId))
+        {
+            var res = await _supabaseClient
+                .From<UsuarioSupabaseModel>()
+                .Filter("nUsuariosId", Supabase.Postgrest.Constants.Operator.Equals, filter.cUsuariosId)
+                .Get();
+            var model = res.Models?.FirstOrDefault();
+            return model != null ? MapSupabaseToUsuario(model) : null;
+        }
         return null;
     }
 
     private async Task<Usuario?> GetByEmail(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByEmail: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
+        if (!string.IsNullOrWhiteSpace(filter.cEmail))
+        {
+            var res = await _supabaseClient
+                .From<UsuarioSupabaseModel>()
+                .Filter("cUsuariosEmail", Supabase.Postgrest.Constants.Operator.Equals, filter.cEmail)
+                .Get();
+            var model = res.Models?.FirstOrDefault();
+            return model != null ? MapSupabaseToUsuario(model) : null;
+        }
         return null;
     }
 
     private async Task<Usuario?> GetByNombreCompleto(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByNombreCompleto: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
+        if (!string.IsNullOrWhiteSpace(filter.cNombre))
+        {
+            var term = filter.cNombre.Trim().ToLowerInvariant();
+            var res = await _supabaseClient.From<UsuarioSupabaseModel>().Get();
+            var model = res.Models?.FirstOrDefault(m => (m.cUsuariosNombre?.ToLowerInvariant().Contains(term) ?? false));
+            return model != null ? MapSupabaseToUsuario(model) : null;
+        }
         return null;
     }
 
     private async Task<Usuario?> GetByTelefono(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByTelefono: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
+        // Campo teléfono no disponible en modelo Supabase; sin warning devolvemos null
         return null;
     }
 
     private async Task<IEnumerable<Usuario>> GetByPagination(UsuarioFilter filter, Utils.Pagination pagination)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByPagination: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        var res = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Range((pagination.PageNumber - 1) * pagination.PageSize, (pagination.PageNumber * pagination.PageSize) - 1)
+            .Get();
+        var models = res.Models ?? new List<UsuarioSupabaseModel>();
+        return models.Select(model => MapSupabaseToUsuario(model));
     }
 
     private async Task<IEnumerable<Usuario>> GetByEmpresa(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByEmpresa: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        var empresaId = filter.nEmpresaId ?? 0;
+        var res = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("nUsuariosEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Get();
+        var models = res.Models ?? new List<UsuarioSupabaseModel>();
+        return models.Select(MapSupabaseToUsuario);
     }
 
     private async Task<IEnumerable<Usuario>> GetByAplicacion(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByAplicacion: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        var aplicacionId = filter.nAplicacionId ?? 0;
+        var res = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("nUsuariosAplicacionId", Supabase.Postgrest.Constants.Operator.Equals, aplicacionId)
+            .Get();
+        var models = res.Models ?? new List<UsuarioSupabaseModel>();
+        return models.Select(MapSupabaseToUsuario);
     }
 
     private async Task<IEnumerable<Usuario>> GetByEmpresaYAplicacion(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByEmpresaYAplicacion: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        var empresaId = filter.nEmpresaId ?? 0;
+        var aplicacionId = filter.nAplicacionId ?? 0;
+        var res = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("nUsuariosEmpresaId", Supabase.Postgrest.Constants.Operator.Equals, empresaId)
+            .Filter("nUsuariosAplicacionId", Supabase.Postgrest.Constants.Operator.Equals, aplicacionId)
+            .Get();
+        var models = res.Models ?? new List<UsuarioSupabaseModel>();
+        return models.Select(MapSupabaseToUsuario);
     }
 
     private async Task<IEnumerable<Usuario>> GetByActivos(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByActivos: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        var res = await _supabaseClient
+            .From<UsuarioSupabaseModel>()
+            .Filter("bUsuariosActivo", Supabase.Postgrest.Constants.Operator.Equals, "true")
+            .Get();
+        var models = res.Models ?? new List<UsuarioSupabaseModel>();
+        return models.Select(model => MapSupabaseToUsuario(model));
     }
 
+    private ChatModularMicroservice.Entities.Models.Usuario MapSupabaseToUsuario(UsuarioSupabaseModel model)
+    {
+        return new ChatModularMicroservice.Entities.Models.Usuario
+        {
+            cUsuariosId = int.TryParse(model.nUsuariosId, out int parsedId) ? parsedId : 0,
+            cNombre = model.cUsuariosNombre,
+            cApellido = string.Empty,
+            cEmail = model.cUsuariosEmail,
+            cTelefono = string.Empty,
+            cAvatar = model.cUsuariosAvatar,
+            bActivo = model.bUsuariosActivo,
+            dFechaCreacion = model.dUsuariosFechaCreacion,
+            nEmpresaId = model.nUsuariosEmpresaId ?? 0,
+            nAplicacionId = model.nUsuariosAplicacionId ?? 0,
+            dUsuariosChatUltimaConexion = model.dUsuariosUltimaConexion,
+            bUsuariosChatEstaActivo = model.bUsuariosActivo,
+            bUsuariosChatEstaEnLinea = model.bUsuariosEstaEnLinea,
+            dUsuariosChatFechaCreacion = model.dUsuariosFechaCreacion,
+            cUsuariosChatId = model.nUsuariosId,
+            cUsuariosChatNombre = model.cUsuariosNombre,
+            cUsuariosChatEmail = model.cUsuariosEmail,
+            cUsuariosChatPassword = model.cUsuariosPassword ?? string.Empty,
+            dUsuarioCambioPassword = model.dUsuarioCambioPassword,
+            cUsuarioConfigPrivacidad = model.cUsuarioConfigPrivacidad ?? string.Empty,
+            cUsuarioConfigNotificaciones = model.cUsuarioConfigNotificaciones ?? string.Empty,
+            cUsuariosChatAvatar = model.cUsuariosAvatar,
+            bUsuarioVerificado = model.bUsuarioVerificado,
+            cUsuariosChatUsername = model.cUsuariosUsername ?? string.Empty,
+            cUsuariosChatRol = "USER",
+            cUsuarioTokenVerificacion = model.cUsuarioTokenVerificacion ?? string.Empty,
+            cUsuariosChatPerJurCodigo = model.cUsuariosPerJurCodigo,
+            cUsuariosChatPerCodigo = model.cUsuariosPerCodigo,
+            cUsuariosChatAppCodigo = string.Empty,
+            cUsuarioTokenReset = string.Empty
+        };
+    }
     private async Task<IEnumerable<Usuario>> GetByTerminoBusqueda(UsuarioFilter filter)
     {
-        // Método SQL obsoleto - los métodos públicos ahora usan Supabase
-        _logger.LogWarning("GetByTerminoBusqueda: Método SQL obsoleto");
-        await Task.Delay(1); // Evitar advertencia de async sin await
-        return new List<Usuario>();
+        try
+        {
+            var term = (filter.TerminoBusqueda ?? string.Empty).Trim();
+            var rpc = await _supabaseClient.Rpc("usp_usuarios_search", new Dictionary<string, object?>
+            {
+                ["cTerminoBusqueda"] = string.IsNullOrWhiteSpace(term) ? null : term
+            });
+
+            var content = rpc?.Content ?? "[]";
+            var models = JsonSerializer.Deserialize<List<UsuarioSupabaseModel>>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            }) ?? new List<UsuarioSupabaseModel>();
+
+            return models.Select(model => new ChatModularMicroservice.Entities.Models.Usuario
+            {
+                cUsuariosId = int.TryParse(model.nUsuariosId, out int parsedId) ? parsedId : 0,
+                cNombre = model.cUsuariosNombre,
+                cApellido = string.Empty,
+                cEmail = model.cUsuariosEmail,
+                cTelefono = string.Empty,
+                cAvatar = model.cUsuariosAvatar,
+                bActivo = model.bUsuariosActivo,
+                dFechaCreacion = model.dUsuariosFechaCreacion,
+                nEmpresaId = 0,
+                nAplicacionId = 0,
+                dUsuariosChatUltimaConexion = model.dUsuariosUltimaConexion,
+                bUsuariosChatEstaActivo = model.bUsuariosActivo,
+                bUsuariosChatEstaEnLinea = model.bUsuariosEstaEnLinea,
+                dUsuariosChatFechaCreacion = model.dUsuariosFechaCreacion,
+                cUsuariosChatId = model.nUsuariosId,
+                cUsuariosChatNombre = model.cUsuariosNombre,
+                cUsuariosChatEmail = model.cUsuariosEmail,
+                cUsuariosChatPassword = model.cUsuariosPassword ?? string.Empty,
+                dUsuarioCambioPassword = null,
+                cUsuarioConfigPrivacidad = string.Empty,
+                cUsuarioConfigNotificaciones = string.Empty,
+                cUsuariosChatAvatar = model.cUsuariosAvatar,
+                bUsuarioVerificado = model.bUsuarioVerificado,
+                cUsuariosChatUsername = model.cUsuariosUsername ?? string.Empty,
+                cUsuariosChatRol = "USER",
+                cUsuarioTokenVerificacion = string.Empty,
+                cUsuariosChatPerJurCodigo = model.cUsuariosPerJurCodigo,
+                cUsuariosChatPerCodigo = model.cUsuariosPerCodigo,
+                cUsuariosChatAppCodigo = string.Empty,
+                cUsuarioTokenReset = string.Empty
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error en búsqueda de usuarios con Supabase: {Term}", filter.TerminoBusqueda);
+            return new List<Usuario>();
+        }
     }
 
     #endregion

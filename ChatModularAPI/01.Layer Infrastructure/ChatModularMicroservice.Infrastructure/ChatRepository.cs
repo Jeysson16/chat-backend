@@ -2,23 +2,29 @@ using ChatModularMicroservice.Entities.Models;
 using ChatModularMicroservice.Entities;
 using ChatModularMicroservice.Repository;
 using Utils = ChatModularMicroservice.Shared.Utils;
+using Supabase;
+using Supabase.Postgrest;
 using ChatModularMicroservice.Shared.Configs;
 using Dapper;
 using System.Data;
+using System.Text.Json;
 
 namespace ChatModularMicroservice.Infrastructure;
 
 public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository.IChatRepository
 {
     #region Constructor
-    public ChatRepository(IConnectionFactory cn) : base(cn)
+    private readonly Supabase.Client? _supabaseClient;
+
+    public ChatRepository(IConnectionFactory cn, Supabase.Client? supabaseClient = null) : base(cn)
     {
+        _supabaseClient = supabaseClient;
     }
 
     // Implementaciones explícitas de interfaz para resolver problemas de firma
-    Task<List<ChatConversacion>> IChatRepository.GetUserConversationsAsync(string appCode, string userId)
+    Task<List<ChatConversacion>> IChatRepository.GetUserConversationsAsync(string appCode, string userId, string? perJurCodigo, int page, int pageSize)
     {
-        return GetUserConversationsAsync(appCode, userId);
+        return GetUserConversationsAsync(appCode, userId, perJurCodigo, page, pageSize);
     }
 
     Task<List<ChatUsuario>> IChatRepository.GetConversationParticipantsAsync(long conversationId)
@@ -112,7 +118,7 @@ public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository
         var userId = filter.cConversacionesChatUsuarioCreador;
         if (string.IsNullOrWhiteSpace(appCode) || string.IsNullOrWhiteSpace(userId))
             return null;
-        var conversations = await GetUserConversationsAsync(appCode, userId);
+        var conversations = await GetUserConversationsAsync(appCode, userId, "DEFAULT");
         return conversations.FirstOrDefault();
     }
 
@@ -165,56 +171,227 @@ public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository
     // Métodos específicos del dominio (mantenidos para compatibilidad)
     public async Task<List<ChatMensaje>> GetConversationMessagesAsync(long conversationId, int page = 1, int pageSize = 50)
     {
-        string query = "USP_Chat_GetMessages";
-        var param = new DynamicParameters();
-        param.Add("@nConversacionId", conversationId);
-        param.Add("@nPage", page);
-        param.Add("@nPageSize", pageSize);
-        
-        var result = await this.LoadData<ChatMensaje>(query, param);
-        return result.ToList();
+        if (_supabaseClient == null)
+            return new List<ChatMensaje>();
+
+        var response = await _supabaseClient
+            .From<ChatModularMicroservice.Infrastructure.SupabaseModels.MensajeSupabaseFull>()
+            .Filter("nMensajesConversacionId", Supabase.Postgrest.Constants.Operator.Equals, (int)conversationId)
+            .Order(x => x.dMensajesFechaCreacion, Supabase.Postgrest.Constants.Ordering.Descending)
+            .Range((page - 1) * pageSize, (page * pageSize) - 1)
+            .Get();
+
+        var models = response.Models ?? new List<ChatModularMicroservice.Infrastructure.SupabaseModels.MensajeSupabaseFull>();
+
+        return models.Select(m => new ChatMensaje
+        {
+            nMensajesChatId = (long)(m.nMensajesId ?? 0),
+            nMensajesChatConversacionId = m.nMensajesConversacionId,
+            cMensajesChatRemitenteId = m.cMensajesRemitenteId ?? string.Empty,
+            cMensajesChatTexto = m.cMensajesTexto ?? string.Empty,
+            cMensajesChatTipo = m.cMensajesTipo ?? "text",
+            dMensajesChatFechaHora = m.dMensajesFechaCreacion ?? DateTime.UtcNow,
+            bMensajesChatEstaLeido = m.bMensajesEsLeido ?? false
+        }).ToList();
     }
 
     public async Task<ChatMensaje> CreateMessageAsync(long conversationId, string senderId, string messageText, string messageType = "text")
     {
-        string query = "USP_Chat_CreateMessage";
-        var param = new DynamicParameters();
-        param.Add("@nMensajesChatId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-        param.Add("@nMensajesChatConversacionId", conversationId);
-        param.Add("@cMensajesChatRemitenteId", senderId);
-        param.Add("@cMensajesChatTexto", messageText);
-        param.Add("@cMensajesChatTipo", messageType);
-
-        await SqlMapper.ExecuteAsync(_connectionFactory.GetConnection(), query, param, commandType: CommandType.StoredProcedure);
-        int generatedId = param.Get<int>("@nMensajesChatId");
-
-        return new ChatMensaje
+        if (_supabaseClient != null)
         {
-            nMensajesChatId = generatedId,
-            nMensajesChatConversacionId = (int)conversationId,
-            cMensajesChatRemitenteId = senderId,
-            cMensajesChatTexto = messageText,
-            cMensajesChatTipo = messageType,
-            dMensajesChatFechaHora = DateTime.UtcNow
-        };
+            var lowerParams = new Dictionary<string, object?>
+            {
+                { "nmensajesconversacionid", (int)conversationId },
+                { "cmensajesremitenteid", senderId },
+                { "cmensajestexto", messageText },
+                { "cmensajestipo", string.IsNullOrWhiteSpace(messageType) ? "text" : messageType }
+            };
+
+            var upperParams = new Dictionary<string, object?>
+            {
+                { "nMensajesConversacionId", (int)conversationId },
+                { "cMensajesRemitenteId", senderId },
+                { "cMensajesTexto", messageText },
+                { "cMensajesTipo", string.IsNullOrWhiteSpace(messageType) ? "text" : messageType }
+            };
+
+            var rpc = await _supabaseClient.Rpc("USP_Chat_CreateMessage", lowerParams);
+            if (rpc == null || string.IsNullOrWhiteSpace(rpc.Content))
+            {
+                rpc = await _supabaseClient.Rpc("USP_Chat_CreateMessage", upperParams);
+            }
+
+            var content = rpc?.Content ?? "0";
+            int insertedId = 0;
+            try
+            {
+                using var doc = JsonDocument.Parse(content);
+                var root = doc.RootElement;
+                if (root.ValueKind == JsonValueKind.Array && root.GetArrayLength() > 0)
+                {
+                    var el = root[0];
+                    if (el.TryGetProperty("nMensajesChatId", out var pId) && pId.ValueKind == JsonValueKind.Number)
+                        insertedId = pId.GetInt32();
+                    else if (el.TryGetProperty("nmensajeschatid", out var pId2) && pId2.ValueKind == JsonValueKind.Number)
+                        insertedId = pId2.GetInt32();
+                    else if (el.TryGetProperty("nMensajesId", out var pId3) && pId3.ValueKind == JsonValueKind.Number)
+                        insertedId = pId3.GetInt32();
+                }
+                else if (root.ValueKind == JsonValueKind.Number)
+                {
+                    insertedId = root.GetInt32();
+                }
+                else if (root.ValueKind == JsonValueKind.String)
+                {
+                    int.TryParse(root.GetString()?.Trim('"'), out insertedId);
+                }
+            }
+            catch
+            {
+                int.TryParse(content.Trim().Trim('"'), out insertedId);
+            }
+            if (insertedId <= 0)
+            {
+                throw new InvalidOperationException("Supabase RPC no devolvió un ID válido para el mensaje");
+            }
+
+            var getResp = await _supabaseClient
+                .From<ChatModularMicroservice.Infrastructure.SupabaseModels.MensajeSupabaseFull>()
+                .Filter("nMensajesId", Supabase.Postgrest.Constants.Operator.Equals, insertedId)
+                .Get();
+
+            var model = (getResp?.Models != null && getResp.Models.Count > 0)
+                ? getResp.Models[0]
+                : new ChatModularMicroservice.Infrastructure.SupabaseModels.MensajeSupabaseFull
+                {
+                    nMensajesId = insertedId,
+                    nMensajesConversacionId = (int)conversationId,
+                    cMensajesRemitenteId = senderId,
+                    cMensajesTexto = messageText,
+                    cMensajesTipo = string.IsNullOrWhiteSpace(messageType) ? "text" : messageType,
+                    dMensajesFechaCreacion = DateTime.UtcNow,
+                    bMensajesEsLeido = false
+                };
+
+            try
+            {
+                var convUpdate = new ChatModularMicroservice.Infrastructure.SupabaseModels.ConversacionSupabase
+                {
+                    nConversacionesId = (int)conversationId,
+                    dConversacionesFechaActualizacion = DateTime.UtcNow
+                };
+                await _supabaseClient
+                    .From<ChatModularMicroservice.Infrastructure.SupabaseModels.ConversacionSupabase>()
+                    .Update(convUpdate, new Supabase.Postgrest.QueryOptions
+                    {
+                        Returning = Supabase.Postgrest.QueryOptions.ReturnType.Minimal
+                    });
+            }
+            catch { }
+
+            return new ChatMensaje
+            {
+                nMensajesChatId = (long)(model.nMensajesId ?? insertedId),
+                nMensajesChatConversacionId = model.nMensajesConversacionId,
+                cMensajesChatRemitenteId = model.cMensajesRemitenteId ?? senderId,
+                cMensajesChatTexto = model.cMensajesTexto ?? messageText,
+                cMensajesChatTipo = model.cMensajesTipo ?? (string.IsNullOrWhiteSpace(messageType) ? "text" : messageType),
+                dMensajesChatFechaHora = model.dMensajesFechaCreacion ?? DateTime.UtcNow,
+                bMensajesChatEstaLeido = model.bMensajesEsLeido ?? false
+            };
+        }
+        throw new InvalidOperationException("Supabase client no disponible para crear mensaje");
     }
 
     public async Task<ChatConversacion> CreateConversationAsync(string appCode, string? conversationName, string conversationType, List<Guid> participantIds)
     {
-        string query = "USP_Chat_CreateConversation";
-        var param = new DynamicParameters();
-        param.Add("@nConversacionesChatId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-        param.Add("@cConversacionesChatAppCodigo", appCode);
-        param.Add("@cConversacionesChatNombre", conversationName);
-        param.Add("@cConversacionesChatTipo", conversationType);
-        param.Add("@ParticipantIds", string.Join(",", participantIds));
+        try
+        {
+            string query = "USP_Chat_CreateConversation";
+            var param = new DynamicParameters();
+            param.Add("@nConversacionesChatId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            param.Add("@cConversacionesChatAppCodigo", appCode);
+            param.Add("@cConversacionesChatNombre", conversationName);
+            param.Add("@cConversacionesChatTipo", conversationType);
+            param.Add("@ParticipantIds", string.Join(",", participantIds));
 
-        await SqlMapper.ExecuteAsync(_connectionFactory.GetConnection(), query, param, commandType: CommandType.StoredProcedure);
-        int generatedId = param.Get<int>("@nConversacionesChatId");
+            await SqlMapper.ExecuteAsync(_connectionFactory.GetConnection(), query, param, commandType: CommandType.StoredProcedure);
+            int generatedId = param.Get<int>("@nConversacionesChatId");
+
+            return new ChatConversacion
+            {
+                nConversacionesChatId = generatedId,
+                cConversacionesChatAppCodigo = appCode,
+                cConversacionesChatNombre = conversationName,
+                cConversacionesChatTipo = conversationType,
+                dConversacionesChatFechaCreacion = DateTime.UtcNow,
+                bConversacionesChatEstaActiva = true,
+                dConversacionesChatUltimaActividad = DateTime.UtcNow
+            };
+        }
+        catch (Microsoft.Data.SqlClient.SqlException ex) when (ex.Message.Contains("could not find stored procedure") || ex.Message.Contains("No se encontró el procedimiento almacenado"))
+        {
+            return await CreateConversationSupabaseAsync(appCode, conversationName, conversationType, participantIds.Select(p => p.ToString()).ToList());
+        }
+    }
+
+    public async Task<ChatConversacion> CreateConversationAsync(string appCode, string? conversationName, string conversationType, List<string> participantIds)
+    {
+        try
+        {
+            string query = "USP_Chat_CreateConversation";
+            var param = new DynamicParameters();
+            param.Add("@nConversacionesChatId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            param.Add("@cConversacionesChatAppCodigo", appCode);
+            param.Add("@cConversacionesChatNombre", conversationName);
+            param.Add("@cConversacionesChatTipo", conversationType);
+            param.Add("@ParticipantIds", string.Join(",", participantIds));
+
+            await SqlMapper.ExecuteAsync(_connectionFactory.GetConnection(), query, param, commandType: CommandType.StoredProcedure);
+            int generatedId = param.Get<int>("@nConversacionesChatId");
+
+            return new ChatConversacion
+            {
+                nConversacionesChatId = generatedId,
+                cConversacionesChatAppCodigo = appCode,
+                cConversacionesChatNombre = conversationName,
+                cConversacionesChatTipo = conversationType,
+                dConversacionesChatFechaCreacion = DateTime.UtcNow,
+                bConversacionesChatEstaActiva = true,
+                dConversacionesChatUltimaActividad = DateTime.UtcNow
+            };
+        }
+        catch (Microsoft.Data.SqlClient.SqlException ex) when (ex.Message.Contains("could not find stored procedure") || ex.Message.Contains("No se encontró el procedimiento almacenado"))
+        {
+            return await CreateConversationSupabaseAsync(appCode, conversationName, conversationType, participantIds);
+        }
+    }
+
+    private async Task<ChatConversacion> CreateConversationSupabaseAsync(string appCode, string? conversationName, string conversationType, List<string> participantIds)
+    {
+        if (_supabaseClient == null)
+            throw new InvalidOperationException("Supabase client no disponible para creación de conversación");
+
+        var parameters = new Dictionary<string, object?>
+        {
+            { "cConversacionesChatAppCodigo", appCode },
+            { "cConversacionesChatNombre", conversationName ?? string.Empty },
+            { "cConversacionesChatTipo", string.IsNullOrWhiteSpace(conversationType) ? "individual" : conversationType },
+            { "ParticipantIds", string.Join(",", participantIds ?? new List<string>()) }
+        };
+
+        var rpc = await _supabaseClient.Rpc("usp_chat_createconversation", parameters);
+        var content = rpc?.Content ?? "0";
+        int conversationId = 0;
+        int.TryParse(content.Trim().Trim('"'), out conversationId);
+        if (conversationId <= 0)
+        {
+            throw new InvalidOperationException("Supabase RPC no devolvió un ID válido para la conversación");
+        }
 
         return new ChatConversacion
         {
-            nConversacionesChatId = generatedId,
+            nConversacionesChatId = conversationId,
             cConversacionesChatAppCodigo = appCode,
             cConversacionesChatNombre = conversationName,
             cConversacionesChatTipo = conversationType,
@@ -234,6 +411,22 @@ public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository
         return await this.UpdateOrDelete(query, param);
     }
 
+    public async Task<bool> AddUserToConversationAsync(long conversationId, string userId)
+    {
+        if (_supabaseClient != null)
+        {
+            var parameters = new Dictionary<string, object?>
+            {
+                { "conversationid", (int)conversationId },
+                { "usuarioid", userId }
+            };
+            var rpc = await _supabaseClient.Rpc("USP_Chat_AddUserToConversation", parameters);
+            var content = (rpc?.Content ?? "true").Trim('"').ToLowerInvariant();
+            return content == "true";
+        }
+        return false;
+    }
+
     public async Task<bool> RemoveUserFromConversationAsync(long conversationId, Guid userId)
     {
         string query = "USP_Chat_RemoveUserFromConversation";
@@ -244,15 +437,130 @@ public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository
         return await this.UpdateOrDelete(query, param);
     }
 
-    public async Task<List<ChatConversacion>> GetUserConversationsAsync(string appCode, string userId)
+    public async Task<bool> RemoveUserFromConversationAsync(long conversationId, string userId)
     {
+        if (_supabaseClient != null)
+        {
+            var parameters = new Dictionary<string, object?>
+            {
+                { "conversationid", (int)conversationId },
+                { "usuarioid", userId }
+            };
+            var rpc = await _supabaseClient.Rpc("USP_Chat_RemoveUserFromConversation", parameters);
+            var content = (rpc?.Content ?? "true").Trim('"').ToLowerInvariant();
+            return content == "true";
+        }
+        return false;
+    }
+
+    public async Task<List<ChatConversacion>> GetUserConversationsAsync(string appCode, string userId, string? perJurCodigo, int page = 1, int pageSize = 50)
+    {
+        if (_supabaseClient != null)
+        {
+            var parametersLower = new Dictionary<string, object?>
+            {
+                { "cappcodigo", appCode },
+                { "cusuarioid", userId },
+                { "npage", page },
+                { "npagesize", pageSize },
+                { "perjurcodigo", string.IsNullOrWhiteSpace(perJurCodigo) ? "DEFAULT" : perJurCodigo }
+            };
+
+            var parametersUpper = new Dictionary<string, object?>
+            {
+                { "cAppCodigo", appCode },
+                { "cUsuarioId", userId },
+                { "nPage", page },
+                { "nPageSize", pageSize },
+                { "perJurCodigo", string.IsNullOrWhiteSpace(perJurCodigo) ? "DEFAULT" : perJurCodigo }
+            };
+
+            var rpc = await _supabaseClient.Rpc("USP_Chat_GetUserConversations", parametersLower);
+            if (rpc == null || string.IsNullOrWhiteSpace(rpc.Content))
+            {
+                rpc = await _supabaseClient.Rpc("USP_Chat_GetUserConversations", parametersUpper);
+            }
+            var content = rpc?.Content ?? "[]";
+            var list = new List<ChatConversacion>();
+
+            using var doc = JsonDocument.Parse(content);
+            foreach (var elem in doc.RootElement.EnumerateArray())
+            {
+                long id = 0;
+                if (elem.TryGetProperty("nconversacioneschatid", out var pId) && pId.ValueKind == JsonValueKind.Number)
+                    id = pId.GetInt64();
+                else if (elem.TryGetProperty("nConversacionesChatId", out var pId2) && pId2.ValueKind == JsonValueKind.Number)
+                    id = pId2.GetInt64();
+
+                string app = appCode;
+                if (elem.TryGetProperty("cconversacioneschatappcodigo", out var pApp) && pApp.ValueKind == JsonValueKind.String)
+                    app = pApp.GetString() ?? appCode;
+                else if (elem.TryGetProperty("cConversacionesChatAppCodigo", out var pApp2) && pApp2.ValueKind == JsonValueKind.String)
+                    app = pApp2.GetString() ?? appCode;
+
+                string? name = null;
+                if (elem.TryGetProperty("cconversacioneschatname", out var pName) && pName.ValueKind == JsonValueKind.String)
+                    name = pName.GetString();
+                else if (elem.TryGetProperty("cConversacionesChatNombre", out var pName2) && pName2.ValueKind == JsonValueKind.String)
+                    name = pName2.GetString();
+
+                string tipo = "individual";
+                if (elem.TryGetProperty("cconversacioneschattype", out var pTipo) && pTipo.ValueKind == JsonValueKind.String)
+                    tipo = pTipo.GetString() ?? "individual";
+                else if (elem.TryGetProperty("cConversacionesChatTipo", out var pTipo2) && pTipo2.ValueKind == JsonValueKind.String)
+                    tipo = pTipo2.GetString() ?? "individual";
+
+                DateTime created = DateTime.UtcNow;
+                if (elem.TryGetProperty("dtconversacioneschatcreatedat", out var pCreated) && pCreated.ValueKind == JsonValueKind.String)
+                {
+                    var s = pCreated.GetString();
+                    if (!string.IsNullOrWhiteSpace(s) && DateTime.TryParse(s, out var dt)) created = dt;
+                }
+                else if (elem.TryGetProperty("dConversacionesChatFechaCreacion", out var pCreated2) && pCreated2.ValueKind == JsonValueKind.String)
+                {
+                    var s = pCreated2.GetString();
+                    if (!string.IsNullOrWhiteSpace(s) && DateTime.TryParse(s, out var dt)) created = dt;
+                }
+
+                DateTime? last = null;
+                if (elem.TryGetProperty("dtlastmessagetimestamp", out var pLast) && pLast.ValueKind == JsonValueKind.String)
+                {
+                    var s = pLast.GetString();
+                    if (!string.IsNullOrWhiteSpace(s) && DateTime.TryParse(s, out var dt)) last = dt;
+                }
+                else if (elem.TryGetProperty("dConversacionesChatUltimaActividad", out var pLast2) && pLast2.ValueKind == JsonValueKind.String)
+                {
+                    var s = pLast2.GetString();
+                    if (!string.IsNullOrWhiteSpace(s) && DateTime.TryParse(s, out var dt)) last = dt;
+                }
+
+                bool activa = false;
+                if (elem.TryGetProperty("bconversacioneschatisactive", out var pAct))
+                    activa = pAct.ValueKind == JsonValueKind.True;
+                else if (elem.TryGetProperty("bConversacionesChatEstaActiva", out var pAct2))
+                    activa = pAct2.ValueKind == JsonValueKind.True;
+
+                list.Add(new ChatConversacion
+                {
+                    nConversacionesChatId = id,
+                    cConversacionesChatAppCodigo = app,
+                    cConversacionesChatNombre = name,
+                    cConversacionesChatTipo = tipo,
+                    dConversacionesChatFechaCreacion = created,
+                    dConversacionesChatUltimaActividad = last,
+                    bConversacionesChatEstaActiva = activa
+                });
+            }
+
+            return list;
+        }
+
         string query = "USP_Chat_GetUserConversations";
         var param = new DynamicParameters();
         param.Add("@cAppCodigo", appCode);
         param.Add("@cUsuarioId", userId);
-        // Paginación por defecto; el controlador puede paginar en memoria
-        param.Add("@nPage", 1);
-        param.Add("@nPageSize", 20);
+        param.Add("@nPage", page);
+        param.Add("@nPageSize", pageSize);
         var result = await this.LoadData<ChatConversacion>(query, param);
         return result.ToList();
     }
@@ -383,6 +691,36 @@ public class ChatRepository : BaseRepository, ChatModularMicroservice.Repository
 
     public async Task<List<ChatUsuario>> GetConversationParticipantsAsync(long conversationId)
     {
+        if (_supabaseClient != null)
+        {
+            var parameters = new Dictionary<string, object?>
+            {
+                { "conversationid", (int)conversationId }
+            };
+            var rpc = await _supabaseClient.Rpc("USP_ChatParticipants_SelectByConversation", parameters);
+            var content = rpc?.Content ?? "[]";
+            var list = new List<ChatUsuario>();
+            using var doc = JsonDocument.Parse(content);
+            foreach (var elem in doc.RootElement.EnumerateArray())
+            {
+                var id = elem.TryGetProperty("cUsuariosChatId", out var pid) ? (pid.GetString() ?? string.Empty) : string.Empty;
+                var name = elem.TryGetProperty("cUsuariosChatNombre", out var pName) ? (pName.GetString() ?? string.Empty) : string.Empty;
+                var email = elem.TryGetProperty("cUsuariosChatEmail", out var pEmail) ? (pEmail.GetString() ?? string.Empty) : string.Empty;
+                var avatar = elem.TryGetProperty("cUsuariosChatAvatar", out var pAvatar) ? (pAvatar.GetString() ?? string.Empty) : string.Empty;
+                var online = elem.TryGetProperty("bUsuariosChatEstaEnLinea", out var pOnline) && pOnline.ValueKind == JsonValueKind.True;
+                list.Add(new ChatUsuario
+                {
+                    cUsuariosChatId = id,
+                    cUsuariosChatNombre = name,
+                    cUsuariosChatEmail = email,
+                    cUsuariosChatAvatar = avatar,
+                    bUsuariosChatEstaEnLinea = online,
+                    bUsuariosChatEstaActivo = true
+                });
+            }
+            return list;
+        }
+
         string query = "USP_ChatParticipants_SelectByConversation";
         var param = new DynamicParameters();
         param.Add("@ConversationId", conversationId);

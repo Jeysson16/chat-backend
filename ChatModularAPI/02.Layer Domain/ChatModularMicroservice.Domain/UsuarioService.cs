@@ -62,8 +62,15 @@ namespace ChatModularMicroservice.Domain
 
         public async Task<IEnumerable<UsuarioDto>> BuscarUsuariosAsync(BuscarUsuarioDto buscarDto)
         {
-            var term = buscarDto.cTerminoBusqueda ?? string.Empty;
-            var usuarios = await _usuarioRepository.SearchUsersAsync(term);
+            var filter = new ChatModularMicroservice.Entities.UsuarioFilter
+            {
+                TerminoBusqueda = buscarDto.cTerminoBusqueda,
+                nEmpresaId = buscarDto.nEmpresasId.HasValue ? (int?)buscarDto.nEmpresasId.Value : null,
+                nAplicacionId = buscarDto.nAplicacionesId.HasValue ? (int?)buscarDto.nAplicacionesId.Value : null,
+                bActivo = buscarDto.bUsuariosEsActivo
+            };
+
+            var usuarios = await _usuarioRepository.GetByFilterAsync(filter);
             return usuarios.Select(MapToDto);
         }
 
@@ -133,16 +140,21 @@ namespace ChatModularMicroservice.Domain
 
         public async Task<UsuarioEstadisticasDto?> ObtenerEstadisticasAsync(Guid id)
         {
-            // Stub: no repo method; devuelve estructura básica
             var u = await _usuarioRepository.GetByIdAsync(id);
             if (u == null) return null;
+
+            var totalUsuarios = await _usuarioRepository.GetTotalUsuariosAsync();
+            var activos = await _usuarioRepository.GetTotalUsuariosActivosAsync();
+            var online = await _usuarioRepository.GetTotalUsuariosEnLineaAsync();
+            var conversacionesHoy = await _usuarioRepository.GetConversacionesHoyAsync();
+
             return new UsuarioEstadisticasDto
             {
                 UsuarioId = id,
                 UltimaConexion = u.dUsuariosChatUltimaConexion,
                 TotalMensajes = 0,
                 TotalContactos = 0,
-                ConversacionesActivas = 0,
+                ConversacionesActivas = conversacionesHoy,
                 ConversacionesArchivadas = 0,
                 TokensActivos = 0,
                 TokensRevocados = 0
@@ -151,20 +163,22 @@ namespace ChatModularMicroservice.Domain
 
         public async Task<int> ObtenerTotalUsuariosAsync()
         {
-            var usuarios = await _usuarioRepository.GetAllAsync();
-            return usuarios.Count();
+            return await _usuarioRepository.GetTotalUsuariosAsync();
         }
 
         public async Task<int> ObtenerTotalUsuariosActivosAsync()
         {
-            var usuarios = await _usuarioRepository.GetAllAsync();
-            return usuarios.Count(u => u.bUsuariosChatEstaActivo);
+            return await _usuarioRepository.GetTotalUsuariosActivosAsync();
         }
 
         public async Task<int> ObtenerTotalUsuariosEnLineaAsync()
         {
-            var usuarios = await _usuarioRepository.GetAllAsync();
-            return usuarios.Count(u => u.bUsuariosChatEstaEnLinea);
+            return await _usuarioRepository.GetTotalUsuariosEnLineaAsync();
+        }
+
+        public async Task<int> ObtenerConversacionesHoyAsync()
+        {
+            return await _usuarioRepository.GetConversacionesHoyAsync();
         }
 
         private static UsuarioDto MapToDto(ChatModularMicroservice.Entities.Models.Usuario u)

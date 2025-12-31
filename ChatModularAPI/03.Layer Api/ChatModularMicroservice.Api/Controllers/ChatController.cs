@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ChatModularMicroservice.Domain;
+using Microsoft.AspNetCore.SignalR;
+using ChatModularMicroservice.Api.Hubs;
 using ChatModularMicroservice.Entities.DTOs;
 
 namespace ChatModularMicroservice.Api.Controllers;
@@ -10,11 +12,13 @@ public class ChatController : ControllerBase
 {
     private readonly IChatService _chatService;
     private readonly ILogger<ChatController> _logger;
+    private readonly IHubContext<ChatHub> _hubContext;
 
-    public ChatController(IChatService chatService, ILogger<ChatController> logger)
+    public ChatController(IChatService chatService, ILogger<ChatController> logger, IHubContext<ChatHub> hubContext)
     {
         _chatService = chatService;
         _logger = logger;
+        _hubContext = hubContext;
     }
 
     [HttpGet("conversations")]
@@ -100,6 +104,13 @@ public class ChatController : ControllerBase
             conversationDto.cAppCodigo = appCode;
 
             var conversation = await _chatService.CreateConversationAsync(userId, conversationDto);
+            await _hubContext.Clients.Group($"app_{appCode}").SendAsync("ConversationCreated", conversation);
+            var participants = await _chatService.GetConversationParticipantsAsync(conversation.nConversacionesChatId);
+            foreach (var p in participants)
+            {
+                var pid = p.cUsuariosChatId;
+                await _hubContext.Clients.Group($"user_{pid}").SendAsync("ConversationCreated", conversation);
+            }
             return Ok(conversation);
         }
         catch (Exception ex)

@@ -23,116 +23,82 @@ public class ConfiguracionEmpresaServiceAdapter : IConfiguracionEmpresaService
 
     public async Task<List<ConfiguracionEmpresaDto>> GetAllAsync()
     {
-        var filter = new ConfiguracionEmpresaFilter();
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByEmpresa, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.GetAllAsync();
     }
 
     public async Task<ConfiguracionEmpresaDto?> GetByIdAsync(int id)
     {
-        var filter = new ConfiguracionEmpresaFilter { nConfiguracionEmpresaId = id };
-        var configuracion = await _configuracionEmpresaRepository.GetItem(filter, ConfiguracionEmpresaFilterItemType.ById);
-        return configuracion == null ? null : ToDto(configuracion);
+        return await _configuracionEmpresaRepository.GetByIdAsync(id);
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAsync(int empresaId)
     {
-        var filter = new ConfiguracionEmpresaFilter { nConfiguracionEmpresaEmpresaId = empresaId };
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByEmpresa, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.GetByEmpresaAsync(empresaId);
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> GetByAplicacionAsync(int aplicacionId)
     {
-        var filter = new ConfiguracionEmpresaFilter { nConfiguracionEmpresaTipoConfiguracionId = aplicacionId };
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByTipoConfiguracion, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.GetByAplicacionAsync(aplicacionId);
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAndAplicacionAsync(int empresaId, int aplicacionId)
     {
-        var filter = new ConfiguracionEmpresaFilter { nConfiguracionEmpresaEmpresaId = empresaId };
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByEmpresa, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.GetByEmpresaAndAplicacionAsync(empresaId, aplicacionId);
     }
 
     public async Task<ConfiguracionEmpresaDto?> GetByClaveAsync(string clave, int empresaId, int aplicacionId)
     {
-        var filter = new ConfiguracionEmpresaFilter { cConfiguracionEmpresaValor = clave, nConfiguracionEmpresaEmpresaId = empresaId };
-        var configuracion = await _configuracionEmpresaRepository.GetItem(filter, ConfiguracionEmpresaFilterItemType.ByValor);
-        return configuracion == null ? null : ToDto(configuracion);
+        return await _configuracionEmpresaRepository.GetByClaveAsync(clave, empresaId, aplicacionId);
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> GetActivasAsync()
     {
-        var filter = new ConfiguracionEmpresaFilter { bConfiguracionEmpresaEsActiva = true };
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByActivas, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.GetActivasAsync();
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> SearchAsync(string terminoBusqueda)
     {
-        var filter = new ConfiguracionEmpresaFilter { cConfiguracionEmpresaValor = terminoBusqueda };
-        var configuraciones = await _configuracionEmpresaRepository.GetLstItem(filter, ConfiguracionEmpresaFilterListType.ByPagination, new Pagination { currentPage = 1, pageSize = 1000 });
-        return configuraciones.Select(ToDto).ToList();
+        return await _configuracionEmpresaRepository.SearchAsync(terminoBusqueda);
     }
 
     public async Task<List<ConfiguracionEmpresaAgrupadaDto>> GetAgrupadasAsync(int empresaId, int aplicacionId)
     {
-        // TODO: Implementar método de agrupación cuando esté disponible en el repositorio
-        // Por ahora retornar lista vacía como placeholder
-        return new List<ConfiguracionEmpresaAgrupadaDto>();
+        return await _configuracionEmpresaRepository.GetAgrupadasAsync();
     }
 
     public async Task<ConfiguracionEmpresaDto> CreateAsync(CreateConfiguracionEmpresaDto createDto)
     {
-        var configuracion = await _configuracionEmpresaRepository.CreateConfiguracionEmpresaAsync(ToEntity(createDto));
-        return ToDto(configuracion);
+        return await _configuracionEmpresaRepository.CreateAsync(createDto);
     }
 
     public async Task<ConfiguracionEmpresaDto?> UpdateAsync(int id, UpdateConfiguracionEmpresaDto updateDto)
     {
-        var existingConfig = await GetByIdAsync(id);
-        if (existingConfig == null) return null;
-        
-        var entity = ToEntity(updateDto);
-        entity.nConfigEmpresaId = id;
-        
-        var result = await _configuracionEmpresaRepository.UpdateConfiguracionEmpresaAsync(entity);
-        return result != null ? existingConfig : null;
+        return await _configuracionEmpresaRepository.UpdateAsync(id, updateDto);
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        return await _configuracionEmpresaRepository.DeleteConfiguracionEmpresaAsync(id.ToString());
+        return await _configuracionEmpresaRepository.DeleteAsync(id);
     }
 
     public async Task<bool> ExistsByClaveAsync(string clave, int empresaId, int aplicacionId)
     {
-        var filter = new ConfiguracionEmpresaFilter { cConfiguracionEmpresaValor = $"{clave}_{empresaId}_{aplicacionId}" };
-        var configuracion = await _configuracionEmpresaRepository.GetItem(filter, ConfiguracionEmpresaFilterItemType.ByValor);
-        return configuracion != null;
+        return await _configuracionEmpresaRepository.ExistsByClaveAsync(clave, empresaId, aplicacionId);
     }
 
     public async Task<List<ConfiguracionEmpresaDto>> CopiarConfiguracionesDeAplicacionAsync(int empresaId, int aplicacionId)
     {
-        // TODO: Implementar método de copia cuando esté disponible en el repositorio
-        // Por ahora retornar lista vacía como placeholder
-        return new List<ConfiguracionEmpresaDto>();
+        return await _configuracionEmpresaRepository.CopiarConfiguracionesDeAplicacionAsync(empresaId, aplicacionId);
     }
 
     public async Task<bool> RestaurarConfiguracionesPorDefectoAsync(int empresaId, int aplicacionId)
     {
-        // TODO: Implementar método de restauración cuando esté disponible en el repositorio
-        // Por ahora retornar false como placeholder
-        return false;
+        return await _configuracionEmpresaRepository.RestaurarConfiguracionesPorDefectoAsync(empresaId, aplicacionId);
     }
 
     public async Task<List<ConfiguracionHeredadaDto>> GetConfiguracionesHeredadasAsync(int empresaId, int aplicacionId)
     {
-        // TODO: Implementar método de configuraciones heredadas cuando esté disponible en el repositorio
-        // Por ahora retornar lista vacía como placeholder
-        return new List<ConfiguracionHeredadaDto>();
+        return await _configuracionEmpresaRepository.GetConfiguracionesHeredadasAsync(empresaId, aplicacionId);
     }
 
     private ConfiguracionEmpresaDto ToDto(ChatModularMicroservice.Entities.Models.ConfiguracionEmpresa configuracion)

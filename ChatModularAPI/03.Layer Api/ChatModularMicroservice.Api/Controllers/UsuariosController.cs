@@ -29,16 +29,32 @@ public class UsuariosController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<UsuarioDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<UsuarioDto>>> ObtenerTodos()
+    public async Task<ActionResult<IEnumerable<UsuarioDto>>> ObtenerTodos(
+        [FromQuery] string? search,
+        [FromQuery] int? empresaId,
+        [FromQuery] int? aplicacionId,
+        [FromQuery] string? estado,
+        [FromQuery] bool? esActivo,
+        [FromQuery] int page = 1,
+        [FromQuery] int limit = 50)
     {
         try
         {
-            var usuarios = await _usuarioService.ObtenerTodosAsync();
+            var filtros = new BuscarUsuarioDto
+            {
+                cTerminoBusqueda = search,
+                nEmpresasId = empresaId,
+                nAplicacionesId = aplicacionId,
+                cUsuariosEstado = estado,
+                bUsuariosEsActivo = esActivo
+            };
+
+            var usuarios = await _usuarioService.BuscarUsuariosAsync(filtros);
             return Ok(usuarios);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error al obtener todos los usuarios");
+            _logger.LogError(ex, "Error al obtener usuarios con filtros");
             return StatusCode(500, "Error interno del servidor");
         }
     }
@@ -615,6 +631,26 @@ public class UsuariosController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error al obtener total de usuarios en línea");
+            return StatusCode(500, "Error interno del servidor");
+        }
+    }
+
+    /// <summary>
+    /// Obtiene el total de conversaciones con actividad hoy
+    /// </summary>
+    [HttpGet("estadisticas/conversaciones-hoy")]
+    [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult<int>> ObtenerConversacionesHoy()
+    {
+        try
+        {
+            var total = await _usuarioService.ObtenerConversacionesHoyAsync();
+            return Ok(total);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al obtener total de conversaciones de hoy");
             return StatusCode(500, "Error interno del servidor");
         }
     }

@@ -1,5 +1,6 @@
 using ChatModularMicroservice.Entities.Models;
 using ChatModularMicroservice.Entities;
+using ChatModularMicroservice.Entities.DTOs;
 using Utils = ChatModularMicroservice.Shared.Utils;
 
 namespace ChatModularMicroservice.Repository;
@@ -11,32 +12,28 @@ public interface IConfiguracionEmpresaRepository : IDeleteIntRepository, IInsert
 {
     Task<ConfiguracionEmpresa> GetItem(ConfiguracionEmpresaFilter filter, ConfiguracionEmpresaFilterItemType filterType);
     Task<IEnumerable<ConfiguracionEmpresa>> GetLstItem(ConfiguracionEmpresaFilter filter, ConfiguracionEmpresaFilterListType filterType, Utils.Pagination pagination);
-    
-    /// <summary>
-    /// Crea una nueva configuración de empresa de forma asíncrona
-    /// </summary>
-    /// <param name="configuracionEmpresa">Configuración de empresa a crear</param>
-    /// <returns>La configuración de empresa creada</returns>
+
+    Task<List<ConfiguracionEmpresaDto>> GetAllAsync();
+    Task<ConfiguracionEmpresaDto?> GetByIdAsync(int id);
+    Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAsync(int empresaId);
+    Task<List<ConfiguracionEmpresaDto>> GetByAplicacionAsync(int aplicacionId);
+    Task<List<ConfiguracionEmpresaDto>> GetByEmpresaAndAplicacionAsync(int empresaId, int aplicacionId);
+    Task<ConfiguracionEmpresaDto?> GetByClaveAsync(string clave, int empresaId, int aplicacionId);
+    Task<List<ConfiguracionEmpresaDto>> GetActivasAsync();
+    Task<List<ConfiguracionEmpresaDto>> SearchAsync(string searchTerm);
+    Task<List<ConfiguracionEmpresaAgrupadaDto>> GetAgrupadasAsync();
+    Task<List<ConfiguracionHeredadaDto>> GetConfiguracionesHeredadasAsync(int empresaId, int aplicacionId);
+
+    Task<ConfiguracionEmpresaDto> CreateAsync(CreateConfiguracionEmpresaDto createDto);
+    Task<ConfiguracionEmpresaDto> UpdateAsync(int id, UpdateConfiguracionEmpresaDto updateDto);
+    Task<bool> DeleteAsync(int id);
+    Task<bool> ExistsByClaveAsync(string clave, int empresaId, int aplicacionId);
+    Task<bool> ExistsAsync(int id);
+    Task<List<ConfiguracionEmpresaDto>> CopiarConfiguracionesDeAplicacionAsync(int empresaId, int aplicacionId);
+    Task<bool> RestaurarConfiguracionesPorDefectoAsync(int empresaId, int aplicacionId);
+
     Task<ConfiguracionEmpresa> CreateConfiguracionEmpresaAsync(ConfiguracionEmpresa configuracionEmpresa);
-    
-    /// <summary>
-    /// Actualiza una configuración de empresa de forma asíncrona
-    /// </summary>
-    /// <param name="configuracionEmpresa">Configuración de empresa a actualizar</param>
-    /// <returns>True si la actualización fue exitosa</returns>
     Task<bool> UpdateConfiguracionEmpresaAsync(ConfiguracionEmpresa configuracionEmpresa);
-    
-    /// <summary>
-    /// Elimina una configuración de empresa de forma asíncrona
-    /// </summary>
-    /// <param name="configuracionId">ID de la configuración a eliminar</param>
-    /// <returns>True si la eliminación fue exitosa</returns>
     Task<bool> DeleteConfiguracionEmpresaAsync(string configuracionId);
-    
-    /// <summary>
-    /// Verifica si existe una configuración de empresa
-    /// </summary>
-    /// <param name="configuracionId">ID de la configuración a verificar</param>
-    /// <returns>True si la configuración existe</returns>
     Task<bool> ConfiguracionEmpresaExistsAsync(string configuracionId);
 }

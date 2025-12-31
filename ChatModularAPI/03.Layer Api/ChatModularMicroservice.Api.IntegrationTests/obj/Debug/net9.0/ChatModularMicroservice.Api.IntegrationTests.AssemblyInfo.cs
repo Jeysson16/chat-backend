@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChatModularMicroservice.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ba474aa3154d111eedbaff54ae2cea7a07c4db3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChatModularMicroservice.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChatModularMicroservice.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

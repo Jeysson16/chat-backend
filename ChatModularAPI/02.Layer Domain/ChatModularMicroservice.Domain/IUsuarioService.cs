@@ -27,5 +27,6 @@ namespace ChatModularMicroservice.Domain
         Task<int> ObtenerTotalUsuariosAsync();
         Task<int> ObtenerTotalUsuariosActivosAsync();
         Task<int> ObtenerTotalUsuariosEnLineaAsync();
+        Task<int> ObtenerConversacionesHoyAsync();
     }
 }

@@ -11,9 +11,8 @@ namespace ChatModularMicroservice.Entities.DTOs
         public int nEmpresasAplicacionId { get; set; }
         
         [DataMember(EmitDefaultValue = false)]
-        [Required(ErrorMessage = "El nombre de la empresa es requerido")]
         [StringLength(100, ErrorMessage = "El nombre no puede exceder 100 caracteres")]
-        public string cEmpresasNombre { get; set; } = string.Empty;
+        public string? cEmpresasNombre { get; set; }
         
         [DataMember(EmitDefaultValue = false)]
         [Required(ErrorMessage = "El código de la empresa es requerido")]

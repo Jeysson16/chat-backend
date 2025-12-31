@@ -24,6 +24,10 @@ public interface IUsuarioRepository : IDeleteIntRepository, IInsertIntRepository
     Task<IEnumerable<ChatModularMicroservice.Entities.Models.Usuario>> GetByFilterAsync(UsuarioFilter filter);
     Task<IEnumerable<ChatModularMicroservice.Entities.Models.Usuario>> SearchUsersAsync(string searchTerm);
     Task<ChatModularMicroservice.Entities.Models.Usuario?> GetByUsuariosChatIdAsync(string cUsuariosChatId);
+    Task<int> GetConversacionesHoyAsync();
+    Task<int> GetTotalUsuariosAsync();
+    Task<int> GetTotalUsuariosActivosAsync();
+    Task<int> GetTotalUsuariosEnLineaAsync();
     /// <summary>
     /// Actualiza la última conexión del usuario
     /// </summary>

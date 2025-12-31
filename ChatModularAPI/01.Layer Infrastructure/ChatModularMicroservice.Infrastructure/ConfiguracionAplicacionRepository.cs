@@ -565,6 +565,8 @@ public class ConfiguracionAplicacionRepository : SupabaseRepository, IConfigurac
     {
         return new ConfiguracionAplicacionUnificadaDto
         {
+            nConfiguracionAplicacionId = entity.NConfiguracionAplicacionId,
+            nAplicacionesId = entity.NAplicacionesId,
             // Configuraciones de Adjuntos
             nAdjuntosMaxTamanoArchivo = entity.NMaxTamanoArchivo ?? 10485760,
             cAdjuntosTiposArchivosPermitidos = entity.CTiposArchivosPermitidos ?? "jpg,jpeg,png,gif,pdf,doc,docx,txt",

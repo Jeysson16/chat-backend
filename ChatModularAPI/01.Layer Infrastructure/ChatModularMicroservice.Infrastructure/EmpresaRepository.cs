@@ -106,9 +106,10 @@ namespace ChatModularMicroservice.Infrastructure
 
         public async Task<EmpresaDto> CreateEmpresaAsync(CreateEmpresaDto createDto)
         {
+            var nombre = string.IsNullOrWhiteSpace(createDto.cEmpresasNombre) ? createDto.cEmpresasCodigo : createDto.cEmpresasNombre!;
             var empresa = new Empresa
             {
-                cEmpresasNombre = createDto.cEmpresasNombre,
+                cEmpresasNombre = nombre,
                 cEmpresasCodigo = createDto.cEmpresasCodigo,
                 nEmpresasAplicacionId = createDto.nEmpresasAplicacionId,
                 bEmpresasEsActiva = createDto.bEmpresasActiva

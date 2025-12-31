@@ -63,17 +63,7 @@ namespace ChatModularMicroservice.Infrastructure
 
         public async Task<Application?> GetApplicationByCodeAsync(string code)
         {
-            try
-            {
-                var parameters = new { cAplicacionesCodigo = code };
-                var result = await ExecuteStoredProcedureListAsync<Application>("USP_Application_GetByCode", parameters, "ChatModularMicroservice");
-                if (result.isSuccess && result.lstItem != null)
-                {
-                    return result.lstItem.Cast<Application>().FirstOrDefault();
-                }
-            }
-            catch { }
-
+            // Usar consulta directa a la tabla de Supabase; evitamos RPC inexistente
             var res = await _supabaseClient
                 .From<Application>()
                 .Filter("cAplicacionesCodigo", Constants.Operator.Equals, code)

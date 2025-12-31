@@ -19,6 +19,7 @@ D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entit
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.csproj.AssemblyReference.cache
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.GeneratedMSBuildEditorConfig.editorconfig
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.sourcelink.json
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.dll
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\refint\ChatModularMicroservice.Entities.dll
 D:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Entities\obj\Debug\net8.0\ChatModularMicroservice.Entities.pdb

@@ -9,12 +9,14 @@ public class ChatHub : Hub
 {
     private readonly IChatService _chatService;
     private readonly ITokenService _tokenService;
+    private readonly ChatModularMicroservice.Api.Webhooks.IWebhookService _webhookService;
     private readonly ILogger<ChatHub> _logger;
 
-    public ChatHub(IChatService chatService, ITokenService tokenService, ILogger<ChatHub> logger)
+    public ChatHub(IChatService chatService, ITokenService tokenService, ChatModularMicroservice.Api.Webhooks.IWebhookService webhookService, ILogger<ChatHub> logger)
     {
         _chatService = chatService;
         _tokenService = tokenService;
+        _webhookService = webhookService;
         _logger = logger;
     }
 
@@ -271,31 +273,167 @@ public class ChatHub : Hub
         }
     }
 
-    public async Task SendMessage(EnviarMensajeDto messageDto)
+    public async Task StartTyping(long conversationId)
     {
         try
         {
             var userId = Context.Items["UserId"]?.ToString();
-
+            var userName = Context.Items["UserName"]?.ToString();
             if (string.IsNullOrEmpty(userId))
             {
                 await Clients.Caller.SendAsync("Error", "Invalid user context");
                 return;
             }
 
+            await Clients.OthersInGroup($"conversation_{conversationId}").SendAsync("UserTyping", new
+            {
+                conversationId = conversationId,
+                userId = userId,
+                userName = userName,
+                isTyping = true,
+                timestamp = DateTime.UtcNow
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error emitting typing start for conversation {ConversationId}", conversationId);
+            await Clients.Caller.SendAsync("Error", "Error emitting typing start");
+        }
+    }
+
+    public async Task StopTyping(long conversationId)
+    {
+        try
+        {
+            var userId = Context.Items["UserId"]?.ToString();
+            var userName = Context.Items["UserName"]?.ToString();
+            if (string.IsNullOrEmpty(userId))
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid user context");
+                return;
+            }
+
+            await Clients.OthersInGroup($"conversation_{conversationId}").SendAsync("UserTyping", new
+            {
+                conversationId = conversationId,
+                userId = userId,
+                userName = userName,
+                isTyping = false,
+                timestamp = DateTime.UtcNow
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error emitting typing stop for conversation {ConversationId}", conversationId);
+            await Clients.Caller.SendAsync("Error", "Error emitting typing stop");
+        }
+    }
+
+    public async Task<ChatModularMicroservice.Entities.DTOs.ChatMensajeDto> SendMessage(EnviarMensajeDto messageDto)
+    {
+            try
+            {
+                var userId = Context.Items["UserId"]?.ToString();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid user context");
+                return default!;
+            }
+
             // Send message through service
             var message = await _chatService.SendMessageAsync(userId, messageDto);
 
-            // Broadcast message to conversation participants
-            await Clients.Group($"conversation_{messageDto.nConversacionesChatId}").SendAsync("ReceiveMessage", message);
+            // Broadcast message to other conversation participants (exclude sender to avoid duplicates)
+            await Clients.OthersInGroup($"conversation_{messageDto.nConversacionesChatId}").SendAsync("ReceiveMessage", message);
+
+            // Emit targeted delivery ack to sender
+            await Clients.Group($"user_{userId}").SendAsync("MessageDelivered", new
+            {
+                messageId = message.nMensajesChatId,
+                deliveredAt = DateTime.UtcNow
+            });
+
+            // Notify other participants with an alert event
+            var participants = await _chatService.GetConversationParticipantsAsync(messageDto.nConversacionesChatId);
+            foreach (var p in participants)
+            {
+                var pid = p.cUsuariosChatId;
+                if (!string.Equals(pid, userId, StringComparison.OrdinalIgnoreCase))
+                {
+                    await Clients.Group($"user_{pid}").SendAsync("NewMessageAlert", new
+                    {
+                        conversationId = messageDto.nConversacionesChatId,
+                        messageId = message.nMensajesChatId,
+                        senderId = userId,
+                        senderName = Context.Items["UserName"]?.ToString(),
+                        preview = message.cMensajesChatTexto,
+                        timestamp = message.dMensajesChatFechaHora
+                    });
+                }
+            }
+
+            // Webhook hacia la aplicación si hay URL configurada
+            var appCode = Context.Items["AppCode"]?.ToString() ?? string.Empty;
+            var appUrl = await _webhookService.ObtenerUrlAplicacionAsync(appCode);
+            if (!string.IsNullOrWhiteSpace(appUrl))
+            {
+                var payload = new {
+                    conversationId = messageDto.nConversacionesChatId,
+                    messageId = message.nMensajesChatId,
+                    senderId = userId,
+                    senderName = Context.Items["UserName"]?.ToString(),
+                    text = message.cMensajesChatTexto,
+                    type = message.cMensajesChatTipo,
+                    timestamp = message.dMensajesChatFechaHora
+                };
+                var webhookUrl = appUrl.TrimEnd('/') + "/api/v1/webhook/mensajes";
+                _ = _webhookService.EnviarWebhookAsync(webhookUrl, payload, "chat.message.created");
+            }
 
             _logger.LogInformation("Message sent by user {UserId} to conversation {ConversationId}", 
                 userId, messageDto.nConversacionesChatId);
+            return message;
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error sending message to conversation {ConversationId}", messageDto.nConversacionesChatId);
             await Clients.Caller.SendAsync("Error", "Error sending message");
+            return default!;
+        }
+        }
+
+    public async Task<ChatConversacionDto> CreateConversation(CrearConversacionDto conversationDto)
+    {
+        try
+        {
+            var userId = Context.Items["UserId"]?.ToString();
+            var appCode = Context.Items["AppCode"]?.ToString();
+
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(appCode))
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid user or app context");
+                return default!;
+            }
+
+            var conversation = await _chatService.CreateConversationAsync(userId, conversationDto);
+
+            await Clients.Group($"app_{appCode}").SendAsync("ConversationCreated", conversation);
+
+            var participants = await _chatService.GetConversationParticipantsAsync(conversation.nConversacionesChatId);
+            foreach (var p in participants)
+            {
+                var pid = p.cUsuariosChatId;
+                await Clients.Group($"user_{pid}").SendAsync("ConversationCreated", conversation);
+            }
+
+            return conversation;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating conversation");
+            await Clients.Caller.SendAsync("Error", "Error creating conversation");
+            return default!;
         }
     }
 
@@ -328,6 +466,28 @@ public class ChatHub : Hub
         {
             _logger.LogError(ex, "Error marking messages as read for conversation {ConversationId}", conversationId);
             await Clients.Caller.SendAsync("Error", "Error marking messages as read");
+        }
+    }
+
+    public async Task<List<ChatMensajeDto>> GetConversationMessages(long conversationId, int page = 1, int pageSize = 50)
+    {
+        try
+        {
+            var userId = Context.Items["UserId"]?.ToString();
+            if (string.IsNullOrEmpty(userId))
+            {
+                await Clients.Caller.SendAsync("Error", "Invalid user context");
+                return new List<ChatMensajeDto>();
+            }
+
+            var messages = await _chatService.GetConversationMessagesAsync(conversationId, page, pageSize);
+            return messages;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error getting messages for conversation {ConversationId}", conversationId);
+            await Clients.Caller.SendAsync("Error", "Error getting messages");
+            return new List<ChatMensajeDto>();
         }
     }
 

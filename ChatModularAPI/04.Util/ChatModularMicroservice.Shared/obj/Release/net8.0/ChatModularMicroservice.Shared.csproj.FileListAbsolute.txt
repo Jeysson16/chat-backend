@@ -8,3 +8,4 @@ D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Re
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Release\net8.0\refint\ChatModularMicroservice.Shared.dll
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Release\net8.0\ChatModularMicroservice.Shared.pdb
 D:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Release\net8.0\ref\ChatModularMicroservice.Shared.dll
+d:\Chat\ChatBackend\ChatModularAPI\04.Util\ChatModularMicroservice.Shared\obj\Release\net8.0\ChatModularMicroservice.Shared.sourcelink.json

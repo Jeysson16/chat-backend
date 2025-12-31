@@ -15,6 +15,7 @@ D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservi
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModularMicroservice.Infrastructure.csproj.AssemblyReference.cache
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModularMicroservice.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModularMicroservice.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModularMicroservice.Infrastructure.sourcelink.json
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModu.D261371D.Up2Date
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\ChatModularMicroservice.Infrastructure.dll
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Debug\net8.0\refint\ChatModularMicroservice.Infrastructure.dll

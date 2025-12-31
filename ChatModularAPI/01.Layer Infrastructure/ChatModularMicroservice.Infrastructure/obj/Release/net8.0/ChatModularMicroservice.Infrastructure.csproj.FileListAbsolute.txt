@@ -17,3 +17,4 @@ d:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservi
 d:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Release\net8.0\refint\ChatModularMicroservice.Infrastructure.dll
 d:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Release\net8.0\ChatModularMicroservice.Infrastructure.pdb
 D:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Release\net8.0\ref\ChatModularMicroservice.Infrastructure.dll
+d:\Chat\ChatBackend\ChatModularAPI\01.Layer Infrastructure\ChatModularMicroservice.Infrastructure\obj\Release\net8.0\ChatModularMicroservice.Infrastructure.sourcelink.json

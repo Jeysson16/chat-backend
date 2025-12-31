@@ -13,5 +13,6 @@ namespace ChatModularMicroservice.Domain
         Task<EmpresaDto> UpdateEmpresaAsync(int id, UpdateEmpresaDto updateEmpresaDto);
         Task<bool> DeleteEmpresaAsync(int id);
         Task<bool> ExistsEmpresaByCodigoAsync(string codigo, int? excludeId = null);
+        Task<List<EmpresaDto>> GetEmpresasByAplicacionAsync(int aplicacionId);
     }
 }

@@ -16,6 +16,12 @@ public class UsuarioSupabase : BaseModel
     [Column("nUsuariosId")]
     public string nUsuariosId { get; set; } = string.Empty;
 
+    [Column("nUsuariosEmpresaId")]
+    public int? nUsuariosEmpresaId { get; set; }
+
+    [Column("nUsuariosAplicacionId")]
+    public int? nUsuariosAplicacionId { get; set; }
+
     [Column("cUsuariosNombre")]
     public string cUsuariosNombre { get; set; } = string.Empty;
 

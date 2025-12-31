@@ -15,3 +15,4 @@ d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domai
 d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\refint\ChatModularMicroservice.Domain.dll
 d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.pdb
 d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ref\ChatModularMicroservice.Domain.dll
+d:\Chat\ChatBackend\ChatModularAPI\02.Layer Domain\ChatModularMicroservice.Domain\obj\Release\net8.0\ChatModularMicroservice.Domain.sourcelink.json

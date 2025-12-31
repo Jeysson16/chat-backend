@@ -70,6 +70,20 @@ public class WebhookService : IWebhookService
         }
     }
 
+    public async Task<string?> ObtenerUrlAplicacionAsync(string codigoAplicacion)
+    {
+        try
+        {
+            var app = await _appRepository.GetByCodeAsync(codigoAplicacion);
+            return app?.cAppUrl;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error obteniendo URL de aplicación {AppCode}", codigoAplicacion);
+            return null;
+        }
+    }
+
     public async Task<string> GenerarSignaturaAsync(string payload, string secreto)
     {
         return await Task.FromResult(GenerateSignature(payload, secreto));

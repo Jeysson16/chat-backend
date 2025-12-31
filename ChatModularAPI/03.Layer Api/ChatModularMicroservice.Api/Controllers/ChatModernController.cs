@@ -21,14 +21,16 @@ namespace ChatModularMicroservice.Api.Controllers;
 public class ChatModernController : BaseController
 {
     private readonly IChatService _chatService;
+    private readonly IHubContext<ChatModularMicroservice.Api.Hubs.ChatHub> _hubContext;
     private readonly IFileStorageService _fileStorageService;
     private readonly IConfiguracionAplicacionUnificadaService _configService;
 
-    public ChatModernController(IChatService chatService, IFileStorageService fileStorageService, IConfiguracionAplicacionUnificadaService configService, ILogger<ChatModernController> logger) : base(logger)
+    public ChatModernController(IChatService chatService, IFileStorageService fileStorageService, IConfiguracionAplicacionUnificadaService configService, IHubContext<ChatModularMicroservice.Api.Hubs.ChatHub> hubContext, ILogger<ChatModernController> logger) : base(logger)
     {
         _chatService = chatService;
         _fileStorageService = fileStorageService;
         _configService = configService;
+        _hubContext = hubContext;
     }
 
     /// <summary>
@@ -89,32 +91,38 @@ public class ChatModernController : BaseController
             var fileName = Path.GetFileName(file.FileName);
             var extension = Path.GetExtension(fileName).Trim('.').ToLowerInvariant();
 
-            var permitidos = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                // Imágenes
-                "jpg","jpeg","png","gif","bmp","webp","svg",
-                // Documentos
-                "pdf","doc","docx","xls","xlsx","ppt","pptx","txt","rtf","csv","xml","json",
-                // Video
-                "mp4","avi","mov","wmv","flv","webm",
-                // Audio
-                "mp3","wav","ogg","m4a","flac",
-                // Comprimidos
-                "zip","rar","7z","tar","gz"
-            };
+            // Obtener configuración unificada y derivar configuración de adjuntos
+            var cfg = !string.IsNullOrWhiteSpace(appCode)
+                ? await _configService.ObtenerConfiguracionPorCodigoAsync(appCode)
+                : null;
 
-            if (!permitidos.Contains(extension))
+            var tipos = (cfg?.cAdjuntosTiposArchivosPermitidos ?? string.Empty)
+                .Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => s.ToLowerInvariant())
+                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            if (tipos.Count > 0 && !tipos.Contains(extension))
             {
-                return BadRequest(CreateErrorResponse($"Tipo de archivo no permitido: .{extension}", GetClientName(), GetUserName()));
+                return BadRequest(CreateErrorResponse($"Tipo de archivo no permitido por configuración: .{extension}", GetClientName(), GetUserName()));
             }
 
-            if (file.Length > 104_857_600)
+            // Determinar límites de tamaño
+            var mime = (file.ContentType ?? string.Empty).ToLowerInvariant();
+            bool esImagen = mime.StartsWith("image/") || new[] { "jpg","jpeg","png","gif","bmp","webp","svg" }.Contains(extension);
+            bool esVideo = mime.StartsWith("video/") || new[] { "mp4","avi","mov","wmv","flv","webm" }.Contains(extension);
+            bool esAudio = mime.StartsWith("audio/") || new[] { "mp3","wav","ogg","m4a","flac" }.Contains(extension);
+
+            long maxGeneral = (cfg?.nAdjuntosMaxTamanoArchivo > 0 ? cfg.nAdjuntosMaxTamanoArchivo : 104_857_600);
+            long maxPorTipo = maxGeneral;
+
+            if (file.Length > maxPorTipo)
             {
-                return BadRequest(CreateErrorResponse("El archivo excede el tamaño máximo permitido (100MB)", GetClientName(), GetUserName()));
+                return BadRequest(CreateErrorResponse($"El archivo excede el tamaño máximo permitido ({maxPorTipo / (1024 * 1024)}MB)", GetClientName(), GetUserName()));
             }
 
             await using var stream = file.OpenReadStream();
-            var attachment = await _fileStorageService.UploadAsync(stream, fileName, file.ContentType, appCode ?? string.Empty, conversationId.ToString());
+            var contentType = string.IsNullOrWhiteSpace(file.ContentType) ? "application/octet-stream" : file.ContentType;
+            var attachment = await _fileStorageService.UploadAsync(stream, fileName, contentType, appCode ?? string.Empty, conversationId.ToString());
 
             return Ok(CreateSuccessResponse(attachment, GetClientName(), GetUserName()));
         }
@@ -211,6 +219,26 @@ public class ChatModernController : BaseController
     }
 
     /// <summary>
+    /// Obtiene los participantes de una conversación
+    /// </summary>
+    /// <param name="conversationId">ID de la conversación</param>
+    /// <returns>ResponseBase con lista de participantes</returns>
+    [HttpGet("conversations/{conversationId}/participants")]
+    public async Task<IActionResult> GetConversationParticipants(long conversationId)
+    {
+        try
+        {
+            var participants = await _chatService.GetConversationParticipantsAsync(conversationId);
+            return Ok(CreateSuccessResponse(participants, GetClientName(), GetUserName()));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al obtener participantes de la conversación: {ConversationId}", conversationId);
+            return HandleException(ex, GetClientName(), GetUserName());
+        }
+    }
+
+    /// <summary>
     /// Crea una nueva conversación
     /// </summary>
     /// <param name="crearConversacionDto">Datos de la conversación</param>
@@ -231,18 +259,33 @@ public class ChatModernController : BaseController
             }
 
             var userId = GetCurrentUserId();
-            
-            // Aquí iría la lógica para crear conversación
-            // var conversation = await _chatService.CreateConversationAsync(userId, createConversationDto);
-            
-            // Por ahora devolvemos un placeholder
-            var conversation = new ChatConversacionDto
+
+            // Completar appCode desde headers si no viene en el body
+            var appCode = Request.Headers["x-app-code"].FirstOrDefault() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(crearConversacionDto.cAppCodigo))
             {
-                cConversacionesChatNombre = crearConversacionDto.cConversacionesChatNombre,
-                dConversacionesChatFechaCreacion = DateTime.UtcNow,
-                bConversacionesChatEstaActiva = true
-            };
-            
+                crearConversacionDto.cAppCodigo = appCode;
+            }
+
+            var conversation = await _chatService.CreateConversationAsync(userId, crearConversacionDto);
+
+            // Emitir evento de creación vía SignalR al grupo de la aplicación
+            if (!string.IsNullOrWhiteSpace(appCode))
+            {
+                await _hubContext.Clients.Group($"app_{appCode}").SendAsync("ConversationCreated", conversation);
+            }
+
+            // Emitir evento de creación a cada participante (incluye creador si está en la lista)
+            var participants = await _chatService.GetConversationParticipantsAsync(conversation.nConversacionesChatId);
+            foreach (var p in participants)
+            {
+                var pid = p.cUsuariosChatId;
+                if (!string.IsNullOrWhiteSpace(pid))
+                {
+                    await _hubContext.Clients.Group($"user_{pid}").SendAsync("ConversationCreated", conversation);
+                }
+            }
+
             return Ok(CreateSuccessResponse(conversation, GetClientName(), GetUserName()));
         }
         catch (Exception ex)

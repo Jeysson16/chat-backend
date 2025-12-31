@@ -29,7 +29,7 @@ namespace ChatModularMicroservice.Domain
             
             try
             {
-                var conversations = await _chatRepository.GetUserConversationsAsync(appCode, userId);
+                var conversations = await _chatRepository.GetUserConversationsAsync(appCode, userId, perJurCodigo, 1, 50);
                 
                 // Convertir de ChatConversacion (modelo) a ChatConversacionDto
                 var conversationDtos = conversations.Select(conv => new ChatConversacionDto
@@ -89,16 +89,10 @@ namespace ChatModularMicroservice.Domain
             
             try
             {
-                // Convertir el userId string a Guid
-                if (!Guid.TryParse(userId, out var userGuid))
-                {
-                    throw new ArgumentException($"Invalid user ID format: {userId}", nameof(userId));
-                }
-                
                 var message = await _chatRepository.CreateMessageAsync(
-                    messageDto.nConversacionesChatId, 
-                    userGuid, 
-                    messageDto.cMensajesChatTexto, 
+                    messageDto.nConversacionesChatId,
+                    userId,
+                    messageDto.cMensajesChatTexto,
                     messageDto.cMensajesChatTipo ?? "text");
                 
                 // Convertir de ChatMensaje (modelo) a ChatMensajeDto
@@ -127,22 +121,38 @@ namespace ChatModularMicroservice.Domain
             
             try
             {
-                // Convertir el userId string a Guid
-                if (!Guid.TryParse(userId, out var userGuid))
+                // Unificar participantes desde el payload y asegurar inclusión del creador
+                var participantIds = new List<string>();
+
+                if (conversationDto.participante_ids != null)
                 {
-                    throw new ArgumentException($"Invalid user ID format: {userId}", nameof(userId));
+                    participantIds.AddRange(conversationDto.participante_ids);
                 }
-                
-                // Crear lista con el creador como único participante inicial
-                var participantGuids = new List<Guid> { userGuid };
-                
+                if (conversationDto.participantes != null)
+                {
+                    participantIds.AddRange(conversationDto.participantes);
+                }
+                if (!string.IsNullOrWhiteSpace(conversationDto.cConversacionesChatUsuarioCreadorId))
+                {
+                    participantIds.Add(conversationDto.cConversacionesChatUsuarioCreadorId);
+                }
+                participantIds.Add(userId);
+
+                // Normalizar y deduplicar
+                participantIds = participantIds
+                    .Where(id => !string.IsNullOrWhiteSpace(id))
+                    .Select(id => id.Trim())
+                    .Distinct(StringComparer.Ordinal)
+                    .ToList();
+
+                var type = string.IsNullOrWhiteSpace(conversationDto.cConversacionesChatTipo) ? "individual" : conversationDto.cConversacionesChatTipo;
+
                 var conversation = await _chatRepository.CreateConversationAsync(
                     conversationDto.cAppCodigo,
-                    conversationDto.cConversacionesChatNombre,
-                    conversationDto.cConversacionesChatTipo ?? "direct",
-                    participantGuids);
+                    string.IsNullOrWhiteSpace(conversationDto.cConversacionesChatNombre) ? conversationDto.Nombre : conversationDto.cConversacionesChatNombre,
+                    type,
+                    participantIds);
                 
-                // Convertir de ChatConversacion (modelo) a ChatConversacionDto
                 return new ChatConversacionDto
                 {
                     nConversacionesChatId = conversation.nConversacionesChatId,
@@ -167,13 +177,7 @@ namespace ChatModularMicroservice.Domain
             
             try
             {
-                // Convertir el userId string a Guid
-                if (!Guid.TryParse(userId, out var userGuid))
-                {
-                    throw new ArgumentException($"Invalid user ID format: {userId}", nameof(userId));
-                }
-                
-                var result = await _chatRepository.AddUserToConversationAsync(conversationId, userGuid);
+                var result = await _chatRepository.AddUserToConversationAsync(conversationId, userId);
                 return result;
             }
             catch (Exception ex)
@@ -189,13 +193,7 @@ namespace ChatModularMicroservice.Domain
             
             try
             {
-                // Convertir el userId string a Guid
-                if (!Guid.TryParse(userId, out var userGuid))
-                {
-                    throw new ArgumentException($"Invalid user ID format: {userId}", nameof(userId));
-                }
-                
-                var result = await _chatRepository.RemoveUserFromConversationAsync(conversationId, userGuid);
+                var result = await _chatRepository.RemoveUserFromConversationAsync(conversationId, userId);
                 return result;
             }
             catch (Exception ex)

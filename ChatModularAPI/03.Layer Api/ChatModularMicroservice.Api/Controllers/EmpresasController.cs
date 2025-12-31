@@ -136,6 +136,25 @@ namespace ChatModularMicroservice.Api.Controllers
         }
 
         /// <summary>
+        /// Obtiene empresas por aplicación
+        /// </summary>
+        /// <param name="aplicacionId">ID de la aplicación</param>
+        /// <returns>Lista de empresas asociadas a la aplicación</returns>
+        [HttpGet("aplicacion/{aplicacionId:int}")]
+        public async Task<IActionResult> GetEmpresasByAplicacion(int aplicacionId)
+        {
+            try
+            {
+                var empresas = await _empresaService.GetEmpresasByAplicacionAsync(aplicacionId);
+                return Ok(CreateSuccessResponse(empresas, GetClientName(), GetUserName()));
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex, GetClientName(), GetUserName());
+            }
+        }
+
+        /// <summary>
         /// Crea una nueva empresa
         /// </summary>
         /// <param name="createEmpresaDto">Datos de la empresa a crear</param>
@@ -237,6 +256,27 @@ namespace ChatModularMicroservice.Api.Controllers
                 var exists = await _empresaService.ExistsEmpresaByCodigoAsync(codigo, excludeId);
                 
                 return Ok(CreateSuccessResponse(new { exists }, GetClientName(), GetUserName()));
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex, GetClientName(), GetUserName());
+            }
+        }
+
+        /// <summary>
+        /// Verifica disponibilidad de código de empresa (respuesta uniforme para frontend)
+        /// </summary>
+        /// <param name="codigo">Código a verificar</param>
+        /// <param name="excludeId">ID a excluir (opcional)</param>
+        /// <returns>{ disponible: boolean }</returns>
+        [HttpGet("verificar-codigo")]
+        public async Task<IActionResult> VerificarCodigo([FromQuery] string codigo, [FromQuery] int? excludeId = null)
+        {
+            try
+            {
+                var exists = await _empresaService.ExistsEmpresaByCodigoAsync(codigo, excludeId);
+                var disponible = !exists;
+                return Ok(new { disponible });
             }
             catch (Exception ex)
             {

@@ -196,7 +196,11 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
         public async Task<IEnumerable<EmpresaDto>> SearchEmpresasAsync(string searchTerm)
         {
             var res = await _supabaseClient.From<Empresa>()
-                .Filter("cEmpresasNombre", Operator.ILike, $"%{searchTerm}%")
+                .Or(new List<Supabase.Postgrest.Interfaces.IPostgrestQueryFilter>
+                {
+                    new Supabase.Postgrest.QueryFilter("cEmpresasNombre", Supabase.Postgrest.Constants.Operator.ILike, $"%{searchTerm}%"),
+                    new Supabase.Postgrest.QueryFilter("cEmpresasCodigo", Supabase.Postgrest.Constants.Operator.ILike, $"%{searchTerm}%")
+                })
                 .Order("cEmpresasNombre", Ordering.Ascending)
                 .Get();
             var empresas = res.Models ?? new List<Empresa>();
@@ -222,9 +226,10 @@ namespace ChatModularMicroservice.Infrastructure.Repositories
 
         public async Task<EmpresaDto> CreateEmpresaAsync(CreateEmpresaDto createDto)
         {
+            var nombre = string.IsNullOrWhiteSpace(createDto.cEmpresasNombre) ? createDto.cEmpresasCodigo : createDto.cEmpresasNombre!;
             var empresa = new Empresa
             {
-                cEmpresasNombre = createDto.cEmpresasNombre,
+                cEmpresasNombre = nombre,
                 cEmpresasCodigo = createDto.cEmpresasCodigo,
                 nEmpresasAplicacionId = createDto.nEmpresasAplicacionId,
                 bEmpresasEsActiva = createDto.bEmpresasActiva

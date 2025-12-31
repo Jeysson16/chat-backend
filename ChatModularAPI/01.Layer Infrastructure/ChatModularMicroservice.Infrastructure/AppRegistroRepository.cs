@@ -24,7 +24,7 @@ public class AppRegistroRepository
             var result = await _supabaseClient
                 .From<AppRegistro>()
                 .Filter("nAppRegistrosAplicacionId", Operator.Equals, applicationId)
-                .Filter("bAppRegistrosEsActivo", Operator.Equals, true)
+                .Filter("bAppRegistrosEsActivo", Operator.Equals, "true")
                 .Get();
             
             return result.Models?.FirstOrDefault();
@@ -38,56 +38,40 @@ public class AppRegistroRepository
 
     public async Task<AppRegistro?> GetByCodeAsync(string appCode)
     {
-        // Tabla AppRegistros no existe, retornar objeto por defecto para SICOM_CHAT_2024
-        if (appCode == "SICOM_CHAT_2024")
+        try
         {
-            _logger.LogInformation("AppRegistros no existe, retornando configuración por defecto para: {AppCode}", appCode);
-            return new AppRegistro
-            {
-                nAppRegistroId = 1,
-                nAppRegistrosAplicacionId = 1,
-                cAppRegistroCodigoApp = "SICOM_CHAT_2024",
-                cAppRegistroNombreApp = "SICOM Chat 2024",
-                cAppRegistroTokenAcceso = "AT_6cbeb6faba662bffb1e9b0cdc3a96670",
-                cAppRegistroSecretoApp = "ST_0b2c702f3fd200f0fc9ddb02624a21bc9d8be4fa96672504",
-                bAppRegistroEsActivo = true,
-                dAppRegistroFechaCreacion = DateTime.UtcNow,
-                dAppRegistroFechaExpiracion = DateTime.UtcNow.AddYears(1),
-                cAppRegistroConfiguracionesAdicionales = "{\"urlBase\":\"http://localhost:5406\",\"descripcion\":\"Aplicación de chat SICOM\"}",
-                UpdatedAt = DateTime.UtcNow,
-                cAppUrl = "http://localhost:5406"
-            };
-        }
+            var result = await _supabaseClient
+                .From<AppRegistro>()
+                .Filter("cAppRegistrosCodigoApp", Operator.Equals, appCode)
+                .Filter("bAppRegistrosEsActivo", Operator.Equals, "true")
+                .Get();
 
-        _logger.LogWarning("Aplicación no reconocida: {AppCode}", appCode);
-        return null;
+            return result.Models?.FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al obtener AppRegistro por código: {AppCode}", appCode);
+            return null;
+        }
     }
 
     public async Task<AppRegistro?> GetByAccessTokenAsync(string accessToken)
     {
-        // Tabla AppRegistros no existe, retornar objeto por defecto para el token conocido
-        if (string.Equals(accessToken, "AT_6cbeb6faba662bffb1e9b0cdc3a96670", StringComparison.Ordinal))
+        try
         {
-            _logger.LogInformation("AppRegistros no existe, retornando configuración por defecto para token: {AccessToken}", accessToken);
-            return new AppRegistro
-            {
-                nAppRegistroId = 1,
-                nAppRegistrosAplicacionId = 1,
-                cAppRegistroCodigoApp = "SICOM_CHAT_2024",
-                cAppRegistroNombreApp = "SICOM Chat Application 2024",
-                cAppRegistroTokenAcceso = "AT_6cbeb6faba662bffb1e9b0cdc3a96670",
-                cAppRegistroSecretoApp = "ST_0b2c702f3fd200f0fc9ddb02624a21bc9d8be4fa96672504",
-                bAppRegistroEsActivo = true,
-                dAppRegistroFechaCreacion = DateTime.UtcNow,
-                dAppRegistroFechaExpiracion = DateTime.UtcNow.AddYears(1),
-                cAppRegistroConfiguracionesAdicionales = "{\"urlBase\":\"http://localhost:5406\",\"descripcion\":\"SICOM Chat Application 2024\"}",
-                UpdatedAt = DateTime.UtcNow,
-                cAppUrl = "http://localhost:5406"
-            };
-        }
+            var result = await _supabaseClient
+                .From<AppRegistro>()
+                .Filter("cAppRegistrosTokenAcceso", Operator.Equals, accessToken)
+                .Filter("bAppRegistrosEsActivo", Operator.Equals, "true")
+                .Get();
 
-        _logger.LogWarning("Token no reconocido: {AccessToken}", accessToken);
-        return null;
+            return result.Models?.FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al obtener AppRegistro por token de acceso");
+            return null;
+        }
     }
 
     public async Task<bool> ValidateAccessTokenAsync(string appCode, string accessToken)

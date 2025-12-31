@@ -12,11 +12,17 @@ public class SupabaseChatConversation : BaseModel
     [PrimaryKey("nconversacioneschatid")]
     public int nConversacionesChatId { get; set; }
     
+    [Column("cconversacioneschatappcodigo")]
+    public string cConversacionesChatAppCodigo { get; set; } = string.Empty;
+
     [Column("cconversacioneschatnombre")]
     public string? cConversacionesChatNombre { get; set; }
     
     [Column("cconversacioneschattipo")]
     public string cConversacionesChatTipo { get; set; } = "individual";
+
+    [Column("cconversacioneschatusuariocreadorid")]
+    public string? cConversacionesChatUsuarioCreadorId { get; set; }
     
     [Column("dconversacioneschatfechacreacion")]
     public DateTime dConversacionesChatFechaCreacion { get; set; } = DateTime.UtcNow;
